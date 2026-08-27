@@ -2,9 +2,17 @@
 """Parallel collection orchestrator — N lanes of runner subprocesses.
 
 Why: real runs keep only ~2.7 of the server's slots busy (frontier report
-2026-08-27); the server batches to ~434 tok/s aggregate at 24-way. Running
-many runs CONCURRENTLY against one p24 server (see run_collection_server.sh)
-recovers the idle slots: ~2.5 days for the 1200-run collection instead of ~15.
+2026-08-27); running many runs CONCURRENTLY against one server recovers the
+idle slots.
+
+  CORRECTION (sprint-16 P4a, measured on REAL runs — see llm/SCALING-FINDINGS.md):
+  the concurrency lever is --lanes here, NOT server --parallel, and its real-run
+  ceiling is ~4 lanes for ~1.9-2.1x (3 lanes = 1.72x; per-run pace degrades
+  ~1.69x under contention). The "~434 tok/s at 24-way / ~2.5 days for 1200"
+  projection was the short-prompt probe and overestimated — real projection is
+  ~6-7 days. Total server load = lanes x --run-parallel, so scale server slots
+  to match. The --lanes default (8) is ABOVE the ceiling: pass --lanes 4. Keep
+  --reasoning off for trace comparability.
 
 Design (sprint-16 plan):
   * The (composition x seed) grid is sliced round-robin into N disjoint lanes;

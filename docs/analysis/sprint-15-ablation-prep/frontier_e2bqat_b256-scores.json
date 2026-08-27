@@ -1,0 +1,82 @@
+[
+ {
+  "cell": "frontier_e2bqat_b256",
+  "outcome": "distinct args / agent",
+  "n_pairs": 13,
+  "control": 1.91025641025641,
+  "variant": 1.9102564102564101,
+  "delta": 0.0,
+  "t": 0.0,
+  "p": 1.0
+ },
+ {
+  "cell": "frontier_e2bqat_b256",
+  "outcome": "top-cid share",
+  "n_pairs": 13,
+  "control": 0.4215617715617715,
+  "variant": 0.4846406409791569,
+  "delta": 0.06307886941738526,
+  "t": 2.3909421344515005,
+  "p": 0.03407671635282028
+ },
+ {
+  "cell": "frontier_e2bqat_b256",
+  "outcome": "distinct args / room",
+  "n_pairs": 13,
+  "control": 5.6923076923076925,
+  "variant": 5.384615384615385,
+  "delta": -0.3076923076923077,
+  "t": -1.07546571587573,
+  "p": 0.30331445763200665
+ },
+ {
+  "cell": "frontier_e2bqat_b256",
+  "outcome": "saturation @r1",
+  "n_pairs": 13,
+  "control": 0.7936020672591031,
+  "variant": 0.786220115586806,
+  "delta": -0.007381951672296955,
+  "t": -0.2821674578405065,
+  "p": 0.7826226283302473
+ },
+ {
+  "cell": "frontier_e2bqat_b256",
+  "outcome": "DRI (final)",
+  "n_pairs": 13,
+  "control": 0.16632646443353633,
+  "variant": 0.25182026195045276,
+  "delta": 0.08549379751691645,
+  "t": 0.6509657430837089,
+  "p": 0.5273374216679314
+ },
+ {
+  "cell": "frontier_e2bqat_b256",
+  "outcome": "meta-consensus (final)",
+  "n_pairs": 13,
+  "control": 0.7017701124476419,
+  "variant": 0.6721335556003557,
+  "delta": -0.029636556847286107,
+  "t": -1.64835319884065,
+  "p": 0.125194507618096
+ },
+ {
+  "cell": "frontier_e2bqat_b256",
+  "outcome": "opinion var (final)",
+  "n_pairs": 13,
+  "control": 0.23388862179487174,
+  "variant": 0.1677472783119658,
+  "delta": -0.066141343482906,
+  "t": -2.217108026158774,
+  "p": 0.046680495385564014
+ },
+ {
+  "cell": "frontier_e2bqat_b256",
+  "outcome": "LLM calls / run",
+  "n_pairs": 13,
+  "control": 602.5384615384615,
+  "variant": 591.0,
+  "delta": -11.538461538461538,
+  "t": -1.5311304681671065,
+  "p": 0.15166442301782865
+ }
+]

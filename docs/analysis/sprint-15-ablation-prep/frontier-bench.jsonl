@@ -1,0 +1,6 @@
+{"label": "base_q8kv_p6", "prompt_tokens": 419, "single_stream_tok_s": 70.18, "concurrent_n": 6, "concurrent_wall_s": 9.74, "concurrent_agg_tok_s": 123.22, "per_slot_effective_tok_s": 20.54}
+{"label": "kv_f16_p6", "prompt_tokens": 419, "single_stream_tok_s": 66.34, "concurrent_n": 6, "concurrent_wall_s": 18.57, "concurrent_agg_tok_s": 64.62, "per_slot_effective_tok_s": 10.77}
+{"label": "spec_ngram_p6", "prompt_tokens": 419, "single_stream_tok_s": 69.35, "concurrent_n": 6, "concurrent_wall_s": 6.27, "concurrent_agg_tok_s": 191.24, "per_slot_effective_tok_s": 31.87}
+{"label": "qat_q4_p6", "prompt_tokens": 419, "single_stream_tok_s": 97.58, "concurrent_n": 6, "concurrent_wall_s": 5.89, "concurrent_agg_tok_s": 203.67, "per_slot_effective_tok_s": 33.95}
+{"label": "base_q8kv_p12", "prompt_tokens": 419, "single_stream_tok_s": 66.04, "concurrent_n": 12, "concurrent_wall_s": 9.44, "concurrent_agg_tok_s": 254.34, "per_slot_effective_tok_s": 21.19}
+{"label": "combo_q8_spec_p12", "prompt_tokens": 419, "single_stream_tok_s": 67.3, "concurrent_n": 12, "concurrent_wall_s": 9.49, "concurrent_agg_tok_s": 252.92, "per_slot_effective_tok_s": 21.08}

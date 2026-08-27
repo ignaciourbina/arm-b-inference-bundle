@@ -342,9 +342,16 @@ wave closes.
 
 High-occupancy collection infrastructure — evidence in
 `agora/analysis/sprint-15-ablation-prep/frontier-research-report.md` and the
-sprint-16 plan. Real runs keep only ~2.7/6 slots busy; one p24 server +
-multiple concurrent run lanes recovers the idle capacity (~2.5 days for 1200
-runs instead of ~15).
+sprint-16 plan. Real runs keep only ~2.7/6 slots busy; multiple concurrent run
+lanes recover the idle capacity.
+
+> ⚠ **Read `llm/SCALING-FINDINGS.md` before tuning concurrency.** The
+> "~2.5 days / 434 tok/s at 24-way / ~3–5×" numbers are the short-prompt
+> *probe*; the Sprint-16 P4a A/B on real runs measured **1.72× at 3 lanes,
+> ~1.9–2.1× at 4 lanes** (per-run pace degrades ~1.69× under contention), so
+> the 1200-run projection is **~6–7 days, not 2.5**. The lever is `--lanes`
+> (real ceiling ~4; the tool defaults to 8 — override it), and `p12/49k` was
+> retained over `p24/98k`. Keep `--reasoning off` for trace comparability.
 
 ```bash
 # 1. server (24 slots x 4096 ctx, q8 KV, coopmat2 binary, refreshed weights)

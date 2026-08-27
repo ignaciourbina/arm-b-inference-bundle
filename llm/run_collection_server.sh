@@ -7,6 +7,15 @@
 # server. Config: 24 slots x 4096 ctx/slot, q8 KV (f16 measured 0.52x —
 # rejected), coopmat2 source binary, refreshed (Jul-15) E2B Q8_0 weights.
 #
+# ⚠ CORRECTION (sprint-16 P4a A/B, measured on REAL runs): the "no plateau to
+# 24-way / 434 tok/s" figure above is the short-PROMPT probe. On real 3-4k-ctx
+# runs, per-run decode pace degrades ~1.69x under contention; measured macro
+# speedup is 1.72x at 3 lanes, ~1.9-2.1x at 4 lanes (NOT 3-5x), and p12/49k was
+# retained over this p24/98k config (~8% pace delta). ALSO: this server flips
+# --reasoning ON (b128/256), which changes generation semantics — do NOT use it
+# for the pinned --reasoning-OFF Arm-B collection or the traces won't be
+# comparable. See llm/SCALING-FINDINGS.md before tuning concurrency.
+#
 #   bash llm/run_collection_server.sh [128|256]     # reasoning budget (default 128)
 set -uo pipefail
 ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd); cd "$ROOT"

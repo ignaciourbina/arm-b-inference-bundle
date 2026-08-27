@@ -24,6 +24,8 @@ protocol against a local `llama-server` backend.
 | `pipeline/runpod/scripts/start_llama_server_local.sh` | Canonical local backend launcher. |
 | `pipeline/validate_llm_collection.py` | Post-collection validator (checks the 390-trace set). |
 | `polis-analysis/` | **Scenario/consideration generator** — rebuilds the simulation inputs from the raw Polis open data. `build_pipeline.py` (orchestrator) + `build_covote.py`/`build_profiles.py`/`build_irt.py`, `fetch_polis_data.sh`, `RECONSTRUCTION-SPEC.md`, and `output/` reference artifacts for validation. See §3. |
+| `llm/SCALING-FINDINGS.md` | **Read before tuning concurrency.** Authoritative, measured-on-real-runs throughput guidance (lanes vs slots, the ~4-lane / ~1.9–2.1× ceiling, `--reasoning off` comparability rule). Corrects the optimistic probe projections. |
+| `docs/analysis/sprint-15-ablation-prep/`, `sprint-16-collection-scaleout/` | The ablation + scale-out decision memos and evidence (frontier report, P4a A/B, reliability, neutrality design) behind the config choices. |
 
 **Deliberately excluded** (not needed to reproduce inference, or unsafe to
 publish): `llm/traces/` (multi-GB outputs), `agora/output/`, `.venv/`,
@@ -124,6 +126,13 @@ cp polis-analysis/output/minimum_wage_seattle_crossover.json llm/scenarios/
 ---
 
 ## 4. Reproduce the collection
+
+> **Scaling the collection? Read `llm/SCALING-FINDINGS.md` first.** The lever is
+> `run_collection_parallel.py --lanes` (real-run ceiling ~4 → ~1.9–2.1×, *not*
+> the ~3–5× the probe suggested), server slots must scale as `lanes ×
+> --run-parallel`, and the pinned set is `--reasoning off` — do **not** use
+> `run_collection_server.sh` (reasoning-on) for it. Full evidence:
+> `docs/analysis/sprint-16-collection-scaleout/plan.md`.
 
 ```bash
 # 0. env (see §2c) — venv active, PYTHONPATH set
