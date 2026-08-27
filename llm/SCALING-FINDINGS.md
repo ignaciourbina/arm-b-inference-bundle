@@ -76,6 +76,51 @@ collection wall-clock from an aggregate tok/s curve.**
   different tag scheme. Pick one; scale by relaunching the *same* one with more
   `--lanes` (idempotent via `--resume`).
 
+## Multi-GPU & walltime-limited schedulers
+
+The lane ceiling above is a *per-card* limit — it's the decode bandwidth of one
+GPU. **Each additional GPU is an independent bandwidth domain, so scaling across
+cards is ~linear where lanes are sublinear.** When more than one GPU is
+available, prefer more cards over more lanes.
+
+**Topology: one server + one orchestrator per GPU, over disjoint seed slices.**
+
+```bash
+# GPU 0
+CUDA_VISIBLE_DEVICES=0 PORT=20434 N_PARALLEL=12 CTX=49152 CACHE_REUSE=256 \
+  bash pipeline/runpod/scripts/start_llama_server_local.sh &
+python llm/run_collection_parallel.py --cell arm_b_gpu0 --seeds 1-200 \
+  --lanes 4 --run-parallel 6 --base-url http://localhost:20434 &
+
+# GPU 1 — different port, disjoint seed slice, its own cell
+CUDA_VISIBLE_DEVICES=1 PORT=20435 N_PARALLEL=12 CTX=49152 CACHE_REUSE=256 \
+  bash pipeline/runpod/scripts/start_llama_server_local.sh &
+python llm/run_collection_parallel.py --cell arm_b_gpu1 --seeds 201-400 \
+  --lanes 4 --run-parallel 6 --base-url http://localhost:20435 &
+```
+
+- **Per-card cells + disjoint seeds** — the two trace sets union trivially and
+  avoid a cross-process race on the shared telemetry JSONL (the write lock is
+  per-process, not cross-process).
+- `start_llama_server_local.sh` honors `PORT`/`N_PARALLEL`/`CTX`/`GGUF_PATH` and
+  is `--reasoning off` — so multi-GPU gives the big speedup **without touching
+  the reasoning flag**. You do not need the reasoning-on p24 server for speed;
+  you need more cards at reasoning-off p12.
+
+**Bounded walltime (e.g. a 24 h scheduler cap): chunk into resumable jobs.** A
+long collection will exceed one job window, so structure it as self-resubmitting
+≤walltime chunks and lean on the built-in idempotency:
+
+- Both `run_collection_parallel.py` and the pinned sweep replay completed runs
+  from checkpoints in ~1 s (`--resume`), so re-launching the identical command
+  continues cleanly.
+- Trap the scheduler's pre-kill signal → graceful pause. `run_collection_parallel.py`
+  handles SIGTERM/SIGINT by letting each lane finish its in-flight run, then
+  writing `PAUSED.txt`. With Slurm: `sbatch --signal=B:TERM@900` delivers SIGTERM
+  ~15 min before the walltime kill — ample for one run to finish and checkpoint.
+- So the pattern is a **self-resubmitting job**, not one long job. Never a fresh
+  start — always a resume.
+
 ## Recommended reasoning-off scale-up (evidence-based)
 
 ```bash
