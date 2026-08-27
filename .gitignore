@@ -4,6 +4,13 @@ outputs/
 results/
 agora/output/
 
+# Raw Polis open data — fetched from upstream (compdemocracy/openData), see
+# polis-analysis/fetch_polis_data.sh. Not redistributed here.
+datasets/polis-openData/
+
+# NOTE: polis-analysis/output/*.json IS committed on purpose — reference
+# artifacts for validating a fresh build_pipeline.py run.
+
 # Secrets — never commit the real .env (ship .env.example only)
 llm/.env
 .env

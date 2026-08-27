@@ -1,0 +1,281 @@
+{
+  "name": "minimum_wage_seattle_crossover",
+  "source": "Polis open data 15-per-hour-seattle (pol.is/2demo)",
+  "provenance": "Reconstructed from raw votes per manuscript appendix G; persuasiveness from published Table 5; edges/profiles re-derived.",
+  "considerations": [
+    {
+      "id": "C_01",
+      "label": "living wage / subsidy",
+      "direction": 1.0,
+      "persuasiveness": 0.817,
+      "irt_a": 1.0153,
+      "irt_b": -0.373,
+      "polis_comment_id": "48",
+      "statement": "Businesses, small or large, shouldn't be able to pay workers anything below a livable wage. Why should we subsidize businesses that depend on inadequate wages? If a business's product is good, then this shouldn't be a challenge."
+    },
+    {
+      "id": "C_02",
+      "label": "inflation protection for workers",
+      "direction": 1.0,
+      "persuasiveness": 0.9,
+      "irt_a": 1.0153,
+      "irt_b": -0.7911,
+      "polis_comment_id": "11",
+      "statement": "Given inflation, unless workers fight they are continually being pushed down. I think we\u2019ll need to revisit these laws again and again to make sure the economy is working for poor families."
+    },
+    {
+      "id": "C_03",
+      "label": "inflation and fairness",
+      "direction": -1.0,
+      "persuasiveness": 0.3,
+      "irt_a": 1.0153,
+      "irt_b": -0.3324,
+      "polis_comment_id": "32",
+      "statement": "$15 min wage will lead to inflation. Higher income population is penalized for this reason and therefore I don't think it is fair."
+    },
+    {
+      "id": "C_04",
+      "label": "older-worker income",
+      "direction": 1.0,
+      "persuasiveness": 0.633,
+      "irt_a": 1.0153,
+      "irt_b": -0.4336,
+      "polis_comment_id": "8",
+      "statement": "During the campaign, I found out that 75% of minimum-wage workers are 20 or older. I think it\u2019s the right thing to do to bring higher incomes to this group of people."
+    },
+    {
+      "id": "C_05",
+      "label": "income inequality",
+      "direction": 1.0,
+      "persuasiveness": 0.734,
+      "irt_a": 1.0153,
+      "irt_b": -0.7622,
+      "polis_comment_id": "45",
+      "statement": "Something needs to be done to address income inequality and this is a good if imperfect start"
+    },
+    {
+      "id": "C_06",
+      "label": "small-business survival",
+      "direction": -1.0,
+      "persuasiveness": 0.416,
+      "irt_a": 1.0153,
+      "irt_b": 0.2652,
+      "polis_comment_id": "46",
+      "statement": "Higher wages makes it super hard for small businesses to survive.  In effect, mom and pop coffee shops with disappear."
+    },
+    {
+      "id": "C_07",
+      "label": "automation",
+      "direction": -1.0,
+      "persuasiveness": 0.768,
+      "irt_a": 1.0153,
+      "irt_b": 0.4248,
+      "polis_comment_id": "36",
+      "statement": "It's just going to speed up the adoption of robotics in industries with unskilled or low-skilled workers."
+    },
+    {
+      "id": "C_08",
+      "label": "basic-income transition",
+      "direction": 1.0,
+      "persuasiveness": 0.852,
+      "irt_a": 1.0153,
+      "irt_b": -0.3086,
+      "polis_comment_id": "39",
+      "statement": "One step towards a world where a basic minimum income will be the way developed nations must function as the need for human workers collapses vs populace that \"needs a job.\""
+    },
+    {
+      "id": "C_09",
+      "label": "service redesign",
+      "direction": -1.0,
+      "persuasiveness": 0.75,
+      "irt_a": 1.0153,
+      "irt_b": 0.2121,
+      "polis_comment_id": "0",
+      "statement": "I imagine new businesses opening will run counter operations where guests grab their own silverware and bus their own tables."
+    },
+    {
+      "id": "C_10",
+      "label": "systemic critique",
+      "direction": -1.0,
+      "persuasiveness": 0.333,
+      "irt_a": 1.0153,
+      "irt_b": -0.0148,
+      "polis_comment_id": "20",
+      "statement": "Reactionary liberal trash. Doesn't solve the problem. It's a systemic problem and this solution is like a band aid on a broken leg."
+    }
+  ],
+  "attacks": [
+    {
+      "attacker": "C_01",
+      "target": "C_03",
+      "strength": 0.457
+    },
+    {
+      "attacker": "C_01",
+      "target": "C_06",
+      "strength": 0.32
+    },
+    {
+      "attacker": "C_01",
+      "target": "C_10",
+      "strength": 0.615
+    },
+    {
+      "attacker": "C_02",
+      "target": "C_03",
+      "strength": 0.543
+    },
+    {
+      "attacker": "C_02",
+      "target": "C_06",
+      "strength": 0.49
+    },
+    {
+      "attacker": "C_02",
+      "target": "C_10",
+      "strength": 0.512
+    },
+    {
+      "attacker": "C_03",
+      "target": "C_04",
+      "strength": 0.513
+    },
+    {
+      "attacker": "C_03",
+      "target": "C_05",
+      "strength": 0.533
+    },
+    {
+      "attacker": "C_03",
+      "target": "C_08",
+      "strength": 0.416
+    },
+    {
+      "attacker": "C_04",
+      "target": "C_06",
+      "strength": 0.541
+    },
+    {
+      "attacker": "C_04",
+      "target": "C_07",
+      "strength": 0.384
+    },
+    {
+      "attacker": "C_04",
+      "target": "C_10",
+      "strength": 0.494
+    },
+    {
+      "attacker": "C_05",
+      "target": "C_06",
+      "strength": 0.436
+    },
+    {
+      "attacker": "C_05",
+      "target": "C_10",
+      "strength": 0.547
+    },
+    {
+      "attacker": "C_08",
+      "target": "C_10",
+      "strength": 0.35
+    }
+  ],
+  "supports": [
+    {
+      "supporter": "C_01",
+      "target": "C_02",
+      "strength": 0.645
+    },
+    {
+      "supporter": "C_01",
+      "target": "C_04",
+      "strength": 0.545
+    },
+    {
+      "supporter": "C_01",
+      "target": "C_05",
+      "strength": 0.588
+    },
+    {
+      "supporter": "C_01",
+      "target": "C_08",
+      "strength": 0.518
+    },
+    {
+      "supporter": "C_02",
+      "target": "C_04",
+      "strength": 0.614
+    },
+    {
+      "supporter": "C_02",
+      "target": "C_05",
+      "strength": 0.526
+    },
+    {
+      "supporter": "C_02",
+      "target": "C_08",
+      "strength": 0.416
+    },
+    {
+      "supporter": "C_03",
+      "target": "C_06",
+      "strength": 0.526
+    },
+    {
+      "supporter": "C_03",
+      "target": "C_07",
+      "strength": 0.364
+    },
+    {
+      "supporter": "C_03",
+      "target": "C_10",
+      "strength": 0.533
+    },
+    {
+      "supporter": "C_04",
+      "target": "C_05",
+      "strength": 0.62
+    },
+    {
+      "supporter": "C_04",
+      "target": "C_08",
+      "strength": 0.527
+    },
+    {
+      "supporter": "C_05",
+      "target": "C_08",
+      "strength": 0.643
+    },
+    {
+      "supporter": "C_06",
+      "target": "C_07",
+      "strength": 0.411
+    },
+    {
+      "supporter": "C_06",
+      "target": "C_09",
+      "strength": 0.425
+    },
+    {
+      "supporter": "C_06",
+      "target": "C_10",
+      "strength": 0.594
+    },
+    {
+      "supporter": "C_07",
+      "target": "C_09",
+      "strength": 0.343
+    },
+    {
+      "supporter": "C_07",
+      "target": "C_10",
+      "strength": 0.475
+    },
+    {
+      "supporter": "C_09",
+      "target": "C_10",
+      "strength": 0.336
+    }
+  ]
+}
