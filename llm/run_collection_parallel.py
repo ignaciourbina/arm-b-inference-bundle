@@ -146,7 +146,14 @@ class Telemetry:
 
 
 def run_one(cell: str, comp: str, seed: int, out_dir: Path, rounds: int,
-            agents: int, run_parallel: int) -> int:
+            agents: int, run_parallel: int) -> tuple[int, str]:
+    """Run one collection subprocess. Returns (returncode, stderr_tail).
+
+    On failure the FULL stdout+stderr is persisted to
+    llm/traces/logs/FAIL_<tag>.log — otherwise a nonzero rc is undiagnosable
+    (the subprocess output is captured and would otherwise be discarded). A
+    short stderr tail is returned so the caller can put it in the telemetry.
+    """
     tag = f"{cell}_baseline_{comp}_s{seed}"
     cmd = [sys.executable, "-m", "llm.townhall.runner",
            "--topic", "minimum_wage_seattle",
@@ -163,7 +170,17 @@ def run_one(cell: str, comp: str, seed: int, out_dir: Path, rounds: int,
     env.setdefault("PYTHONPATH", f"{BASE_DIR}:{BASE_DIR / 'agora' / 'src'}")
     proc = subprocess.run(cmd, cwd=str(BASE_DIR), env=env,
                           capture_output=True, text=True)
-    return proc.returncode
+    if proc.returncode != 0:
+        log_dir = BASE_DIR / "llm/traces/logs"
+        log_dir.mkdir(parents=True, exist_ok=True)
+        (log_dir / f"FAIL_{tag}.log").write_text(
+            f"# run_tag={tag} rc={proc.returncode}\n"
+            f"# cmd: {' '.join(cmd)}\n\n"
+            f"===== STDOUT =====\n{proc.stdout}\n"
+            f"===== STDERR =====\n{proc.stderr}\n")
+        tail = (proc.stderr or proc.stdout or "").strip().splitlines()[-3:]
+        return proc.returncode, " | ".join(tail)[-500:]
+    return proc.returncode, ""
 
 
 def lane_worker(lane_id: int, work: list[tuple[str, int]], cell: str,
@@ -177,14 +194,16 @@ def lane_worker(lane_id: int, work: list[tuple[str, int]], cell: str,
             return
         t0 = time.monotonic()
         telemetry.emit(event="run_start", lane=lane_id, comp=comp, seed=seed)
-        rc = run_one(cell, comp, seed, out_dir, rounds, agents, run_parallel)
+        rc, err_tail = run_one(cell, comp, seed, out_dir, rounds, agents, run_parallel)
         wall = round(time.monotonic() - t0, 1)
         if rc == 0:
             telemetry.emit(event="run_done", lane=lane_id, comp=comp,
                            seed=seed, wall_s=wall)
         else:
             telemetry.emit(event="run_fail", lane=lane_id, comp=comp,
-                           seed=seed, wall_s=wall, rc=rc)
+                           seed=seed, wall_s=wall, rc=rc,
+                           fail_log=f"llm/traces/logs/FAIL_{cell}_baseline_{comp}_s{seed}.log",
+                           err_tail=err_tail)
             with fail_lock:
                 failures.append((comp, seed))
     telemetry.emit(event="lane_done", lane=lane_id)
@@ -296,10 +315,11 @@ def main() -> int:
         print(f"[collect] retrying {len(failures)} failed runs once ...")
         still_failed = []
         for comp, seed in failures:
-            rc = run_one(args.cell, comp, seed, out_dir, args.rounds,
-                         args.agents, args.run_parallel)
+            rc, err_tail = run_one(args.cell, comp, seed, out_dir, args.rounds,
+                                   args.agents, args.run_parallel)
             telemetry.emit(event="retry_done" if rc == 0 else "retry_fail",
-                           comp=comp, seed=seed, rc=rc)
+                           comp=comp, seed=seed, rc=rc,
+                           err_tail=err_tail if rc != 0 else "")
             if rc != 0:
                 still_failed.append((comp, seed))
         failures = still_failed
