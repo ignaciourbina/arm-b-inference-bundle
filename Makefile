@@ -47,6 +47,7 @@ GROWTH_CELLS ?= armb_sota_r256_t10 ms_E4B ms_26B_a4b
         sota pilot scaling axes-cd quant-budget verify-optimum lane-sweep submit \
         cancel cancel-job \
         status queue cells progress watch log srvlog gpu \
+        provenance provenance-all compare \
         validate score scaling-report growth inventory report \
         quota du gz-check compress-dry compress archive \
         test lint typecheck smoke clean
@@ -204,6 +205,16 @@ gpu:  ## GPU state on the node running your job
 	    --format=csv,noheader 2>/dev/null || echo "could not attach to job $$j"; fi
 
 ##@ Analysis
+
+provenance:  ## Config fingerprint + grid coverage: make provenance [CELL=x]
+	$(PY) slurm/provenance.py $(if $(filter-out armb_sota_r256_t10,$(CELL)),$(CELL),$(CELLS))
+
+provenance-all:  ## Fingerprint every cell; non-zero exit if any cell is not uniform
+	$(PY) slurm/provenance.py
+
+compare:  ## Is a comparison legitimate? make compare A=cell1 B=cell2 [TREATMENT=model]
+	@test -n "$(A)" -a -n "$(B)" || { echo 'usage: make compare A=<cell> B=<cell> [TREATMENT="model,infra.quant"]'; exit 1; }
+	@TREATMENT="$(TREATMENT)" $(PY) slurm/provenance.py --compare $(A) $(B)
 
 validate:  ## Validator over a cell: make validate CELL=<name> [REPS=100]
 	$(PY) pipeline/validate_llm_collection.py \

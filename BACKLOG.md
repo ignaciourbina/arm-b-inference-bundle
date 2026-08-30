@@ -54,22 +54,30 @@ committing mid-write would capture torn files.
 
 ## P1 — do next
 
-### 3. `make provenance CELL=x` and `make compare CELLS="a b"`
-Config fingerprint per cell: assert every run in a cell shares one config, and
-report what differs between two cells.
+### 3. ~~Config-fingerprint tooling~~ — **DONE 2026-08-30**
+`make provenance` / `make provenance-all` / `make compare A=x B=y [TREATMENT=...]`,
+implemented in `slurm/provenance.py`.
 
-**Why this is first.** The most expensive failures on this project were not
-crashes but *invalid comparisons that looked valid*. One cell was collected with
-seed 8 at p6 and the other 29 at p24 and nothing flagged it. Worse, the data
-cannot currently answer the question: `ablation_infra` was added partway
-through, so for the `sl_*`, `cd_*` and `vo_*` families the independent variable
-— slot count, lane count, cache-reuse, GPU model — exists **only in the
-directory name and the sbatch script**. And the two slot curves sit at different
-temperatures (`sl_slots_*` at 0.3, `cd_slots_*` at 1.0) and must never be
-pooled. The memo keeps this straight; the trace files do not.
+What it found on first run over the corpus:
 
-Start from `config` + `config.ablation_infra` in any final; see
-`slurm/cell_status.py` for the cell-walking pattern.
+* **Every cell is internally uniform.** The seed-8-at-p6 failure class is not
+  present anywhere in the current data.
+* **Six cells are unbalanced** — `sl_lanes_L2`, `sl_lanes_L4`, `sl_slots_p24`,
+  `sl_slots_p48`, `vo_L4_p6`, `vo_L6_p6` have missing seeds from failed runs,
+  and the L4/L6 pair is missing *different* seeds (603 vs 602), so the
+  lane-ceiling comparison was over slightly different seed sets.
+* **`cd_*` and `sl_*` share no (composition, seed) cells at all.** They use
+  disjoint seed ranges, so a "paired" comparison between the two slot-curve
+  families is not merely confounded by temperature — it is structurally
+  unpaired. This was not previously known.
+
+**Correction to an earlier claim.** The provenance gap is narrower than
+recorded in the trace commit message: `config.server_props` *does* carry
+`total_slots`, `n_ctx_slot` and the resolved `model_path` for all cell
+families, including the older ones. The genuinely unrecorded variables are
+**lane count, cache-reuse, reasoning budget and GPU model**, which appear only
+in `ablation_infra` — added partway through the project. Item 8 (backfill)
+still stands for those.
 
 ### 4. `make doc-check`
 Mechanically verify the checkable claims in `CLAUDE.md` and `docs/`: referenced
@@ -115,11 +123,12 @@ working copies as plain JSON that every reader already handles.
 So the reader work may be unnecessary for anything committed. **Decide before
 building it.** `make gz-check` currently blocks compression by design.
 
-### 8. Backfill provenance into the older cells
-Reconstruct `ablation_infra` for `sl_*`, `cd_*`, `vo_*` from the sbatch scripts
-and directory names into a sidecar manifest per cell. Makes item 3 able to
-answer for the whole corpus rather than only the newer cells. Do **not** rewrite
-the trace files — write a sidecar.
+### 8. Backfill the four unrecorded variables into the older cells
+`make compare` reports lane count, cache-reuse, reasoning budget and GPU model
+as `(unrecorded)` for `sl_*`, `cd_*`, `vo_*`, and explicitly refuses to treat
+that as evidence of sameness. Reconstruct them from the sbatch scripts and
+directory names into a **sidecar manifest** per cell — do not rewrite the trace
+files. Slots and ctx need no backfill; `server_props` already has them.
 
 ### 9. `make smoke-gpu`
 Short interactive allocation → start server → one round → tear down. Today the
