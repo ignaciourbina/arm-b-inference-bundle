@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import re
 from dataclasses import dataclass, field
 from typing import cast
@@ -44,6 +45,78 @@ MAX_EVALUATE_QUERY_ROUNDS = 2
 # falling back to JSON. Silent no-update fallbacks are data-corrupting here:
 # no update must be a model action, not a catch-all parser failure.
 MAX_TEXT_RETRIES = 4
+
+# ---------------------------------------------------------------------------
+# Model-conditional harness profile.
+#
+# The prompts, retry hints and tool schemas here were tuned against
+# gemma-4-E2B. That tuning is not neutral between models: E4B expresses "I am
+# not revising anything" as bare content `{"unchanged": true}` -- semantically
+# correct, and exactly `no_update`'s argument object -- but the strict loop
+# wants it wrapped in a tool call, burns five retries and fails the run. In the
+# model-scale pilot that alone produced a 20% first-attempt failure rate,
+# concentrated entirely in symmetric_n6, versus E2B's 3.5% spread evenly. It
+# measured our harness's fit to E2B, not the model's competence.
+#
+# So leniency is opt-in BY MODEL. `strict` is the frozen Arm-B path and is
+# byte-identical to what produced the 300-run collection: STRICT_ONLY_MODELS
+# never reaches the new code. Anything else gets `lenient`, which adds one
+# recovery rule and changes nothing else.
+#
+# LLM_HARNESS_PROFILE overrides the table, for an experiment that deliberately
+# runs E2B lenient or E4B strict. The resolved profile is recorded in the trace
+# config, so a cell always says which harness it ran under.
+# ---------------------------------------------------------------------------
+STRICT_ONLY_MODELS = ("gemma-4-e2b",)
+HARNESS_PROFILES = ("strict", "lenient")
+
+# Bare argument objects that identify a tool unambiguously. `no_update` takes
+# {"unchanged": true} and `done_reflecting` takes {"done": true}; a content-only
+# object with exactly those keys is that tool call minus its envelope.
+_ARGSHAPE_TOOLS: dict[str, frozenset[str]] = {
+    "no_update": frozenset({"unchanged"}),
+    "done_reflecting": frozenset({"done"}),
+}
+
+
+def resolve_harness_profile(model: str | None) -> str:
+    """Which harness profile a model runs under. Explicit env wins."""
+    env = os.environ.get("LLM_HARNESS_PROFILE", "").strip().lower()
+    if env in HARNESS_PROFILES:
+        return env
+    if env:
+        logger.warning("Ignoring unknown LLM_HARNESS_PROFILE=%r", env)
+    name = (model or "").lower()
+    if any(s in name for s in STRICT_ONLY_MODELS):
+        return "strict"
+    return "lenient" if name else "strict"
+
+
+def _coerce_argshape_tool_call(content: str, tools: list[ToolSchema]) -> list[ToolCall]:
+    """Map a bare argument object onto its tool. LENIENT PROFILE ONLY.
+
+    Deliberately narrow: the content must parse as a JSON object whose keys are
+    exactly one known tool's argument keys, and that tool must be offered in
+    this hook. It never guesses between two candidates and never fires on prose.
+    """
+    text = content.strip()
+    if not (text.startswith("{") and text.endswith("}")):
+        return []
+    try:
+        obj = json.loads(text)
+    except (ValueError, TypeError):
+        return []
+    if not isinstance(obj, dict) or not obj:
+        return []
+    allowed = {cast(str, tool["function"]["name"]) for tool in tools}
+    keys = frozenset(str(k) for k in obj)
+    hits = [n for n, sig in _ARGSHAPE_TOOLS.items() if n in allowed and keys == sig]
+    if len(hits) != 1:
+        return []
+    name = hits[0]
+    canonical = {"no_update": {"unchanged": True}, "done_reflecting": {"done": True}}[name]
+    return [{"type": "function", "function": {"name": name, "arguments": canonical}}]
+
 
 
 class HookLoopError(RuntimeError):
@@ -515,6 +588,23 @@ class ToolCallHarness:
     facilitated: bool = False
     group_building_level: int = 3
     prompt_builder: BasePromptBuilder = field(default_factory=lambda: STANDARD_PROMPT_BUILDER)
+    # Resolved once, from the client's model, unless passed explicitly. See
+    # resolve_harness_profile: E2B is pinned to "strict" so the Arm-B path is
+    # unchanged; other models get "lenient".
+    harness_profile: str = ""
+
+    def __post_init__(self) -> None:
+        if not self.harness_profile:
+            self.harness_profile = resolve_harness_profile(
+                getattr(self.client, "model", "")
+            )
+        if self.harness_profile not in HARNESS_PROFILES:
+            raise ValueError(
+                f"unknown harness_profile {self.harness_profile!r}; "
+                f"expected one of {HARNESS_PROFILES}"
+            )
+        logger.info("harness profile: %s (model=%s)",
+                    self.harness_profile, getattr(self.client, "model", "?"))
 
     def _build_prompt_context(self, agent: Agent) -> PromptContext:
         return PromptContext(
@@ -564,6 +654,17 @@ class ToolCallHarness:
                         hook,
                         content.strip(),
                     )
+                # Lenient profile only: a bare argument object is that tool call
+                # without its envelope. Under `strict` this branch is dead code,
+                # so the E2B path is exactly what it was.
+                if not tool_calls and self.harness_profile == "lenient":
+                    tool_calls = _coerce_argshape_tool_call(content, tools)
+                    if tool_calls:
+                        logger.info(
+                            "Recovered %s from bare argument object for %s/%s: %s",
+                            tool_calls[0]["function"]["name"], agent.id, hook,
+                            content.strip(),
+                        )
 
             if not tool_calls:
                 text_retries += 1

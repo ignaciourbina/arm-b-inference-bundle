@@ -918,3 +918,132 @@ def test_reflect_rejects_no_update_after_update_weight() -> None:
         "no_update cannot be used after update_weight" in str(m.get("content", ""))
         for m in tool_messages
     )
+
+
+# ---------------------------------------------------------------------------
+# Model-conditional harness profile.
+#
+# The guarantee under test is not "leniency works" but "E2B is untouched": the
+# 300-run Arm-B collection was produced by the strict path, and a later cell is
+# only comparable to it if that path is bit-for-bit the same code. So the
+# central test asserts the new branch is unreachable under `strict`, not merely
+# that it happens not to fire.
+# ---------------------------------------------------------------------------
+
+class _ReflectBareArgsClient:
+    """Emits `{"unchanged": true}` as content, never as a tool call.
+
+    This is E4B's observed behaviour in the model-scale pilot: semantically a
+    correct "I am not revising anything", but the argument object without its
+    tool-call envelope.
+    """
+
+    model = "gemma-4-E4B-it-Q8_0.gguf"
+
+    def __init__(self) -> None:
+        self.calls = 0
+
+    async def chat(self, *args, **kwargs):
+        self.calls += 1
+        return {"role": "assistant", "content": '{"unchanged":true}'}
+
+
+# reflect() returns early when nothing was voiced this round, so the loop is
+# only exercised with a non-empty update list.
+_ROUND_UPDATES = [("C_01", 0.2, 0.5)]
+
+
+def _reflect_agent_and_pool():
+    pool = _build_pool()
+    agent = Agent(id="TH_02", params=AgentParams(), weights={"C_01": 0.2})
+    return agent, pool
+
+
+def test_profile_resolves_e2b_to_strict_and_others_to_lenient(monkeypatch) -> None:
+    monkeypatch.delenv("LLM_HARNESS_PROFILE", raising=False)
+    from llm.harness import resolve_harness_profile
+
+    assert resolve_harness_profile("gemma-4-E2B-it-Q8_0.gguf") == "strict"
+    assert resolve_harness_profile("gemma-4-E4B-it-Q8_0.gguf") == "lenient"
+    assert resolve_harness_profile("gemma-4-26B-A4B-it-Q8_0.gguf") == "lenient"
+    # No model information is not a licence to loosen anything.
+    assert resolve_harness_profile("") == "strict"
+    assert resolve_harness_profile(None) == "strict"
+
+
+def test_profile_env_override_wins_both_directions(monkeypatch) -> None:
+    from llm.harness import resolve_harness_profile
+
+    monkeypatch.setenv("LLM_HARNESS_PROFILE", "strict")
+    assert resolve_harness_profile("gemma-4-E4B-it-Q8_0.gguf") == "strict"
+    monkeypatch.setenv("LLM_HARNESS_PROFILE", "lenient")
+    assert resolve_harness_profile("gemma-4-E2B-it-Q8_0.gguf") == "lenient"
+    # Garbage is ignored rather than silently loosening the harness.
+    monkeypatch.setenv("LLM_HARNESS_PROFILE", "banana")
+    assert resolve_harness_profile("gemma-4-E2B-it-Q8_0.gguf") == "strict"
+
+
+def test_argshape_coercion_is_narrow() -> None:
+    from llm.harness import _coerce_argshape_tool_call
+
+    tools = [
+        {"function": {"name": "no_update"}},
+        {"function": {"name": "done_reflecting"}},
+        {"function": {"name": "update_weight"}},
+    ]
+    assert _coerce_argshape_tool_call('{"unchanged":true}', tools)[0]["function"]["name"] == "no_update"
+    assert _coerce_argshape_tool_call('{"done":true}', tools)[0]["function"]["name"] == "done_reflecting"
+    # Everything else must be refused: extra keys, prose, empty, wrong keys,
+    # and a tool that this hook does not offer.
+    for bad in ('{"unchanged":true,"why":"x"}', "I leave my weights unchanged",
+                "{}", '{"cid":"C_01"}', "not json", '[{"unchanged":true}]'):
+        assert _coerce_argshape_tool_call(bad, tools) == []
+    assert _coerce_argshape_tool_call('{"unchanged":true}',
+                                      [{"function": {"name": "update_weight"}}]) == []
+
+
+def test_strict_profile_never_reaches_the_lenient_branch(monkeypatch) -> None:
+    """The E2B guarantee: under strict the new code is dead, not just quiet."""
+    monkeypatch.delenv("LLM_HARNESS_PROFILE", raising=False)
+    import llm.harness as H
+
+    def _explode(*a, **k):  # pragma: no cover - must never run
+        raise AssertionError("lenient coercion reached from the strict path")
+
+    monkeypatch.setattr(H, "_coerce_argshape_tool_call", _explode)
+
+    client = _ReflectBareArgsClient()
+    client.model = "gemma-4-E2B-it-Q8_0.gguf"
+    harness = ToolCallHarness(client=client)
+    assert harness.harness_profile == "strict"
+
+    agent, pool = _reflect_agent_and_pool()
+    # Same failure the pilot saw, and the same one the 300-run collection would
+    # have seen: retries exhausted, run raised.
+    with pytest.raises(HookLoopError) as exc:
+        asyncio.run(harness.reflect(agent, _ROUND_UPDATES, pool))
+    assert "no parseable tool call" in str(exc.value)
+
+
+def test_lenient_profile_recovers_the_bare_argument_object(monkeypatch) -> None:
+    monkeypatch.delenv("LLM_HARNESS_PROFILE", raising=False)
+    client = _ReflectBareArgsClient()          # E4B -> lenient
+    harness = ToolCallHarness(client=client)
+    assert harness.harness_profile == "lenient"
+
+    agent, pool = _reflect_agent_and_pool()
+    before = dict(agent.weights)
+    result = asyncio.run(harness.reflect(agent, _ROUND_UPDATES, pool))
+
+    # Recovered on the FIRST response: no retry storm, no failure.
+    assert client.calls == 1
+    assert agent.weights == before, "no_update must not alter weights"
+    names = [tc["name"] for tc in result.get("_tool_calls", [])]
+    assert names == ["no_update"]
+
+
+def test_explicit_profile_argument_beats_the_model_table() -> None:
+    client = _ReflectBareArgsClient()          # E4B, would be lenient
+    assert ToolCallHarness(client=client, harness_profile="strict").harness_profile == "strict"
+    with pytest.raises(ValueError):
+        ToolCallHarness(client=client, harness_profile="permissive")

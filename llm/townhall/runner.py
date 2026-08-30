@@ -23,6 +23,7 @@ import numpy as np
 
 from agora.agents import Agent  # type: ignore[import-untyped]
 from agora.considerations import ArgumentPool  # type: ignore[import-untyped]
+from llm.harness import resolve_harness_profile
 from llm.client import LLMClient
 from llm.engine import AgenticLLMEngine
 from llm.harness import BaselineHarness, ToolCallHarness, _voice_user_msg
@@ -490,6 +491,13 @@ def run_townhall(
                 "server_props": _server_props(client.base_url),
                 "ablation_infra": os.environ.get("LLM_ABLATION_INFRA", ""),
                 "temperature": getattr(client, "temperature", None),
+                # Which harness the run actually used. E2B resolves to "strict"
+                # (the frozen Arm-B path); other models get "lenient". Recorded
+                # because a cell that does not say which harness it ran under
+                # cannot be compared to one that does.
+                "harness_profile": resolve_harness_profile(
+                    getattr(client, "model", "")
+                ),
             },
             profiles=profiles,
             scenario={

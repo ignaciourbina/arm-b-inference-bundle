@@ -37,7 +37,7 @@ FINAL_RE = re.compile(r"_(?P<comp>polarized|symmetric|three_clusters)_n6_s(?P<se
 # composition are the two that are supposed to vary.
 CONFIG_FIELDS = ("model", "temperature", "n_agents", "n_rounds", "condition",
                  "prompt_variant", "reflect_decision_policy",
-                 "confirmation_bias", "ablation_infra")  # infra is unpacked, not reported raw
+                 "confirmation_bias", "harness_profile", "ablation_infra")  # infra is unpacked, not reported raw
 SERVER_FIELDS = ("total_slots", "n_ctx_slot", "model_path")
 MISSING = "(unrecorded)"
 

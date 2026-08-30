@@ -46,6 +46,8 @@ import time
 import urllib.request
 from pathlib import Path
 
+from llm.harness import resolve_harness_profile
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 COMPOSITIONS = ["polarized_n6", "symmetric_n6", "three_clusters_n6"]
 MIN_TOKS_PER_S = 20.0          # warmed-bench gate (CPU fallback signature ~3-11)
@@ -55,6 +57,12 @@ MIN_FREE_DISK_GB = 10.0        # trace volume safety
 # so a cell running a deliberately larger model raises it via the environment.
 MAX_VRAM_MB = int(os.environ.get("COLLECT_MAX_VRAM_MB", "6500"))
 DEFAULT_LANE_STAGGER_S = 90    # avoid synchronized prefill bursts
+
+# Resolved ONCE per collection and pushed into every run subprocess, so an edit
+# to the model->profile table cannot split a cell in flight. An explicit
+# LLM_HARNESS_PROFILE in the environment still wins, and is what a deliberate
+# harness ablation would set.
+HARNESS_PROFILE = resolve_harness_profile(os.environ.get("LLM_MODEL", ""))
 
 _pause = threading.Event()
 
@@ -186,6 +194,14 @@ def run_one(cell: str, comp: str, seed: int, out_dir: Path, rounds: int,
            "--run-tag", tag, "--output-dir", str(out_dir), "--resume"]
     env = dict(os.environ)
     env.setdefault("PYTHONPATH", f"{BASE_DIR}:{BASE_DIR / 'agora' / 'src'}")
+    # PIN the harness profile for the whole cell. Each run is a fresh
+    # subprocess that re-imports llm/harness.py from disk, so a profile
+    # resolved per-subprocess would silently change mid-collection if the
+    # model->profile table were edited while a job was in flight -- splitting
+    # one cell across two harnesses. Resolving once and passing it down makes
+    # the cell uniform by construction, which is the whole point of having a
+    # profile: isolating the harness as a variable.
+    env["LLM_HARNESS_PROFILE"] = HARNESS_PROFILE
     proc = subprocess.run(cmd, cwd=str(BASE_DIR), env=env,
                           capture_output=True, text=True)
     if proc.returncode != 0:
@@ -286,7 +302,8 @@ def main() -> int:
 
     telemetry = Telemetry(BASE_DIR / f"llm/traces/logs/{args.cell}_progress.jsonl")
     telemetry.emit(event="collect_start", grid=len(grid), done=len(done),
-                   todo=len(todo), lanes=args.lanes, bench_tok_s=round(speed, 1))
+                   todo=len(todo), lanes=args.lanes, bench_tok_s=round(speed, 1),
+                   harness_profile=HARNESS_PROFILE)
 
     def handle_stop(signum, frame):
         print(f"\n[collect] signal {signum}: pausing after in-flight runs "
