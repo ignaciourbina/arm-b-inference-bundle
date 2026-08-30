@@ -1,0 +1,339 @@
+% --- BEGIN MERGED BLOCK: methods appendix (method-appendix-semantic-ising.tex) ---
+\section{Semantic and Ising Construction of Considerations}
+
+This appendix documents the empirical construction of the consideration pool
+used in the Seattle minimum-wage simulations. The goal of the procedure is not
+to recover a complete theory of the original Polis discussion, but to convert a
+large, irregular public-comment dataset into a compact set of considerations
+that can be used in a controlled agent-based simulation. The design problem is
+therefore one of disciplined reduction: preserve the main argumentative
+contrasts in the discussion, avoid letting near-duplicate statements dominate
+the model, and retain empirical information about which considerations were
+endorsed together or rejected together.
+
+\subsection{Data Source and Preprocessing}
+
+The source case is the 2014 Seattle Polis conversation on the proposal to raise
+the minimum wage to \$15 per hour. The open-data release contains 339
+participants and 69 submitted statements. We restrict the statement pool to the
+30 statements that passed moderation in the Polis dataset. Votes are coded as
+$+1$ for agree, $-1$ for disagree, and $0$ for pass; missing votes are treated
+as absent rather than as passes. Because support and opposition relations are
+estimated from directional voting behavior, pass and missing responses are
+excluded from pairwise co-vote calculations.
+
+A statement must receive at least 34 directional votes, approximately ten
+percent of the participant pool, to be eligible for selection. This threshold
+removes one moderated statement with too little directional information for
+stable pairwise association estimates. The remaining 29 statements form the
+candidate set for semantic clustering and representative selection.
+
+\subsection{Co-Vote Association}
+
+For every pair of eligible statements $i$ and $j$, we estimate the association
+between their vote profiles using Yule's $Q$ for two-by-two association tables
+\citep{yule1912}. Let $A_{ij}$ be the number of participants who voted in the
+same direction on both statements, either agree-agree or disagree-disagree, and
+let $D_{ij}$ be the number who voted in opposite directions. The pairwise
+association is
+\[
+Q_{ij} = \frac{A_{ij} - D_{ij}}{A_{ij} + D_{ij}},
+\]
+computed only when at least 10 participants cast directional votes on both
+statements. $Q_{ij}=1$ indicates perfect co-endorsement or co-rejection,
+$Q_{ij}=-1$ indicates perfect opposition, and $Q_{ij}=0$ indicates no net
+directional association among participants who voted on both statements.
+
+This statistic gives the model an empirical measure of how statements relate
+within the actual participant response structure. It also avoids treating raw
+agreement rates as if they were argument relations. A popular statement is not
+therefore automatically a strong support, nor is an unpopular statement
+automatically an attack. Support and attack relations depend on how statements
+pattern together across participant votes.
+
+On the eligible 29-statement set, the resulting off-diagonal $Q$ values have
+mean $+0.099$, standard deviation $0.339$, and range $[-0.714, +0.803]$.
+Approximately 59.4\% of pairwise associations are positive and 37.2\% are
+negative, so the empirical graph contains substantial opposition structure
+rather than just diffuse agreement.
+
+\subsection{Semantic Clustering and Representative Selection}
+
+The eligible statements are embedded with the \texttt{e5-large-v2} text
+embedding model, part of the E5 family of weakly supervised contrastive text
+embeddings \citep{wang2022e5}. We cluster the 29 statement embeddings using
+hierarchical agglomerative clustering with average linkage and cosine distance,
+fixing the number of clusters at $K=10$. The number of clusters is chosen to
+produce a tractable consideration pool for the simulations while preserving
+distinct argumentative themes in the original discussion: living wage, inflation
+and prices, income inequality, small-business pressure, automation, guaranteed
+income, service redesign, and systemic critique.
+
+As a validation check, we compared archived factor-analytic statement
+assignments to embedding-only clusters. The adjusted Rand index remains low
+across models and cluster counts: at $K=10$, ARI is $0.098$ for
+\texttt{nomic-embed-text}, $0.092$ for raw \texttt{e5-large-v2}, and $0.121$
+for contextual \texttt{e5-large-v2}; across all tested specifications the ARI
+range is $[-0.003, 0.138]$. At the same time, within-factor semantic coherence
+is high: the mean within-factor cosine similarity is $0.935$, the weakest
+factor mean is $0.904$, and all 10 archived factors exceed $0.85$. This is the
+empirical reason for using embeddings to ensure topical coverage while letting
+vote behavior, rather than embedding geometry alone, determine the association
+structure.
+
+Within each semantic cluster, we select one representative statement. The
+representative is not chosen by agreement rate. Instead, for each statement $i$
+in cluster $C(i)$, we compute its separation power:
+\[
+s_i = \max_{C' \neq C(i)}
+\frac{1}{|C'|}\sum_{j \in C'} |Q_{ij}|.
+\]
+This score identifies the statement in a semantic cluster that most clearly
+separates that cluster from at least one other cluster in the participant
+co-vote structure. Ties are broken by the number of directional votes. This
+rule is deliberately conservative: it keeps one semantically distinct
+representative per cluster, and it chooses the representative whose vote
+pattern contributes most to the empirical structure of disagreement.
+
+The direction of each selected consideration is assigned by substantive
+content, with $+1$ indicating a consideration that supports the minimum-wage
+increase and $-1$ indicating a consideration that opposes or criticizes it.
+This content coding is necessary because net agreement is not a reliable
+measure of policy direction. Participants can agree with a critical statement
+while supporting the policy, or agree with a systemic critique that does not
+map cleanly onto simple support for the proposal.
+
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.34in}p{0.34in}p{0.30in}p{0.32in}p{0.36in}p{0.40in}p{0.40in}p{3.35in}}
+\caption{Selected considerations used in the simulation scenario.}\label{tab:selected-considerations}\\
+\toprule
+ID & Polis & Dir. & Clus. & Sep. & Cross & Pers. & Statement \\
+\midrule
+\endfirsthead
+\toprule
+ID & Polis & Dir. & Clus. & Sep. & Cross & Pers. & Statement \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+C\_01 & 48 & Pro & 1 & .742 & .471 & .817 & Businesses, small or large, shouldn't be able to pay workers anything below a livable wage. Why should we subsidize businesses that depend on inadequate wages? If a business's product is good, then this shouldn't be a challenge. \\
+C\_02 & 11 & Pro & 2 & .571 & .541 & .900 & Given inflation, unless workers fight they are continually being pushed down. I think we'll need to revisit these laws again and again to make sure the economy is working for poor families. \\
+C\_03 & 32 & Con & 3 & .571 & .032 & .300 & \$15 min wage will lead to inflation. Higher income population is penalized for this reason and therefore I don't think it is fair. \\
+C\_04 & 8 & Pro & 4 & .690 & .314 & .633 & During the campaign, I found out that 75\% of minimum-wage workers are 20 or older. I think it's the right thing to do to bring higher incomes to this group of people. \\
+C\_05 & 45 & Pro & 5 & .739 & .400 & .734 & Something needs to be done to address income inequality and this is a good if imperfect start. \\
+C\_06 & 46 & Con & 6 & .657 & .130 & .416 & Higher wages makes it super hard for small businesses to survive. In effect, mom and pop coffee shops with disappear. \\
+C\_07 & 36 & Con & 7 & .458 & .429 & .768 & It's just going to speed up the adoption of robotics in industries with unskilled or low-skilled workers. \\
+C\_08 & 39 & Pro & 8 & .431 & .500 & .852 & One step towards a world where a basic minimum income will be the way developed nations must function as the need for human workers collapses vs populace that ``needs a job.'' \\
+C\_09 & 0 & Con & 9 & .234 & .414 & .750 & I imagine new businesses opening will run counter operations where guests grab their own silverware and bus their own tables. \\
+C\_10 & 20 & Con & 10 & .556 & .061 & .333 & Reactionary liberal trash. Doesn't solve the problem. It's a systemic problem and this solution is like a band aid on a broken leg. \\
+\end{longtable}
+\endgroup
+
+\subsection{Support and Attack Edges}
+
+The support and attack graph is constructed from the same Yule's $Q$ matrix.
+For each selected pair of considerations, we add an edge when $|Q_{ij}| \geq
+0.2$ and at least 10 participants cast directional votes on both statements.
+Negative associations are treated as attacks, because participants who endorse
+one consideration tend to reject the other. Positive associations are treated
+as supports, because participants tend to endorse or reject the two
+considerations together. Edge strength is scaled as
+\[
+\omega_{ij} = 0.2 + 0.6\min(|Q_{ij}|,1).
+\]
+
+Attack edges are stored symmetrically in the scenario because empirical
+opposition between two considerations is undirected: if consideration $i$
+contradicts the vote profile of consideration $j$, then $j$ also contradicts
+$i$. Support edges are retained as directed edges in the scenario object, but
+their empirical source is the same symmetric co-vote association. The directed
+storage convention allows the simulation engine to treat support relations as
+an ordered input when needed, while the method itself should be read as a
+co-endorsement measure rather than a causal claim.
+
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.54in}p{0.45in}p{0.45in}p{0.36in}p{4.20in}}
+\caption{Empirical support and attack relations among selected considerations.}\label{tab:consideration-edges}\\
+\toprule
+Relation & From & To & Str. & Interpretation \\
+\midrule
+\endfirsthead
+\toprule
+Relation & From & To & Str. & Interpretation \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Attack & C\_01 & C\_03 & .457 & Living-wage/subsidy argument versus inflation and fairness concern. \\
+Attack & C\_01 & C\_06 & .320 & Living-wage/subsidy argument versus small-business survival concern. \\
+Attack & C\_01 & C\_10 & .615 & Living-wage/subsidy argument versus systemic-critique rejection of the reform. \\
+Attack & C\_02 & C\_03 & .543 & Inflation-protection argument for workers versus inflation and fairness concern. \\
+Attack & C\_02 & C\_06 & .490 & Worker-protection argument versus small-business survival concern. \\
+Attack & C\_02 & C\_10 & .512 & Worker-protection argument versus systemic-critique rejection of the reform. \\
+Attack & C\_03 & C\_04 & .513 & Inflation/fairness concern versus older-worker income argument. \\
+Attack & C\_03 & C\_05 & .534 & Inflation/fairness concern versus inequality-reduction argument. \\
+Attack & C\_03 & C\_08 & .416 & Inflation/fairness concern versus basic-income transition argument. \\
+Attack & C\_04 & C\_06 & .541 & Older-worker income argument versus small-business survival concern. \\
+Attack & C\_04 & C\_07 & .384 & Older-worker income argument versus automation concern. \\
+Attack & C\_04 & C\_10 & .494 & Older-worker income argument versus systemic-critique rejection of the reform. \\
+Attack & C\_05 & C\_06 & .436 & Inequality-reduction argument versus small-business survival concern. \\
+Attack & C\_05 & C\_10 & .547 & Inequality-reduction argument versus systemic-critique rejection of the reform. \\
+Attack & C\_08 & C\_10 & .350 & Basic-income transition argument versus systemic-critique rejection of the reform. \\
+Support & C\_01 & C\_02 & .645 & Two pro-policy worker-protection arguments cohere empirically. \\
+Support & C\_01 & C\_04 & .546 & Living-wage/subsidy argument aligns with older-worker income argument. \\
+Support & C\_01 & C\_05 & .588 & Living-wage/subsidy argument aligns with inequality-reduction argument. \\
+Support & C\_01 & C\_08 & .517 & Living-wage/subsidy argument aligns with basic-income transition argument. \\
+Support & C\_02 & C\_04 & .614 & Worker-protection argument aligns with older-worker income argument. \\
+Support & C\_02 & C\_05 & .526 & Worker-protection argument aligns with inequality-reduction argument. \\
+Support & C\_02 & C\_08 & .416 & Worker-protection argument aligns with basic-income transition argument. \\
+Support & C\_03 & C\_06 & .526 & Inflation/fairness concern aligns with small-business survival concern. \\
+Support & C\_03 & C\_07 & .364 & Inflation/fairness concern aligns with automation concern. \\
+Support & C\_03 & C\_10 & .534 & Inflation/fairness concern aligns with systemic-critique rejection of the reform. \\
+Support & C\_04 & C\_05 & .620 & Older-worker income argument aligns with inequality-reduction argument. \\
+Support & C\_04 & C\_08 & .527 & Older-worker income argument aligns with basic-income transition argument. \\
+Support & C\_05 & C\_08 & .643 & Inequality-reduction argument aligns with basic-income transition argument. \\
+Support & C\_06 & C\_07 & .411 & Small-business survival concern aligns with automation concern. \\
+Support & C\_06 & C\_09 & .425 & Small-business survival concern aligns with service-redesign concern. \\
+Support & C\_06 & C\_10 & .594 & Small-business survival concern aligns with systemic-critique rejection of the reform. \\
+Support & C\_07 & C\_09 & .343 & Automation concern aligns with service-redesign concern. \\
+Support & C\_07 & C\_10 & .475 & Automation concern aligns with systemic-critique rejection of the reform. \\
+Support & C\_09 & C\_10 & .336 & Service-redesign concern aligns with systemic-critique rejection of the reform. \\
+\end{longtable}
+\endgroup
+
+\subsection{Persuasiveness and Cross-Over Endorsement}
+
+Each consideration also receives a persuasiveness parameter. We considered
+simple endorsement rates and item-response discrimination parameters, but both
+would make the parameter partly a measure of how already-convinced participants
+responded. The final scenario instead uses cross-over endorsement: the share of
+participants on the opposing side of a one-dimensional two-parameter IRT
+opinion scale who nevertheless agreed with the statement. For pro-policy
+considerations, the opposing side is $\theta<0$; for con-policy considerations,
+the opposing side is $\theta>0$. For consideration $c$,
+\[
+\mathrm{cross}_c =
+P(\mathrm{agree\ on\ } c \mid \theta \mathrm{\ on\ opposing\ side}).
+\]
+The observed cross-over rates are then min-max rescaled from 0.3 to 0.9 and
+stored as \texttt{persuasiveness} in the simulation scenario.
+This makes persuasiveness a measure of empirical reach into the other side of
+the opinion space, rather than a measure of raw popularity.
+
+\subsection{Ising Profile Construction}
+
+The agent initialization uses an Ising-style coupling model
+\citep{ising1925}. The purpose is to convert sparse participant votes into
+complete, empirically coherent consideration profiles for simulation agents.
+The selected considerations define a 10-item vote vector. Observed agree and
+disagree votes are clamped at $+1$ and $-1$. Passes and missing votes are
+imputed using the co-vote couplings among considerations.
+
+For each selected consideration $i$, the external field is derived from the
+mean directional vote among participants:
+\[
+h_i = \operatorname{atanh}(\bar v_i),
+\]
+with the empirical mean clipped away from $-1$ and $1$. For participant $p$,
+let $O_p$ be the set of selected considerations on which the participant cast a
+directional vote. Missing or passed consideration $i$ is imputed by a
+mean-field expectation:
+\[
+m_{pi} = \tanh\left(h_i + \sum_{j \in O_p} Q_{ij}v_{pj}\right).
+\]
+The resulting profile weight $w_{pi}$ is the observed vote when available and
+$m_{pi}$ otherwise. Participants are included in the empirical initialization
+pool if they have at least three directional votes among the ten selected
+considerations. This criterion yields 108 engaged profiles out of 339
+participants. Within this engaged subset, participants contribute on average
+5.40 observed votes over the selected 10-item set (median $=5$, range $=3$ to
+$10$), so 54.0\% of participant-item cells are directly observed and 46.0\%
+are imputed by the mean-field step.
+
+Two summary quantities are derived from these profiles. The policy score is
+the average direction-weighted profile,
+\[
+r_p = \frac{1}{10}\sum_i d_i w_{pi},
+\]
+where $d_i \in \{-1,+1\}$ is the content-coded policy direction of
+consideration $i$. The coherence score is based on the pairwise Ising energy,
+\[
+E_p = -\sum_{i<j} Q_{ij}w_{pi}w_{pj}.
+\]
+We standardize negative energy over the engaged empirical profile pool, so
+higher coherence means a participant's profile aligns more strongly with the
+observed co-vote coupling structure.
+
+The resulting engaged profile pool is substantively skewed but not one-sided:
+69 participants (63.9\%) are pro-leaning on the direction-weighted policy
+score, 31 (28.7\%) are con-leaning, and 8 (7.4\%) fall in an ambivalent band
+around zero. On coherence, 22 participants (20.4\%) are in the coherent tail,
+59 (54.6\%) in the mixed middle, and 27 (25.0\%) in the ambivalent tail. These
+summary statistics justify the paper's use of both policy position and
+within-profile coherence as independent dimensions of agent composition.
+
+\subsection{Why These Statements and Not Others}
+
+The selected statements are best understood as cluster representatives, not as
+the ten most important statements in the original conversation. Selection is
+constrained by three rules: a statement must have enough directional votes to
+support pairwise estimation; it must represent one of the semantic clusters;
+and, within that cluster, it must have the highest separation power. Omitted
+eligible statements are therefore omitted because their semantic cluster is
+already represented by a statement with stronger cross-cluster separation in
+the co-vote structure. They are not treated as false, irrelevant, or
+substantively unimportant.
+
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.38in}p{0.42in}p{1.40in}p{3.80in}}
+\caption{Moderated statements not selected for the final consideration pool.}\label{tab:omitted-statements}\\
+\toprule
+Polis & Cluster & Reason & Statement identifier \\
+\midrule
+\endfirsthead
+\toprule
+Polis & Cluster & Reason & Statement identifier \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+43 & -- & Below threshold: 33 directional votes, one short of eligibility. & It's possible benefits may be cut in exchange for higher wages, along with other benefits. Worth it? \\
+1 & 4 & Lower separation than C\_04. & This is a game changer; unintended consequences are too complex to fully understand. \\
+2 & 1 & Lower separation than C\_01. & Customers across the board are going to have to pay more. \\
+3 & 1 & Lower separation than C\_01. & Critique of the assumption that businesses only have owners' profits to cut. \\
+4 & 1 & Lower separation than C\_01. & Anti-corporate-greed argument focused on larger companies. \\
+5 & 7 & Lower separation than C\_07. & This will lead to robots. \\
+6 & 1 & Lower separation than C\_01. & Smaller businesses may struggle, though the policy is not necessarily bad. \\
+7 & 5 & Lower separation than C\_05. & Better implementation alternatives, including subsidies. \\
+9 & 4 & Lower separation than C\_04. & Paying \$15 per hour could create a significant boost to the economy. \\
+10 & 1 & Lower separation than C\_01. & Companies may not raise prices; wealthy owners can absorb the cost. \\
+12 & 4 & Lower separation than C\_04 by a narrow margin. & It is called a living wage for a reason. \\
+18 & 6 & Lower separation than C\_06. & Impact on small and medium-sized businesses. \\
+24 & 5 & Lower separation than C\_05. & Good move; will boost economy here. \\
+25 & 6 & Lower separation than C\_06. & The wage is high enough to cost some needy people their jobs. \\
+26 & 5 & Lower separation than C\_05. & Supportive statement suggesting the wage should rise to \$20. \\
+28 & 6 & Lower separation than C\_06 by a narrow margin. & This will cause small businesses to go out of business. \\
+29 & 5 & Lower separation than C\_05. & Small business will need to make poverty fashionable. \\
+34 & 6 & Lower separation than C\_06. & Guaranteed minimum income; remove specific programs. \\
+44 & 7 & Lower separation than C\_07. & Minimum wage will not just lead to robots; unionized robots are raised. \\
+51 & 4 & Lower separation than C\_04. & The minimum wage should be \$25 per hour. \\
+\end{longtable}
+\endgroup
+
+Two consequences follow from this selection logic. First, the final
+consideration pool should be interpreted as a deliberately compressed map of
+argumentative positions. It is designed for experimental control in simulation,
+not for exhaustive qualitative representation. Second, several excluded
+statements were close alternatives to the selected representative in their
+cluster. For example, statement 12 was almost tied with statement 8 in the
+older-worker/living-wage cluster, and statement 28 was almost tied with
+statement 46 in the small-business cluster. The final pool is therefore
+reproducible and empirically grounded, but it should not be overread as the
+only defensible qualitative summary of the Polis discussion.
+% --- END MERGED BLOCK: methods appendix (method-appendix-semantic-ising.tex) ---
