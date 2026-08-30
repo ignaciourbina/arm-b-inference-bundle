@@ -1,0 +1,24 @@
+{"event": "collect_start", "grid": 9, "done": 0, "todo": 9, "lanes": 4, "bench_tok_s": 102.2, "ts": 1788036858.4}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 701, "ts": 1788036858.4}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 701, "ts": 1788036873.4}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 701, "ts": 1788036888.4}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 702, "ts": 1788036903.4}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 701, "wall_s": 2394.3, "ts": 1788039282.7}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 703, "ts": 1788039282.7}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 701, "wall_s": 2472.7, "ts": 1788039346.2}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 702, "ts": 1788039346.2}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 701, "wall_s": 2501.8, "ts": 1788039360.2}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 702, "ts": 1788039360.2}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 702, "wall_s": 2515.9, "ts": 1788039419.4}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 703, "ts": 1788039419.4}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 702, "wall_s": 2327.5, "ts": 1788041687.7}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 703, "ts": 1788041687.7}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 703, "wall_s": 2430.3, "ts": 1788041713.0}
+{"event": "lane_done", "lane": 2, "ts": 1788041713.0}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 702, "wall_s": 2432.9, "ts": 1788041779.0}
+{"event": "lane_done", "lane": 1, "ts": 1788041779.0}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 703, "wall_s": 2430.1, "ts": 1788041849.5}
+{"event": "lane_done", "lane": 3, "ts": 1788041849.5}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 703, "wall_s": 1433.3, "ts": 1788043121.0}
+{"event": "lane_done", "lane": 0, "ts": 1788043121.0}
+{"event": "collect_end", "done_total": 9, "failures": 0, "hours": 1.74, "paused": false, "ts": 1788043128.8}

@@ -1,0 +1,9 @@
+[collect] cd_cache_1024: grid=9 done=0 todo=9 lanes=4
+[collect] bench gate: 104.1 tok/s (OK)
+[collect] VRAM: 2962 MB (gate < 6500)
+[status] 0/9 new runs | 0.0 runs/h | eta inf h | gpu 69 % | vram 3012 MB
+[status] 0/9 new runs | 0.0 runs/h | eta inf h | gpu 69 % | vram 3012 MB
+[status] 4/9 new runs | 5.3 runs/h | eta 0.9 h | gpu 69 % | vram 3012 MB
+[status] 4/9 new runs | 4.0 runs/h | eta 1.3 h | gpu 77 % | vram 3012 MB
+[status] 5/9 new runs | 4.0 runs/h | eta 1.0 h | gpu 86 % | vram 3012 MB
+[collect] DONE: 9/9 complete, 0 persistent failures, 1.5 h

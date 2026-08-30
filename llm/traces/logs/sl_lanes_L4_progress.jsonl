@@ -1,0 +1,34 @@
+{"event": "collect_start", "grid": 12, "done": 0, "todo": 12, "lanes": 4, "bench_tok_s": 97.1, "ts": 1787906771.6}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 501, "ts": 1787906771.6}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 501, "ts": 1787906786.6}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 501, "ts": 1787906801.6}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 502, "ts": 1787906816.6}
+{"event": "run_fail", "lane": 1, "comp": "symmetric_n6", "seed": 501, "wall_s": 375.1, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_lanes_L4_baseline_symmetric_n6_s501.log", "err_tail": "onflicts with the goal of worker protection.', 'stance': 'reject', 'weight': 1}}, {'name': 'update_weight', 'args': {'cid': 'C_06', 'reasoning': 'Strengthening disagreement with small-business survival concerns in favor of worker wage protection.', 'stance': 'reject', 'weight': 1}}, {'name': 'update_weight', 'args': {'cid': 'C_10', 'reasoning': 'Maintaining low weight/disagreement as systemic critique does not strongly align with my immediate policy stance.', 'stance': 'reject', 'weight': 0.2}}]", "ts": 1787907161.7}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 502, "ts": 1787907161.7}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 501, "wall_s": 966.3, "ts": 1787907767.9}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 503, "ts": 1787907767.9}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 502, "wall_s": 1188.2, "ts": 1787908004.8}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 503, "ts": 1787908004.8}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 501, "wall_s": 1281.2, "ts": 1787908052.8}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 502, "ts": 1787908052.8}
+{"event": "run_fail", "lane": 3, "comp": "symmetric_n6", "seed": 503, "wall_s": 373.2, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_lanes_L4_baseline_symmetric_n6_s503.log", "err_tail": "  File \"~/projects/arm-b-inference-bundle/llm/harness.py\", line 577, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_04/reflect: no parseable tool call after 5 attempts; last content: 'I cannot proceed without the new arguments you mentioned. Please provide the arguments you heard.'", "ts": 1787908378.0}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 504, "ts": 1787908378.0}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 502, "wall_s": 1416.7, "ts": 1787908578.4}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 504, "ts": 1787908578.4}
+{"event": "run_fail", "lane": 1, "comp": "polarized_n6", "seed": 504, "wall_s": 305.2, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_lanes_L4_baseline_polarized_n6_s504.log", "err_tail": "for arguments that favor the $15/hour policy (C_05).', 'target_cid': 'C_05'}}, {'name': 'update_weight', 'args': {'cid': 'C_01', 'reasoning': 'Arguments supporting the living wage are now backed by other arguments, slightly reinforcing my opposition.', 'stance': 'reject', 'weight': 0.9}}, {'name': 'update_weight', 'args': {'cid': 'C_01', 'reasoning': 'Arguments supporting the living wage are now backed by other arguments, slightly reinforcing my opposition.', 'stance': 'reject', 'weight': 0.9}}]", "ts": 1787908883.6}
+{"event": "lane_done", "lane": 1, "ts": 1787908883.6}
+{"event": "run_fail", "lane": 3, "comp": "three_clusters_n6", "seed": 504, "wall_s": 738.5, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_lanes_L4_baseline_three_clusters_n6_s504.log", "err_tail": " I currently disagree with to see if they have strong backing.', 'target_cid': 'C_09'}}, {'name': 'query_supports', 'args': {'reasoning': 'Checking arguments supporting the points I currently disagree with to see if they have strong backing.', 'target_cid': 'C_10'}}, {'name': 'update_weight', 'args': {'cid': 'C_02', 'reasoning': 'Acknowledging the argument for inflation protection, but my support for the policy remains high. Softening disagreement slightly.', 'stance': 'reject', 'weight': 0.7}}]", "ts": 1787909116.6}
+{"event": "lane_done", "lane": 3, "ts": 1787909116.6}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 503, "wall_s": 1399.5, "ts": 1787909167.3}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 504, "ts": 1787909167.3}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 502, "wall_s": 1296.0, "ts": 1787909348.8}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 503, "ts": 1787909348.8}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 504, "wall_s": 870.2, "ts": 1787910037.5}
+{"event": "lane_done", "lane": 2, "ts": 1787910037.5}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 503, "wall_s": 721.0, "ts": 1787910069.8}
+{"event": "lane_done", "lane": 0, "ts": 1787910069.8}
+{"event": "retry_fail", "comp": "symmetric_n6", "seed": 501, "rc": 1, "err_tail": "  File \"~/projects/arm-b-inference-bundle/llm/harness.py\", line 577, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_05/reflect: no parseable tool call after 5 attempts; last content: 'I do not have any new arguments to process. Please provide the arguments you heard so I can update m'", "ts": 1787910224.8}
+{"event": "retry_done", "comp": "symmetric_n6", "seed": 503, "rc": 0, "err_tail": "", "ts": 1787910787.1}
+{"event": "retry_done", "comp": "polarized_n6", "seed": 504, "rc": 0, "err_tail": "", "ts": 1787911290.8}
+{"event": "retry_done", "comp": "three_clusters_n6", "seed": 504, "rc": 0, "err_tail": "", "ts": 1787911516.3}
+{"event": "collect_end", "done_total": 11, "failures": 1, "hours": 1.32, "paused": false, "ts": 1787911516.3}

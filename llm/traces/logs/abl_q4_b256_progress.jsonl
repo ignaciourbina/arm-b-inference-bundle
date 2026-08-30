@@ -1,0 +1,41 @@
+{"event": "collect_start", "grid": 15, "done": 0, "todo": 15, "lanes": 4, "bench_tok_s": 85.7, "ts": 1788005929.2}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 1, "ts": 1788005930.4}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 1, "ts": 1788005945.4}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 1, "ts": 1788005960.4}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 2, "ts": 1788005975.4}
+{"event": "run_fail", "lane": 2, "comp": "three_clusters_n6", "seed": 1, "wall_s": 3311.2, "rc": 1, "fail_log": "llm/traces/logs/FAIL_abl_q4_b256_baseline_three_clusters_n6_s1.log", "err_tail": "update_weight', 'args': {'cid': 'C_07', 'stance': 'endorse', 'weight': 1}}, {'name': 'update_weight', 'args': {'cid': 'C_01', 'stance': 'reject', 'weight': 1}}, {'name': 'update_weight', 'args': {'cid': 'C_02', 'stance': 'reject', 'weight': 1}}, {'name': 'update_weight', 'args': {'cid': 'C_04', 'stance': 'reject', 'weight': 1}}, {'name': 'update_weight', 'args': {'cid': 'C_05', 'stance': 'reject', 'weight': 1}}, {'name': 'update_weight', 'args': {'cid': 'C_08', 'stance': 'reject', 'weight': 1}}]", "ts": 1788009271.6}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 3, "ts": 1788009271.6}
+{"event": "run_fail", "lane": 1, "comp": "symmetric_n6", "seed": 1, "wall_s": 4494.4, "rc": 1, "fail_log": "llm/traces/logs/FAIL_abl_q4_b256_baseline_symmetric_n6_s1.log", "err_tail": ".\", 'stance': 'reject', 'weight': 0.55}}, {'name': 'done_reflecting', 'args': {'done=true,reasoning': 'I have updated the weight for C_01 based on the heard argument. I have no further arguments to process and am finished reflecting on my current convictions.'}}, {'name': 'done_reflecting', 'args': {'done=true,reasoning': 'All necessary updates have been made. I have completed the reflection phase as instructed.'}}, {'name': 'done_reflecting', 'args': {'done=true,reasoning': 'Completed task.'}}]", "ts": 1788010439.8}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 2, "ts": 1788010439.8}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 2, "wall_s": 4983.8, "ts": 1788010959.1}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 3, "ts": 1788010959.2}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 1, "wall_s": 5105.6, "ts": 1788011036.0}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 2, "ts": 1788011036.0}
+{"event": "run_fail", "lane": 0, "comp": "symmetric_n6", "seed": 2, "wall_s": 721.2, "rc": 1, "fail_log": "llm/traces/logs/FAIL_abl_q4_b256_baseline_symmetric_n6_s2.log", "err_tail": "query_supports', 'args': {'reasoning': 'Checking if any existing CON statements support the new arguments (C_01, C_05, C_06).', 'target_cid': 'C_05'}}, {'name': 'update_weight', 'args': {'cid': 'C_06', 'stance': 'endorse', 'weight': 1.0}}, {'name': 'update_weight', 'args': {'cid': 'C_02', 'stance': 'reject', 'weight': 1.0}}, {'name': 'update_weight', 'args': {'cid': 'C_04', 'stance': 'reject', 'weight': 1.0}}, {'name': 'update_weight', 'args': {'cid': 'C_01', 'stance': 'reject', 'weight': 1.0}}]", "ts": 1788011757.2}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 3, "ts": 1788011757.2}
+{"event": "run_fail", "lane": 2, "comp": "polarized_n6", "seed": 3, "wall_s": 2754.2, "rc": 1, "fail_log": "llm/traces/logs/FAIL_abl_q4_b256_baseline_polarized_n6_s3.log", "err_tail": "  File \"~/projects/arm-b-inference-bundle/agora/.venv/lib/python3.11/site-packages/aiohttp/client_reqrep.py\", line 655, in raise_for_status |     raise ClientResponseError( | aiohttp.client_exceptions.ClientResponseError: 500, message='Internal Server Error', url='http://localhost:20434/v1/chat/completions'", "ts": 1788012025.8}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 4, "ts": 1788012025.8}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 2, "wall_s": 5166.2, "ts": 1788015606.0}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 4, "ts": 1788015606.0}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 3, "wall_s": 5265.4, "ts": 1788016224.6}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 4, "ts": 1788016224.6}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 3, "wall_s": 5216.4, "ts": 1788016973.6}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 5, "ts": 1788016973.6}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 4, "wall_s": 5283.3, "ts": 1788017309.1}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 5, "ts": 1788017309.1}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 4, "wall_s": 5121.3, "ts": 1788020727.3}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 5, "ts": 1788020727.3}
+{"event": "run_fail", "lane": 0, "comp": "polarized_n6", "seed": 5, "wall_s": 3994.5, "rc": 1, "fail_log": "llm/traces/logs/FAIL_abl_q4_b256_baseline_polarized_n6_s5.log", "err_tail": "' was reinforced, increasing persuasiveness from 30/100 to 55/100, but my stance remains 'reject' (OPPOSE). I will maintain the stance but slightly adjust the strength to reflect the higher persuasiveness of the argument itself, though my overall weight on the statement is still high because I oppose it.\", 'stance': 'reject', 'weight': 1.0}}, {'name': 'no_update', 'args': {'unchanged': True}}, {'name': 'no_update', 'args': {'unchanged': True}}, {'name': 'no_update', 'args': {'unchanged': True}}]", "ts": 1788020968.1}
+{"event": "lane_done", "lane": 0, "ts": 1788020968.1}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 4, "wall_s": 5020.9, "ts": 1788021245.4}
+{"event": "lane_done", "lane": 3, "ts": 1788021245.4}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 5, "wall_s": 4500.5, "ts": 1788021809.5}
+{"event": "lane_done", "lane": 2, "ts": 1788021809.6}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 5, "wall_s": 1710.7, "ts": 1788022437.9}
+{"event": "lane_done", "lane": 1, "ts": 1788022437.9}
+{"event": "retry_done", "comp": "three_clusters_n6", "seed": 1, "rc": 0, "err_tail": "", "ts": 1788023131.3}
+{"event": "retry_fail", "comp": "symmetric_n6", "seed": 1, "rc": 1, "err_tail": " budget after 6 attempts; non-terminal tool calls so far: [{'name': 'update_weight', 'args': {'cid': 'C_01', 'reasoning': 'I heard this argument several times, and it reinforced my existing stance of opposing subsidies/living wage increases for workers.', 'stance': 'reject', 'weight': 0.2}}, {'name': 'no_update', 'args': {'unchanged': True}}, {'name': 'no_update', 'args': {'unchanged': True}}, {'name': 'no_update', 'args': {'unchanged': True}}, {'name': 'no_update', 'args': {'unchanged': True}}]", "ts": 1788023316.3}
+{"event": "retry_fail", "comp": "symmetric_n6", "seed": 2, "rc": 1, "err_tail": "dorse', 'weight': 1.0}}, {'name': 'update_weight', 'args': {'cid': 'C_04', 'reasoning': 'Reinforcing the strong support for older-worker income.', 'stance': 'endorse', 'weight': 1.0}}, {'name': 'update_weight', 'args': {'cid': 'C_05', 'reasoning': 'Reinforcing the strong support for income inequality.', 'stance': 'endorse', 'weight': 1.0}}, {'name': 'update_weight', 'args': {'cid': 'C_07', 'reasoning': 'Reinforcing the stance on automation (CON statement).', 'stance': 'endorse', 'weight': 1.0}}]", "ts": 1788023691.3}
+{"event": "retry_done", "comp": "polarized_n6", "seed": 3, "rc": 0, "err_tail": "", "ts": 1788024580.9}
+{"event": "retry_done", "comp": "polarized_n6", "seed": 5, "rc": 0, "err_tail": "", "ts": 1788025074.7}
+{"event": "collect_end", "done_total": 13, "failures": 2, "hours": 5.32, "paused": false, "ts": 1788025074.7}

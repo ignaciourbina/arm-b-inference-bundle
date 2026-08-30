@@ -1,0 +1,30 @@
+{"event": "collect_start", "grid": 12, "done": 0, "todo": 12, "lanes": 1, "bench_tok_s": 99.6, "ts": 1787895001.8}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 501, "ts": 1787895001.8}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 501, "wall_s": 460.8, "ts": 1787895462.6}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 501, "ts": 1787895462.6}
+{"event": "run_fail", "lane": 0, "comp": "symmetric_n6", "seed": 501, "wall_s": 261.1, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_lanes_L1_baseline_symmetric_n6_s501.log", "err_tail": "e-bundle/llm/harness.py\", line 643, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_03/reflect: no terminal tool within budget after 5 attempts; non-terminal tool calls so far: [{'name': 'query_supports', 'args': {'target_cid': 'C_02'}}, {'name': 'query_supports', 'args': {'target_cid': 'C_02'}}, {'name': 'query_attacks', 'args': {'target_cid': 'C_02'}}, {'name': 'query_supports', 'args': {'target_cid': 'C_06'}}, {'name': 'query_supports', 'args': {'target_cid': 'C_06'}}]", "ts": 1787895723.7}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 501, "ts": 1787895723.7}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 501, "wall_s": 422.0, "ts": 1787896145.7}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 502, "ts": 1787896145.7}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 502, "wall_s": 492.8, "ts": 1787896638.4}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 502, "ts": 1787896638.4}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 502, "wall_s": 568.3, "ts": 1787897206.7}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 502, "ts": 1787897206.7}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 502, "wall_s": 558.1, "ts": 1787897764.8}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 503, "ts": 1787897764.8}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 503, "wall_s": 618.2, "ts": 1787898383.0}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 503, "ts": 1787898383.0}
+{"event": "run_fail", "lane": 0, "comp": "symmetric_n6", "seed": 503, "wall_s": 135.9, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_lanes_L1_baseline_symmetric_n6_s503.log", "err_tail": "  File \"~/projects/arm-b-inference-bundle/llm/harness.py\", line 577, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_04/reflect: no parseable tool call after 5 attempts; last content: 'I am still waiting for the arguments you heard. Please provide them so I can perform the requested u'", "ts": 1787898518.9}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 503, "ts": 1787898518.9}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 503, "wall_s": 525.7, "ts": 1787899044.6}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 504, "ts": 1787899044.6}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 504, "wall_s": 545.3, "ts": 1787899589.9}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 504, "ts": 1787899589.9}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 504, "wall_s": 520.0, "ts": 1787900109.9}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 504, "ts": 1787900109.9}
+{"event": "run_fail", "lane": 0, "comp": "three_clusters_n6", "seed": 504, "wall_s": 131.6, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_lanes_L1_baseline_three_clusters_n6_s504.log", "err_tail": "ting small-business survival were present, but they are not strong enough to change my overall strong support for the minimum wage increase. Softening the disagreement slightly.', 'stance': 'reject', 'weight': 0.5}}, {'name': 'update_weight', 'args': {'cid': 'C_07', 'reasoning': 'Arguments supporting automation were present, but they are not strong enough to change my overall strong support for the minimum wage increase. Softening the disagreement slightly.', 'stance': 'reject', 'weight': 0.5}}]", "ts": 1787900241.5}
+{"event": "lane_done", "lane": 0, "ts": 1787900241.5}
+{"event": "retry_done", "comp": "symmetric_n6", "seed": 501, "rc": 0, "err_tail": "", "ts": 1787900536.9}
+{"event": "retry_done", "comp": "symmetric_n6", "seed": 503, "rc": 0, "err_tail": "", "ts": 1787901044.5}
+{"event": "retry_done", "comp": "three_clusters_n6", "seed": 504, "rc": 0, "err_tail": "", "ts": 1787901454.6}
+{"event": "collect_end", "done_total": 12, "failures": 0, "hours": 1.79, "paused": false, "ts": 1787901454.6}

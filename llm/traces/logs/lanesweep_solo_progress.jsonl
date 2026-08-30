@@ -1,0 +1,2 @@
+{"event": "collect_start", "grid": 3, "done": 0, "todo": 3, "lanes": 1, "bench_tok_s": 99.3, "ts": 1787871280.5}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 900, "ts": 1787871281.5}

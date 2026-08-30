@@ -1,0 +1,32 @@
+{"event": "collect_start", "grid": 12, "done": 0, "todo": 12, "lanes": 4, "bench_tok_s": 100.6, "ts": 1787901495.0}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 501, "ts": 1787901495.4}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 501, "ts": 1787901510.4}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 501, "ts": 1787901525.4}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 502, "ts": 1787901540.4}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 501, "wall_s": 1207.4, "ts": 1787902702.8}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 502, "ts": 1787902702.8}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 501, "wall_s": 1220.1, "ts": 1787902745.4}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 503, "ts": 1787902745.4}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 502, "wall_s": 1282.0, "ts": 1787902822.3}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 503, "ts": 1787902822.3}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 501, "wall_s": 1405.0, "ts": 1787902915.4}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 502, "ts": 1787902915.4}
+{"event": "run_fail", "lane": 3, "comp": "symmetric_n6", "seed": 503, "wall_s": 1096.5, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_slots_p24_baseline_symmetric_n6_s503.log", "err_tail": "  File \"~/projects/arm-b-inference-bundle/llm/harness.py\", line 577, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_02/reflect: no parseable tool call after 5 attempts; last content: 'I apologize, but I still do not have the arguments you heard. I cannot perform any updates or reflec'", "ts": 1787903918.8}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 504, "ts": 1787903918.8}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 502, "wall_s": 1241.5, "ts": 1787903944.3}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 503, "ts": 1787903944.3}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 503, "wall_s": 1381.1, "ts": 1787904126.6}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 504, "ts": 1787904126.6}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 502, "wall_s": 1284.0, "ts": 1787904199.3}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 504, "ts": 1787904199.3}
+{"event": "run_fail", "lane": 2, "comp": "symmetric_n6", "seed": 504, "wall_s": 297.5, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_slots_p24_baseline_symmetric_n6_s504.log", "err_tail": "l tool within budget after 5 attempts; non-terminal tool calls so far: [{'name': 'query_supports', 'args': {'target_cid': 'C_02'}}, {'name': 'query_supports', 'args': {'target_cid': 'C_02'}}, {'name': 'query_supports', 'args': {'target_cid': 'C_01'}}, {'name': 'query_attacks', 'args': {'target_cid': 'C_03'}}, {'name': 'update_weight', 'args': {'cid': 'C_02', 'reasoning': 'Reinforcing support based on the perceived need for inflation protection for workers.', 'stance': 'endorse', 'weight': 1.0}}]", "ts": 1787904424.1}
+{"event": "lane_done", "lane": 2, "ts": 1787904424.1}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 504, "wall_s": 1115.7, "ts": 1787905034.5}
+{"event": "lane_done", "lane": 3, "ts": 1787905034.5}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 503, "wall_s": 1090.9, "ts": 1787905035.2}
+{"event": "lane_done", "lane": 0, "ts": 1787905035.2}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 504, "wall_s": 1001.0, "ts": 1787905200.3}
+{"event": "lane_done", "lane": 1, "ts": 1787905200.3}
+{"event": "retry_fail", "comp": "symmetric_n6", "seed": 503, "rc": 1, "err_tail": " 'Maintaining strong disagreement with the PRO argument regarding inflation protection.', 'stance': 'reject', 'weight': 1.0}}, {'name': 'update_weight', 'args': {'cid': 'C_04', 'reasoning': 'Maintaining strong disagreement with the PRO argument regarding older-worker income.', 'stance': 'reject', 'weight': 1.0}}, {'name': 'update_weight', 'args': {'cid': 'C_05', 'reasoning': 'Maintaining strong disagreement with the PRO argument regarding income inequality.', 'stance': 'reject', 'weight': 1.0}}]", "ts": 1787905372.0}
+{"event": "retry_done", "comp": "symmetric_n6", "seed": 504, "rc": 0, "err_tail": "", "ts": 1787905789.3}
+{"event": "collect_end", "done_total": 11, "failures": 1, "hours": 1.19, "paused": false, "ts": 1787905789.3}

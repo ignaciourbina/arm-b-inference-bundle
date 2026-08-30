@@ -1,0 +1,34 @@
+{"event": "collect_start", "grid": 12, "done": 0, "todo": 12, "lanes": 4, "bench_tok_s": 100.3, "ts": 1787915174.9}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 601, "ts": 1787915175.3}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 601, "ts": 1787915190.3}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 601, "ts": 1787915205.3}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 602, "ts": 1787915220.3}
+{"event": "run_fail", "lane": 1, "comp": "symmetric_n6", "seed": 601, "wall_s": 916.9, "rc": 1, "fail_log": "llm/traces/logs/FAIL_vo_L4_p6_baseline_symmetric_n6_s601.log", "err_tail": "rrently disagree with to see if the arguments heard undermine my current opposition.', 'target_cid': 'C_01'}}, {'name': 'query_attacks', 'args': {'reasoning': 'Checking attacks on statements I currently disagree with to see if the arguments heard undermine my current opposition.', 'target_cid': 'C_02'}}, {'name': 'query_attacks', 'args': {'reasoning': 'Checking attacks on statements I currently disagree with to see if the arguments heard undermine my current opposition.', 'target_cid': 'C_04'}}]", "ts": 1787916107.2}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 602, "ts": 1787916107.2}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 602, "wall_s": 940.0, "ts": 1787916160.4}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 603, "ts": 1787916160.4}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 601, "wall_s": 990.2, "ts": 1787916165.5}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 602, "ts": 1787916165.5}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 601, "wall_s": 1042.0, "ts": 1787916247.3}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 603, "ts": 1787916247.3}
+{"event": "run_fail", "lane": 1, "comp": "three_clusters_n6", "seed": 602, "wall_s": 649.9, "rc": 1, "fail_log": "llm/traces/logs/FAIL_vo_L4_p6_baseline_three_clusters_n6_s602.log", "err_tail": "argument.', 'target_cid': 'C_06'}}, {'name': 'update_weight', 'args': {'cid': 'C_06', 'reasoning': 'Arguments against small-business survival (like inflation protection and inequality) seem compelling, reinforcing my weak opposition.', 'stance': 'reject', 'weight': 0.85}}, {'name': 'update_weight', 'args': {'cid': 'C_06', 'reasoning': 'The attacks on small-business survival are strong, suggesting my opposition is justified. Reinforcing the rejection stance.', 'stance': 'reject', 'weight': 0.9}}]", "ts": 1787916757.1}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 604, "ts": 1787916757.1}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 602, "wall_s": 995.0, "ts": 1787917160.5}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 603, "ts": 1787917160.5}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 603, "wall_s": 1000.7, "ts": 1787917161.1}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 604, "ts": 1787917161.1}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 603, "wall_s": 996.4, "ts": 1787917243.7}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 604, "ts": 1787917243.7}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 604, "wall_s": 1057.9, "ts": 1787917815.0}
+{"event": "lane_done", "lane": 1, "ts": 1787917815.0}
+{"event": "run_fail", "lane": 2, "comp": "symmetric_n6", "seed": 604, "wall_s": 600.5, "rc": 1, "fail_log": "llm/traces/logs/FAIL_vo_L4_p6_baseline_symmetric_n6_s604.log", "err_tail": "  File \"~/projects/arm-b-inference-bundle/llm/harness.py\", line 577, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_04/reflect: no parseable tool call after 5 attempts; last content: 'I cannot proceed without the arguments you heard. Please provide the new information.'", "ts": 1787917844.2}
+{"event": "lane_done", "lane": 2, "ts": 1787917844.2}
+{"event": "run_fail", "lane": 0, "comp": "three_clusters_n6", "seed": 603, "wall_s": 683.9, "rc": 1, "fail_log": "llm/traces/logs/FAIL_vo_L4_p6_baseline_three_clusters_n6_s603.log", "err_tail": "e': 'query_supports', 'args': {'reasoning': 'Checking supports for C_10 (systemic critique) to see if the argument against it is strong.', 'target_cid': 'C_10'}}, {'name': 'query_supports', 'args': {'reasoning': 'Checking supports for C_05 (income inequality) to see if the argument for it is strong.', 'target_cid': 'C_05'}}, {'name': 'query_supports', 'args': {'reasoning': 'Checking supports for C_06 (small-business survival) to see if the argument against it is strong.', 'target_cid': 'C_06'}}]", "ts": 1787917844.4}
+{"event": "lane_done", "lane": 0, "ts": 1787917844.4}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 604, "wall_s": 788.8, "ts": 1787917949.9}
+{"event": "lane_done", "lane": 3, "ts": 1787917949.9}
+{"event": "retry_done", "comp": "symmetric_n6", "seed": 601, "rc": 0, "err_tail": "", "ts": 1787918045.5}
+{"event": "retry_done", "comp": "three_clusters_n6", "seed": 602, "rc": 0, "err_tail": "", "ts": 1787918225.4}
+{"event": "retry_done", "comp": "symmetric_n6", "seed": 604, "rc": 0, "err_tail": "", "ts": 1787918389.3}
+{"event": "retry_fail", "comp": "three_clusters_n6", "seed": 603, "rc": 1, "err_tail": "  File \"~/projects/arm-b-inference-bundle/llm/harness.py\", line 577, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_02/reflect: no parseable tool call after 5 attempts; last content: 'I apologize, but I still do not have the arguments you heard. I cannot perform any updates without n'", "ts": 1787918463.7}
+{"event": "collect_end", "done_total": 11, "failures": 1, "hours": 0.91, "paused": false, "ts": 1787918463.7}

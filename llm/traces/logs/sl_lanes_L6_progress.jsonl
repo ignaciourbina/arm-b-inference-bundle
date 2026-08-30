@@ -1,0 +1,33 @@
+{"event": "collect_start", "grid": 12, "done": 0, "todo": 12, "lanes": 6, "bench_tok_s": 96.7, "ts": 1787911517.2}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 501, "ts": 1787911517.2}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 501, "ts": 1787911532.2}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 501, "ts": 1787911547.2}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 502, "ts": 1787911562.2}
+{"event": "run_start", "lane": 4, "comp": "symmetric_n6", "seed": 502, "ts": 1787911577.2}
+{"event": "run_start", "lane": 5, "comp": "three_clusters_n6", "seed": 502, "ts": 1787911592.2}
+{"event": "run_fail", "lane": 1, "comp": "symmetric_n6", "seed": 501, "wall_s": 459.5, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_lanes_L6_baseline_symmetric_n6_s501.log", "err_tail": "aring arguments about the 'living wage / subsidy' concept suggests a need to re-evaluate my strong disagreement. I will slightly reduce the strength of my disagreement.\", 'stance': 'reject', 'weight': 0.7}}, {'name': 'update_weight', 'args': {'cid': 'C_06', 'reasoning': \"Hearing arguments about 'small-business survival' suggests acknowledging the concern, but my core support for workers remains strong. I will slightly reduce the strength of my disagreement.\", 'stance': 'reject', 'weight': 0.7}}]", "ts": 1787911991.7}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 503, "ts": 1787911991.7}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 501, "wall_s": 1341.2, "ts": 1787912888.5}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 503, "ts": 1787912888.5}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 501, "wall_s": 1374.7, "ts": 1787912891.9}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 503, "ts": 1787912891.9}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 502, "wall_s": 1396.1, "ts": 1787912958.4}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 504, "ts": 1787912958.4}
+{"event": "run_done", "lane": 5, "comp": "three_clusters_n6", "seed": 502, "wall_s": 1557.1, "ts": 1787913149.3}
+{"event": "run_start", "lane": 5, "comp": "three_clusters_n6", "seed": 504, "ts": 1787913149.3}
+{"event": "run_done", "lane": 4, "comp": "symmetric_n6", "seed": 502, "wall_s": 1615.9, "ts": 1787913193.1}
+{"event": "run_start", "lane": 4, "comp": "symmetric_n6", "seed": 504, "ts": 1787913193.1}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 503, "wall_s": 1652.6, "ts": 1787913644.4}
+{"event": "lane_done", "lane": 1, "ts": 1787913644.4}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 503, "wall_s": 1495.2, "ts": 1787914383.7}
+{"event": "lane_done", "lane": 2, "ts": 1787914383.7}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 503, "wall_s": 1548.6, "ts": 1787914440.5}
+{"event": "lane_done", "lane": 0, "ts": 1787914440.5}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 504, "wall_s": 1512.9, "ts": 1787914471.3}
+{"event": "lane_done", "lane": 3, "ts": 1787914471.3}
+{"event": "run_done", "lane": 4, "comp": "symmetric_n6", "seed": 504, "wall_s": 1283.7, "ts": 1787914476.8}
+{"event": "lane_done", "lane": 4, "ts": 1787914476.8}
+{"event": "run_done", "lane": 5, "comp": "three_clusters_n6", "seed": 504, "wall_s": 1333.2, "ts": 1787914482.6}
+{"event": "lane_done", "lane": 5, "ts": 1787914482.6}
+{"event": "retry_done", "comp": "symmetric_n6", "seed": 501, "rc": 0, "err_tail": "", "ts": 1787914954.2}
+{"event": "collect_end", "done_total": 12, "failures": 0, "hours": 0.95, "paused": false, "ts": 1787914954.2}

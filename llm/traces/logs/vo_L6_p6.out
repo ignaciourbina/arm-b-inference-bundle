@@ -1,0 +1,10 @@
+[collect] vo_L6_p6: grid=12 done=0 todo=12 lanes=6
+[collect] bench gate: 100.9 tok/s (OK)
+[collect] VRAM: 2962 MB (gate < 6500)
+[status] 0/12 new runs | 0.0 runs/h | eta inf h | gpu 78 % | vram 3012 MB
+[status] 0/12 new runs | 0.0 runs/h | eta inf h | gpu 68 % | vram 3012 MB
+[status] 5/12 new runs | 10.0 runs/h | eta 0.7 h | gpu 66 % | vram 3012 MB
+[status] 6/12 new runs | 9.0 runs/h | eta 0.7 h | gpu 68 % | vram 3012 MB
+[collect] retrying 3 failed runs once ...
+[collect] DONE: 11/12 complete, 1 persistent failures, 0.9 h
+[collect] persistent failures: [('three_clusters_n6', 602)]

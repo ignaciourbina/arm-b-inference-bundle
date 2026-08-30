@@ -1,0 +1,38 @@
+{"event": "collect_start", "grid": 15, "done": 0, "todo": 15, "lanes": 4, "bench_tok_s": 66.5, "ts": 1788005929.0}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 1, "ts": 1788005929.7}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 1, "ts": 1788005944.7}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 1, "ts": 1788005959.7}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 2, "ts": 1788005974.7}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 1, "wall_s": 3212.0, "ts": 1788009141.7}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 2, "ts": 1788009143.1}
+{"event": "run_fail", "lane": 2, "comp": "three_clusters_n6", "seed": 1, "wall_s": 3296.1, "rc": 1, "fail_log": "llm/traces/logs/FAIL_abl_q8_b128_baseline_three_clusters_n6_s1.log", "err_tail": "a strong point for me. Keep the support high.', 'stance': 'endorse', 'weight': 1.0}}, {'name': 'update_weight', 'args': {'cid': 'C_05', 'reasoning': 'Income inequality is a major driver for me supporting this policy. Reinforce this strong position.', 'stance': 'endorse', 'weight': 1.0}}, {'name': 'update_weight', 'args': {'cid': 'C_08', 'reasoning': 'Basic income transition is a long-term vision that aligns with my supportive stance. Maintain full support.', 'stance': 'endorse', 'weight': 1.0}}]", "ts": 1788009255.8}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 3, "ts": 1788009255.8}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 1, "wall_s": 3391.9, "ts": 1788009336.6}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 2, "ts": 1788009336.6}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 2, "wall_s": 3449.7, "ts": 1788009424.4}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 3, "ts": 1788009424.4}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 3, "wall_s": 3719.1, "ts": 1788012974.9}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 4, "ts": 1788012974.9}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 2, "wall_s": 3721.1, "ts": 1788013057.7}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 4, "ts": 1788013057.7}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 2, "wall_s": 3938.4, "ts": 1788013081.5}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 3, "ts": 1788013081.5}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 3, "wall_s": 4089.7, "ts": 1788013514.1}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 4, "ts": 1788013514.5}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 4, "wall_s": 3582.6, "ts": 1788016640.4}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 5, "ts": 1788016640.4}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 4, "wall_s": 3762.2, "ts": 1788016737.1}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 5, "ts": 1788016737.1}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 3, "wall_s": 3664.8, "ts": 1788016746.3}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 5, "ts": 1788016746.3}
+{"event": "run_fail", "lane": 3, "comp": "three_clusters_n6", "seed": 4, "wall_s": 3682.5, "rc": 1, "fail_log": "llm/traces/logs/FAIL_abl_q8_b128_baseline_three_clusters_n6_s4.log", "err_tail": " of the policy, which aligns with the arguments I oppose. I will maintain my strong disagreement.\", 'stance': 'reject', 'weight': 1.0}}, {'name': 'update_weight', 'args': {'cid': 'C_02', 'reasoning': 'Hearing arguments about inflation protection (C_02) confirms the risk I see. I strongly reject this argument.', 'stance': 'reject', 'weight': 1.0}}, {'name': 'query_repertoire', 'args': {'reasoning': 'Checking current weights to ensure my position aligns with my stated opposition to the policy.'}}]", "ts": 1788017197.0}
+{"event": "lane_done", "lane": 3, "ts": 1788017197.0}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 5, "wall_s": 2677.0, "ts": 1788019317.3}
+{"event": "lane_done", "lane": 1, "ts": 1788019317.3}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 5, "wall_s": 2862.6, "ts": 1788019608.9}
+{"event": "lane_done", "lane": 0, "ts": 1788019608.9}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 5, "wall_s": 2872.9, "ts": 1788019610.0}
+{"event": "lane_done", "lane": 2, "ts": 1788019610.0}
+{"event": "retry_done", "comp": "three_clusters_n6", "seed": 1, "rc": 0, "err_tail": "", "ts": 1788019823.5}
+{"event": "retry_done", "comp": "three_clusters_n6", "seed": 4, "rc": 0, "err_tail": "", "ts": 1788019957.4}
+{"event": "collect_end", "done_total": 15, "failures": 0, "hours": 3.9, "paused": false, "ts": 1788019957.4}

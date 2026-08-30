@@ -1,0 +1,9 @@
+[collect] sl_slots_p6: grid=12 done=0 todo=12 lanes=4
+[collect] bench gate: 100.7 tok/s (OK)
+[collect] VRAM: 3432 MB (gate < 6500)
+[status] 0/12 new runs | 0.0 runs/h | eta inf h | gpu 78 % | vram 3482 MB
+[status] 4/12 new runs | 12.0 runs/h | eta 0.7 h | gpu 80 % | vram 3482 MB
+[status] 4/12 new runs | 8.0 runs/h | eta 1.0 h | gpu 81 % | vram 3482 MB
+[status] 7/12 new runs | 10.5 runs/h | eta 0.5 h | gpu 76 % | vram 3482 MB
+[collect] retrying 3 failed runs once ...
+[collect] DONE: 12/12 complete, 0 persistent failures, 0.9 h

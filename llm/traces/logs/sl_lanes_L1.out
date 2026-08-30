@@ -1,0 +1,13 @@
+[collect] sl_lanes_L1: grid=12 done=0 todo=12 lanes=1
+[collect] bench gate: 99.6 tok/s (OK)
+[collect] VRAM: 3432 MB (gate < 6500)
+[status] 1/12 new runs | 6.0 runs/h | eta 1.8 h | gpu 78 % | vram 3482 MB
+[status] 2/12 new runs | 6.0 runs/h | eta 1.7 h | gpu 80 % | vram 3482 MB
+[status] 3/12 new runs | 6.0 runs/h | eta 1.5 h | gpu 81 % | vram 3482 MB
+[status] 4/12 new runs | 6.0 runs/h | eta 1.3 h | gpu 76 % | vram 3482 MB
+[status] 5/12 new runs | 6.0 runs/h | eta 1.2 h | gpu 71 % | vram 3482 MB
+[status] 6/12 new runs | 6.0 runs/h | eta 1.0 h | gpu 91 % | vram 3482 MB
+[status] 7/12 new runs | 6.0 runs/h | eta 0.8 h | gpu 80 % | vram 3482 MB
+[status] 8/12 new runs | 6.0 runs/h | eta 0.7 h | gpu 80 % | vram 3482 MB
+[collect] retrying 3 failed runs once ...
+[collect] DONE: 12/12 complete, 0 persistent failures, 1.8 h

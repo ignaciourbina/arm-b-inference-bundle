@@ -1,0 +1,14 @@
+[collect] sl_slots_p48: grid=12 done=0 todo=12 lanes=4
+[collect] bench gate: 100.2 tok/s (OK)
+[collect] VRAM: 3482 MB (gate < 6500)
+[status] 0/12 new runs | 0.0 runs/h | eta inf h | gpu 34 % | vram 3482 MB
+[status] 0/12 new runs | 0.0 runs/h | eta inf h | gpu 73 % | vram 3482 MB
+[status] 3/12 new runs | 6.0 runs/h | eta 1.5 h | gpu 99 % | vram 3482 MB
+[status] 4/12 new runs | 6.0 runs/h | eta 1.3 h | gpu 79 % | vram 3482 MB
+[status] 4/12 new runs | 4.8 runs/h | eta 1.7 h | gpu 64 % | vram 3482 MB
+[status] 7/12 new runs | 7.0 runs/h | eta 0.7 h | gpu 96 % | vram 3482 MB
+[status] 8/12 new runs | 6.9 runs/h | eta 0.6 h | gpu 83 % | vram 3482 MB
+[status] 8/12 new runs | 6.0 runs/h | eta 0.7 h | gpu 79 % | vram 3482 MB
+[collect] retrying 1 failed runs once ...
+[collect] DONE: 11/12 complete, 1 persistent failures, 1.4 h
+[collect] persistent failures: [('symmetric_n6', 503)]

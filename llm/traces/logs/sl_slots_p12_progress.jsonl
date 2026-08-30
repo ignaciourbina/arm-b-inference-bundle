@@ -1,0 +1,31 @@
+{"event": "collect_start", "grid": 12, "done": 0, "todo": 12, "lanes": 4, "bench_tok_s": 100.4, "ts": 1787898137.7}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 501, "ts": 1787898138.1}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 501, "ts": 1787898153.1}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 501, "ts": 1787898168.1}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 502, "ts": 1787898183.1}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 501, "wall_s": 833.5, "ts": 1787898971.6}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 502, "ts": 1787898971.6}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 502, "wall_s": 803.5, "ts": 1787898986.6}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 503, "ts": 1787898986.6}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 501, "wall_s": 864.7, "ts": 1787899032.8}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 503, "ts": 1787899032.8}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 501, "wall_s": 1143.1, "ts": 1787899296.2}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 502, "ts": 1787899296.2}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 502, "wall_s": 1029.9, "ts": 1787900001.6}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 503, "ts": 1787900001.6}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 503, "wall_s": 1039.3, "ts": 1787900072.1}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 504, "ts": 1787900072.1}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 503, "wall_s": 1174.3, "ts": 1787900160.9}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 504, "ts": 1787900160.9}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 502, "wall_s": 1027.4, "ts": 1787900323.6}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 504, "ts": 1787900323.6}
+{"event": "run_fail", "lane": 3, "comp": "three_clusters_n6", "seed": 504, "wall_s": 241.6, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_slots_p12_baseline_three_clusters_n6_s504.log", "err_tail": "s supporting worker protection (C_01) makes me reconsider my initial disagreement with the concept of inflation protection for workers. I will endorse the rationale.', 'stance': 'endorse', 'weight': 0.85}}, {'name': 'update_weight', 'args': {'cid': 'C_02', 'reasoning': 'The arguments supporting inflation protection for workers (C_01) are compelling. I now endorse this rationale, shifting my view from disagreement to acceptance of the underlying principle.', 'stance': 'endorse', 'weight': 0.85}}]", "ts": 1787900402.5}
+{"event": "lane_done", "lane": 3, "ts": 1787900402.5}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 503, "wall_s": 917.5, "ts": 1787900919.0}
+{"event": "lane_done", "lane": 0, "ts": 1787900919.0}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 504, "wall_s": 869.8, "ts": 1787900941.9}
+{"event": "lane_done", "lane": 2, "ts": 1787900941.9}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 504, "wall_s": 746.3, "ts": 1787901069.9}
+{"event": "lane_done", "lane": 1, "ts": 1787901069.9}
+{"event": "retry_done", "comp": "three_clusters_n6", "seed": 504, "rc": 0, "err_tail": "", "ts": 1787901482.0}
+{"event": "collect_end", "done_total": 12, "failures": 0, "hours": 0.93, "paused": false, "ts": 1787901482.0}

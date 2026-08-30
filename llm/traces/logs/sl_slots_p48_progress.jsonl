@@ -1,0 +1,31 @@
+{"event": "collect_start", "grid": 12, "done": 0, "todo": 12, "lanes": 4, "bench_tok_s": 100.2, "ts": 1787905802.2}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 501, "ts": 1787905802.6}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 501, "ts": 1787905817.6}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 501, "ts": 1787905832.6}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 502, "ts": 1787905847.6}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 502, "wall_s": 1183.3, "ts": 1787907030.9}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 503, "ts": 1787907030.9}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 501, "wall_s": 1658.0, "ts": 1787907460.6}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 502, "ts": 1787907460.6}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 501, "wall_s": 1693.2, "ts": 1787907525.8}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 503, "ts": 1787907525.8}
+{"event": "run_fail", "lane": 3, "comp": "symmetric_n6", "seed": 503, "wall_s": 497.2, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_slots_p48_baseline_symmetric_n6_s503.log", "err_tail": "  File \"~/projects/arm-b-inference-bundle/llm/harness.py\", line 577, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_02/reflect: no parseable tool call after 5 attempts; last content: 'I need the arguments you heard to perform any updates. Please provide them.'", "ts": 1787907528.1}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 504, "ts": 1787907528.1}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 501, "wall_s": 1905.9, "ts": 1787907723.5}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 502, "ts": 1787907723.5}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 504, "wall_s": 1695.0, "ts": 1787909223.1}
+{"event": "lane_done", "lane": 3, "ts": 1787909223.1}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 503, "wall_s": 1725.9, "ts": 1787909251.7}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 504, "ts": 1787909251.7}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 502, "wall_s": 1911.0, "ts": 1787909371.6}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 503, "ts": 1787909371.6}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 502, "wall_s": 1923.6, "ts": 1787909647.1}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 504, "ts": 1787909647.1}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 503, "wall_s": 1341.1, "ts": 1787910712.7}
+{"event": "lane_done", "lane": 0, "ts": 1787910712.7}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 504, "wall_s": 1521.6, "ts": 1787910773.4}
+{"event": "lane_done", "lane": 2, "ts": 1787910773.4}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 504, "wall_s": 1169.4, "ts": 1787910816.4}
+{"event": "lane_done", "lane": 1, "ts": 1787910816.4}
+{"event": "retry_fail", "comp": "symmetric_n6", "seed": 503, "rc": 1, "err_tail": "  File \"~/projects/arm-b-inference-bundle/llm/harness.py\", line 577, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_02/reflect: no parseable tool call after 5 attempts; last content: 'I apologize, but you have not provided any new arguments or information for me to reflect upon. I ca'", "ts": 1787910899.9}
+{"event": "collect_end", "done_total": 11, "failures": 1, "hours": 1.42, "paused": false, "ts": 1787910899.9}

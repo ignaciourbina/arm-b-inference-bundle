@@ -1,0 +1,29 @@
+{"event": "collect_start", "grid": 12, "done": 0, "todo": 12, "lanes": 2, "bench_tok_s": 97.3, "ts": 1787901455.5}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 501, "ts": 1787901455.5}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 501, "ts": 1787901470.5}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 501, "wall_s": 904.9, "ts": 1787902360.3}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 501, "ts": 1787902360.3}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 501, "wall_s": 933.5, "ts": 1787902404.0}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 502, "ts": 1787902404.0}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 502, "wall_s": 631.7, "ts": 1787903035.7}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 502, "ts": 1787903035.7}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 501, "wall_s": 822.1, "ts": 1787903182.4}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 502, "ts": 1787903182.4}
+{"event": "run_fail", "lane": 1, "comp": "three_clusters_n6", "seed": 502, "wall_s": 230.6, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_lanes_L2_baseline_three_clusters_n6_s502.log", "err_tail": "easoning': 'Reinforcing my opposition by strengthening the argument about small-business survival.', 'stance': 'endorse', 'weight': 0.9}}, {'name': 'update_weight', 'args': {'cid': 'C_07', 'reasoning': 'Reinforcing my opposition by strengthening the argument about automation.', 'stance': 'endorse', 'weight': 0.8}}, {'name': 'update_weight', 'args': {'cid': 'C_09', 'reasoning': 'Reinforcing my opposition by strengthening the argument about service redesign.', 'stance': 'endorse', 'weight': 0.8}}]", "ts": 1787903266.3}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 503, "ts": 1787903266.3}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 502, "wall_s": 869.1, "ts": 1787904051.5}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 503, "ts": 1787904051.5}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 503, "wall_s": 987.4, "ts": 1787904253.7}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 504, "ts": 1787904253.7}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 503, "wall_s": 986.8, "ts": 1787905038.3}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 503, "ts": 1787905038.3}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 504, "wall_s": 1027.1, "ts": 1787905280.8}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 504, "ts": 1787905280.8}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 503, "wall_s": 918.4, "ts": 1787905956.8}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 504, "ts": 1787905956.8}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 504, "wall_s": 896.3, "ts": 1787906177.1}
+{"event": "lane_done", "lane": 1, "ts": 1787906177.1}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 504, "wall_s": 607.3, "ts": 1787906564.1}
+{"event": "lane_done", "lane": 0, "ts": 1787906564.1}
+{"event": "retry_fail", "comp": "three_clusters_n6", "seed": 502, "rc": 1, "err_tail": "-bundle/llm/harness.py\", line 643, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_04/reflect: no terminal tool within budget after 5 attempts; non-terminal tool calls so far: [{'name': 'query_supports', 'args': {'target_cid': 'C_01'}}, {'name': 'query_supports', 'args': {'target_cid': 'C_01'}}, {'name': 'query_supports', 'args': {'target_cid': 'C_02'}}, {'name': 'query_supports', 'args': {'target_cid': 'C_03'}}, {'name': 'query_supports', 'args': {'target_cid': 'C_06'}}]", "ts": 1787906770.2}
+{"event": "collect_end", "done_total": 11, "failures": 1, "hours": 1.48, "paused": false, "ts": 1787906770.2}

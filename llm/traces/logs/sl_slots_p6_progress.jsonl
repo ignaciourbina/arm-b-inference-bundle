@@ -1,0 +1,33 @@
+{"event": "collect_start", "grid": 12, "done": 0, "todo": 12, "lanes": 4, "bench_tok_s": 100.7, "ts": 1787895001.7}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 501, "ts": 1787895001.7}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 501, "ts": 1787895016.7}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 501, "ts": 1787895031.7}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 502, "ts": 1787895046.7}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 501, "wall_s": 834.0, "ts": 1787895835.7}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 502, "ts": 1787895835.7}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 501, "wall_s": 813.8, "ts": 1787895845.6}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 503, "ts": 1787895845.6}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 502, "wall_s": 859.9, "ts": 1787895906.6}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 503, "ts": 1787895906.6}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 501, "wall_s": 912.8, "ts": 1787895929.6}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 502, "ts": 1787895929.6}
+{"event": "run_fail", "lane": 1, "comp": "three_clusters_n6", "seed": 502, "wall_s": 262.3, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_slots_p6_baseline_three_clusters_n6_s502.log", "err_tail": "  File \"~/projects/arm-b-inference-bundle/llm/harness.py\", line 577, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_05/reflect: no parseable tool call after 5 attempts; last content: 'I am still waiting for the arguments or new information. Please provide the context or arguments you'", "ts": 1787896191.9}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 504, "ts": 1787896191.9}
+{"event": "run_fail", "lane": 1, "comp": "polarized_n6", "seed": 504, "wall_s": 642.2, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_slots_p6_baseline_polarized_n6_s504.log", "err_tail": "eard (especially C_01, C_02, C_04, C_05) all attack the premise of small-business survival, which aligns with my opposition. I will slightly strengthen my opposition to this point.', 'stance': 'reject', 'weight': 0.9}}, {'name': 'update_weight', 'args': {'cid': 'C_10', 'reasoning': 'The attacks on systemic critique (C_01, C_02, C_05) are strong, suggesting that the systemic critique is heavily contested. This reinforces my existing opposition to the policy.', 'stance': 'reject', 'weight': 0.9}}]", "ts": 1787896834.1}
+{"event": "lane_done", "lane": 1, "ts": 1787896834.1}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 503, "wall_s": 1022.0, "ts": 1787896867.6}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 504, "ts": 1787896867.6}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 502, "wall_s": 1038.3, "ts": 1787896874.0}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 503, "ts": 1787896874.0}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 503, "wall_s": 990.1, "ts": 1787896896.8}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 504, "ts": 1787896896.8}
+{"event": "run_fail", "lane": 3, "comp": "three_clusters_n6", "seed": 504, "wall_s": 387.5, "rc": 1, "fail_log": "llm/traces/logs/FAIL_sl_slots_p6_baseline_three_clusters_n6_s504.log", "err_tail": "  File \"~/projects/arm-b-inference-bundle/llm/harness.py\", line 577, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_05/reflect: no parseable tool call after 5 attempts; last content: 'I am unable to proceed without the new arguments you mentioned. Please provide the arguments you hea'", "ts": 1787897284.2}
+{"event": "lane_done", "lane": 3, "ts": 1787897284.2}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 504, "wall_s": 609.9, "ts": 1787897477.5}
+{"event": "lane_done", "lane": 2, "ts": 1787897477.5}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 503, "wall_s": 629.8, "ts": 1787897503.8}
+{"event": "lane_done", "lane": 0, "ts": 1787897503.8}
+{"event": "retry_done", "comp": "three_clusters_n6", "seed": 502, "rc": 0, "err_tail": "", "ts": 1787897790.9}
+{"event": "retry_done", "comp": "polarized_n6", "seed": 504, "rc": 0, "err_tail": "", "ts": 1787897916.1}
+{"event": "retry_done", "comp": "three_clusters_n6", "seed": 504, "rc": 0, "err_tail": "", "ts": 1787898121.2}
+{"event": "collect_end", "done_total": 12, "failures": 0, "hours": 0.87, "paused": false, "ts": 1787898121.2}

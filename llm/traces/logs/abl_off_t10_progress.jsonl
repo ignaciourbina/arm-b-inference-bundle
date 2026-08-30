@@ -1,0 +1,14 @@
+{"event": "collect_start", "grid": 9, "done": 0, "todo": 9, "lanes": 4, "bench_tok_s": 100.7, "ts": 1787939782.8}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 1, "ts": 1787939782.8}
+{"event": "collect_start", "grid": 6, "done": 0, "todo": 6, "lanes": 4, "bench_tok_s": 99.6, "ts": 1787939782.8}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 4, "ts": 1787939782.8}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 1, "ts": 1787939797.8}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 4, "ts": 1787939797.8}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 1, "ts": 1787939812.8}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 4, "ts": 1787939812.8}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 2, "ts": 1787939827.8}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 5, "ts": 1787939827.8}
+{"event": "run_fail", "lane": 0, "comp": "polarized_n6", "seed": 1, "wall_s": 83.1, "rc": 1, "fail_log": "llm/traces/logs/FAIL_abl_off_t10_baseline_polarized_n6_s1.log", "err_tail": "e HookLoopError( | llm.harness.HookLoopError: TH_05/reflect: no terminal tool within budget after 6 attempts; non-terminal tool calls so far: [{'name': 'query_supports', 'args': {'target_cid': 'C_02'}}, {'name': 'query_supports', 'args': {'target_cid': 'C_02'}}, {'name': 'query_supports', 'args': {'target_cid': 'C_03'}}, {'name': 'query_supports', 'args': {'target_cid': 'C_10'}}, {'name': 'query_attacks', 'args': {'target_cid': 'C_01'}}, {'name': 'query_attacks', 'args': {'target_cid': 'C_05'}}]", "ts": 1787939865.9}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 2, "ts": 1787939865.9}
+{"event": "run_fail", "lane": 2, "comp": "three_clusters_n6", "seed": 4, "wall_s": 138.9, "rc": 1, "fail_log": "llm/traces/logs/FAIL_abl_off_t10_baseline_three_clusters_n6_s4.log", "err_tail": "ce': 'reject', 'weight': 0.5}}, {'name': 'update_weight', 'args': {'cid': 'C_05', 'reasoning': \"New argument for 'income inequality' seems to fit my opposition. I'll give it a moderate weight, as it's a common talking point against wage hikes.\", 'stance': 'reject', 'weight': 0.5}}, {'name': 'update_weight', 'args': {'cid': 'C_10', 'reasoning': 'New systemic critiques (both versions) seem to align with my general opposition. I will give them moderate weight.', 'stance': 'reject', 'weight': 0.5}}]", "ts": 1787939951.7}
+{"event": "lane_done", "lane": 2, "ts": 1787939951.7}

@@ -1,0 +1,5 @@
+{"event": "collect_start", "grid": 15, "done": 0, "todo": 15, "lanes": 4, "bench_tok_s": 72.4, "ts": 1788079580.1}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 1, "ts": 1788079580.1}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 1, "ts": 1788079595.1}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 1, "ts": 1788079610.1}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 2, "ts": 1788079625.1}
