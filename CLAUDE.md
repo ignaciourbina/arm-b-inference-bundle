@@ -110,5 +110,13 @@ agora/.venv/bin/python ...     # the venv is a micromamba env on scratch (symlin
 - **Headline claim**: the LLM engine trends toward epistemic integration
   (higher alignment, more meta-consensus, lower dispersion); the rule engine
   toward argumentative circulation.
-- **DRI is very noisy** (CV ~110%, per-run range −0.27 to +0.81). n=15 cells
-  cannot support DRI conclusions; they can support calls/run and diversity.
+- **Cell sizes are different instruments.** ~15-run cells (`abl_*`, `cd_*`,
+  `sl_*`, `vo_*`, `ms_*`) are prolonged preflight tests and infra benchmarks —
+  makespan per run per GPU, failure rate, VRAM, peak tokens. They are **not**
+  inferential about substantive measures. Only ~300-run collections are.
+  Reporting a substantive delta from a 15-run cell is a category error, and
+  enlarging a pilot "for significance" is the wrong move — it is a different
+  instrument. Low-variance voicing metrics (distinct args/agent, calls/run) are
+  the one exception used at n≈15.
+- **DRI is very noisy** (CV ~110%, per-run range −0.27 to +0.81; SE ~0.05–0.09
+  at n=15 vs ~0.015 at n=300).

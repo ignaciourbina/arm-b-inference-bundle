@@ -164,9 +164,24 @@ Cell `abl_q8_b128` (P100), paired n=15 against the 300-run collection.
 | DRI (final) | 0.187 | 0.253 | +0.066 | .47 |
 | LLM calls / run | 612.2 | 618.2 | +6.0 | .61 |
 
-b128 is significantly better on four outcomes, including two that carry the
-integration claim (meta-consensus up, dispersion down). This CONTINUES the
-Sprint-15 trend (b256 beat b512); smaller budgets keep winning.
+b128 tests better on four outcomes, two of which touch the integration claim
+(meta-consensus up, dispersion down), and this is directionally consistent with
+the Sprint-15 trend (b256 beat b512).
+
+**Read this as a signal, not a finding.** `abl_q8_b128` is a 15-run benchmark
+cell — a prolonged preflight whose job is failure rate, VRAM and wall-clock.
+Substantive measures are the 300-run collection's business (see CLAUDE.md,
+"Cell sizes are different instruments"). Two specific reasons not to bank the
+quality result:
+
+* **The pairing is weaker than it looks.** Pairing by seed is supposed to hold
+  the trajectory fixed and vary only the treatment. Across different GPUs it
+  does not: different kernels give different floating-point results, and at
+  temperature 1.0 a different logit is a different sampled token. Same seed,
+  different run. This is closer to an unpaired n=15 comparison than a paired
+  one.
+* Only the voicing metrics (distinct args) are low-variance enough to carry
+  weight at this size; meta-consensus and opinion variance here are suggestive.
 
 **Cost: 13.3% failure rate vs b256's 3.5%.** Failure mode differs from Q4's --
 no malformed JSON; the model emits valid `update_weight` calls but exhausts the
@@ -174,13 +189,15 @@ no malformed JSON; the model emits valid `update_weight` calls but exhausts the
 finishes, finishes less often.
 
 **Wall-clock NOT established.** This cell ran on P100 while the control ran on
-V100 — different hardware, so no speed claim is made. Quality deltas are sound
-(paired by seed, same model/prompt); a b256 cell on P100 would be needed for a
-fair speed comparison. Flat LLM calls (+6, ns) suggests little cost difference.
+V100, so no speed claim is made. A b256 cell on P100 would be needed for a fair
+comparison. Flat LLM calls (+6, ns) suggests little cost difference.
 
-**Verdict: unresolved trade.** b128 buys quality at ~4x the failure rate. At
-300+ runs that is ~40 extra failed runs; whether that is worth the gains is a
-judgement call for IU, not a throughput optimisation.
+**Verdict: unresolved, and not resolvable from this cell.** The reliability cost
+is real and is measured on the right instrument — 13.3% vs 3.5% failures is
+exactly what a 15-run benchmark cell is for. The quality gain is not: it would
+need its own collection at n≈300 on matched hardware to become a finding. Since
+the reliability cost alone is ~40 extra failed runs per 300, b128 is not adopted
+without that evidence.
 
 ## (c) Prefix cache-reuse — **NULL, and the premise was wrong**
 

@@ -7,6 +7,15 @@ Frozen decisions live in `docs/SOTA-CONFIG-MEMO.md` and `CLAUDE.md` — check
 there before proposing anything that looks like an open axis. Reasoning ON
 (budget 256) and temperature 1.0 are **not** open axes.
 
+**Instrument sizes.** A ~15-run cell measures the *machine*: makespan per run
+per GPU, tool-call failure rate, VRAM, peak prompt+gen tokens, and whether a
+config survives a prolonged run. A ~300-run collection measures the
+*phenomenon*: DRI, meta-consensus, deliberation dynamics. Reporting substantive
+deltas from a 15-run cell is a category error, not a power problem — and
+"enlarge the pilot for significance" is the wrong move, because it is a
+different instrument. Low-variance voicing metrics (distinct arguments per
+agent, calls per run) are the one exception used at n≈15.
+
 Last updated 2026-08-30.
 
 ---
@@ -28,7 +37,10 @@ worse for this task:
    and a larger model's more verbose thinking may not fit)
 3. measured s/run/GPU vs the ~1080 estimate in `LARGER-MODEL-ASSESSMENT.md`
 4. paired quality deltas — `make score CELLS="ms_26B_a4b ms_E4B"`
+   *(sanity check only — n=15 is not inferential about substance; the voicing
+   metrics are the only ones worth reading here)*
 5. growth pattern across E2B → E4B → 26B-A4B — `make growth`
+   *(directional at best; see item 15)*
 
 > Note the log looks stalled while running: Python's stdout is block-buffered
 > through the sbatch's `sed` pipe. Use `make progress CELL=...`, which reads the
@@ -149,11 +161,20 @@ every importer, so it needs a quiet moment and a full `make test`.
 - **`dflash-` variants** exist for 26B-A4B and 31B and are unidentified. Worth
   knowing before assuming plain Q8 is the right file.
 
-### 15. DRI at model scale needs n ≫ 15
-DRI is too noisy to resolve growth-pattern questions at pilot size (CV ~110%;
-SE ~0.05–0.09 at n=15 versus ~0.015 at n=300). The 15-run cells produce
-non-monotonic curves and contradictory horizons for cells differing only in
-temperature — that is noise, not mechanism. **Meta-consensus and argumentative
-diversity are the indicators that can resolve model scale at n=15** (SE
-0.002–0.008). If a DRI conclusion is wanted across model scale, it needs a cell
-an order of magnitude larger, which is a GPU-days decision, not a quick add.
+### 15. Growth pattern at model scale needs a full collection per model
+Not a backlog item so much as a scoping fact, recorded so it is not rediscovered
+late.
+
+**~15-run cells are infra instruments, by design** (IU): prolonged preflight
+tests and quick benchmarks for throughput, failure rate, VRAM and peak tokens.
+They are *not* inferential about substantive measures. **~300-run collections
+are the inferential instrument.** See the "Instrument sizes" note at the top of
+this file.
+
+So the pilot (item 1) answers *can this model run the task, and what does it
+cost* — it does not answer whether a more capable model deliberates with a
+different shape. Answering that means a full collection per model at ~45 h of
+2-GPU wall-clock each, which is a GPU-days decision, not a bigger pilot.
+
+Within the E2B data that question is already partly answered on the *reasoning*
+axis, at n=300 against n=30, and that result is in the memo.
