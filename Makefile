@@ -47,7 +47,7 @@ GROWTH_CELLS ?= armb_sota_r256_t10 ms_E4B ms_26B_a4b
         sota pilot scaling axes-cd quant-budget verify-optimum lane-sweep submit \
         cancel cancel-job \
         status queue cells progress watch log srvlog gpu \
-        provenance provenance-all compare \
+        provenance provenance-all compare tool-usage \
         validate score scaling-report growth inventory report \
         quota du gz-check compress-dry compress archive \
         test lint typecheck smoke clean
@@ -229,6 +229,9 @@ scaling-report:  ## Measured wall-clock scaling law + projections
 
 growth:  ## Deliberation growth curves: make growth [GROWTH_CELLS="a b"]
 	$(PY) slurm/growth_pattern_compare.py $(GROWTH_CELLS)
+
+tool-usage:  ## Elective tool use per run + its relation to outcomes: make tool-usage CELL=x
+	$(PY) slurm/tool_usage.py $(CELL)
 
 inventory:  ## Inventory result and trace files
 	$(PY) llm/inventory_traces.py
