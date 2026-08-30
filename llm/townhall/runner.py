@@ -375,7 +375,11 @@ def run_townhall(
     # LLM_BASE_URL / LLM_MODEL / LLM_API_FLAVOR override LLMClient defaults.
     client_kwargs: dict = {
         "max_tokens": 512,
-        "temperature": 0.3,
+        # Sampling temperature. 0.3 is the pinned Arm-B production value; the
+        # env override exists so a SoTA/ablation cell can move it without an
+        # edit. It is recorded in the trace config (below) -- otherwise two
+        # collections at different temperatures are indistinguishable.
+        "temperature": float(os.environ.get("LLM_TEMPERATURE", "0.3")),
         "timeout": 600.0,
         "trace_path": trace_path,
     }
@@ -394,6 +398,11 @@ def run_townhall(
         from llm.openai_adapter import OpenAICloudClient
         client_kwargs.pop("base_url", None)  # cloud URL is fixed in the adapter
         client = OpenAICloudClient(**client_kwargs)
+    elif client_kwargs.get("api_flavor") == "openrouter":
+        # Arm C: OpenRouter / Z.ai (GLM-5.3-Flash). Keeps base_url so the route
+        # can be repointed; temperature IS forwarded (unlike the GPT-5 path).
+        from llm.openrouter_adapter import OpenRouterClient
+        client = OpenRouterClient(**client_kwargs)
     else:
         client = LLMClient(**client_kwargs)
     harness: ToolCallHarness
@@ -424,11 +433,24 @@ def run_townhall(
         record = TownHallRecord.from_json(checkpoint_path)
         # Config sanity check — refuse to resume across incompatible configs.
         ck = record.config
+        # Semantic knobs are included alongside the structural ones: a
+        # checkpoint written under one model / temperature / prompt variant must
+        # not be silently continued under another, or the finished trace records
+        # the LAST run's config while containing rounds generated under a
+        # different one -- mixed provenance that is invisible after the fact.
+        # Compared only when the incoming value is known AND the checkpoint
+        # carries the key, so checkpoints predating a field still resume.
+        _checks = [
+            ("topic", topic), ("n_agents", n_agents),
+            ("n_rounds", n_rounds), ("seed", seed),
+            ("condition", condition), ("composition", composition),
+            ("model", getattr(client, "model", None)),
+            ("temperature", getattr(client, "temperature", None)),
+            ("prompt_variant", prompt_variant),
+        ]
         mismatches = [
-            (k, v, ck.get(k)) for k, v in (
-                ("topic", topic), ("n_agents", n_agents),
-                ("n_rounds", n_rounds), ("seed", seed),
-            ) if ck.get(k) != v
+            (k, v, ck.get(k)) for k, v in _checks
+            if v is not None and k in ck and ck.get(k) != v
         ]
         if mismatches:
             raise ValueError(
@@ -467,6 +489,7 @@ def run_townhall(
                 # launch flags it used (reasoning / quantization).
                 "server_props": _server_props(client.base_url),
                 "ablation_infra": os.environ.get("LLM_ABLATION_INFRA", ""),
+                "temperature": getattr(client, "temperature", None),
             },
             profiles=profiles,
             scenario={
