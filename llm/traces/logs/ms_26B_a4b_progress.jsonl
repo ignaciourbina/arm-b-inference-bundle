@@ -3,3 +3,36 @@
 {"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 1, "ts": 1788079595.1}
 {"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 1, "ts": 1788079610.1}
 {"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 2, "ts": 1788079625.1}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 1, "wall_s": 5944.9, "ts": 1788085540.1}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 2, "ts": 1788085540.1}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 1, "wall_s": 6313.4, "ts": 1788085923.5}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 3, "ts": 1788085923.5}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 2, "wall_s": 6392.5, "ts": 1788086017.7}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 3, "ts": 1788086017.7}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 1, "wall_s": 6556.9, "ts": 1788086137.0}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 2, "ts": 1788086137.0}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 2, "wall_s": 6558.5, "ts": 1788092098.5}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 4, "ts": 1788092098.5}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 3, "wall_s": 6327.1, "ts": 1788092250.6}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 4, "ts": 1788092250.6}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 3, "wall_s": 6513.0, "ts": 1788092530.6}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 4, "ts": 1788092530.6}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 2, "wall_s": 7386.3, "ts": 1788093523.3}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 3, "ts": 1788093523.3}
+{"event": "run_fail", "lane": 2, "comp": "symmetric_n6", "seed": 4, "wall_s": 2162.8, "rc": 1, "fail_log": "llm/traces/logs/FAIL_ms_26B_a4b_baseline_symmetric_n6_s4.log", "err_tail": "ight': 0.1}}, {'name': 'query_repertoire', 'args': {'reasoning': 'Reviewing my stance after adding the new arguments to ensure coherence.'}}, {'name': 'query_repertoire', 'args': {'reasoning': 'Checking the weights to see why my opinion changed so much.'}}, {'name': 'query_repertoire', 'args': {'reasoning': 'Calculating manually. Sum (weight*dir): -1 + -1 + -1 + -0.75 + -0.1 + -0.1 + -0.1 = -4.05. Sum |weight|: 1 + 1 + 1 + 0.75 + 0.1 + 0.1 + 0.1 = 4.05. Result -1. Why is the opinion -0.5786?'}}]", "ts": 1788094413.4}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 5, "ts": 1788094413.4}
+{"event": "run_fail", "lane": 0, "comp": "three_clusters_n6", "seed": 3, "wall_s": 1012.8, "rc": 1, "fail_log": "llm/traces/logs/FAIL_ms_26B_a4b_baseline_three_clusters_n6_s3.log", "err_tail": "  File \"~/projects/arm-b-inference-bundle/agora/.venv/lib/python3.11/site-packages/aiohttp/client_reqrep.py\", line 655, in raise_for_status |     raise ClientResponseError( | aiohttp.client_exceptions.ClientResponseError: 400, message='Bad Request', url='http://localhost:20434/v1/chat/completions'", "ts": 1788094536.2}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 5, "ts": 1788094536.2}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 4, "wall_s": 6468.0, "ts": 1788098566.6}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 5, "ts": 1788098566.6}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 4, "wall_s": 6060.7, "ts": 1788098591.4}
+{"event": "lane_done", "lane": 3, "ts": 1788098591.4}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 5, "wall_s": 5172.1, "ts": 1788099585.5}
+{"event": "lane_done", "lane": 2, "ts": 1788099585.5}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 5, "wall_s": 5069.4, "ts": 1788099605.6}
+{"event": "lane_done", "lane": 0, "ts": 1788099605.6}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 5, "wall_s": 2438.6, "ts": 1788101005.2}
+{"event": "lane_done", "lane": 1, "ts": 1788101005.2}
+{"event": "retry_done", "comp": "symmetric_n6", "seed": 4, "rc": 0, "err_tail": "", "ts": 1788102578.4}
+{"event": "retry_done", "comp": "three_clusters_n6", "seed": 3, "rc": 0, "err_tail": "", "ts": 1788104308.9}
+{"event": "collect_end", "done_total": 15, "failures": 0, "hours": 6.87, "paused": false, "ts": 1788104308.9}

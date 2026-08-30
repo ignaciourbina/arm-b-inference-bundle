@@ -3,3 +3,37 @@
 {"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 1, "ts": 1788079595.1}
 {"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 1, "ts": 1788079610.1}
 {"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 2, "ts": 1788079625.1}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 1, "wall_s": 3072.5, "ts": 1788082667.7}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 2, "ts": 1788082667.7}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 1, "wall_s": 3145.7, "ts": 1788082725.8}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 2, "ts": 1788082725.8}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 1, "wall_s": 3119.6, "ts": 1788082729.8}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 3, "ts": 1788082729.8}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 2, "wall_s": 3131.4, "ts": 1788082756.6}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 3, "ts": 1788082756.6}
+{"event": "run_fail", "lane": 3, "comp": "symmetric_n6", "seed": 3, "wall_s": 2396.9, "rc": 1, "fail_log": "llm/traces/logs/FAIL_ms_E4B_baseline_symmetric_n6_s3.log", "err_tail": "  File \"~/projects/arm-b-inference-bundle/llm/harness.py\", line 577, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_02/reflect: no parseable tool call after 5 attempts; last content: '{\"unchanged\":true}'", "ts": 1788085153.5}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 4, "ts": 1788085153.5}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 2, "wall_s": 3014.0, "ts": 1788085681.7}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 4, "ts": 1788085681.7}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 2, "wall_s": 3120.7, "ts": 1788085846.5}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 3, "ts": 1788085846.5}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 3, "wall_s": 3343.9, "ts": 1788086073.7}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 4, "ts": 1788086073.7}
+{"event": "run_fail", "lane": 2, "comp": "symmetric_n6", "seed": 4, "wall_s": 1624.5, "rc": 1, "fail_log": "llm/traces/logs/FAIL_ms_E4B_baseline_symmetric_n6_s4.log", "err_tail": "  File \"~/projects/arm-b-inference-bundle/llm/harness.py\", line 577, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_03/reflect: no parseable tool call after 5 attempts; last content: '{\"unchanged\":true}'", "ts": 1788087698.2}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 5, "ts": 1788087698.2}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 4, "wall_s": 3123.1, "ts": 1788088276.6}
+{"event": "lane_done", "lane": 3, "ts": 1788088276.6}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 4, "wall_s": 3026.3, "ts": 1788088708.0}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 5, "ts": 1788088708.0}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 3, "wall_s": 2989.6, "ts": 1788088836.1}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 5, "ts": 1788088836.1}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 5, "wall_s": 2405.0, "ts": 1788090103.2}
+{"event": "lane_done", "lane": 2, "ts": 1788090103.2}
+{"event": "run_fail", "lane": 1, "comp": "symmetric_n6", "seed": 5, "wall_s": 1624.9, "rc": 1, "fail_log": "llm/traces/logs/FAIL_ms_E4B_baseline_symmetric_n6_s5.log", "err_tail": "  File \"~/projects/arm-b-inference-bundle/llm/harness.py\", line 577, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_01/reflect: no parseable tool call after 5 attempts; last content: '{\"unchanged\":true}'", "ts": 1788090333.0}
+{"event": "lane_done", "lane": 1, "ts": 1788090333.0}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 5, "wall_s": 1682.7, "ts": 1788090518.8}
+{"event": "lane_done", "lane": 0, "ts": 1788090518.8}
+{"event": "retry_done", "comp": "symmetric_n6", "seed": 3, "rc": 0, "err_tail": "", "ts": 1788090870.2}
+{"event": "retry_done", "comp": "symmetric_n6", "seed": 4, "rc": 0, "err_tail": "", "ts": 1788091431.3}
+{"event": "retry_done", "comp": "symmetric_n6", "seed": 5, "rc": 0, "err_tail": "", "ts": 1788091769.0}
+{"event": "collect_end", "done_total": 15, "failures": 0, "hours": 3.39, "paused": false, "ts": 1788091769.0}
