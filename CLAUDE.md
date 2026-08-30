@@ -28,6 +28,7 @@ trace readers are `.gz`-aware. That gate is the policy, executable.
 
 | Doc | What it settles |
 |---|---|
+| [`BACKLOG.md`](BACKLOG.md) | **What is outstanding and why**, P0–P3. Read before starting anything. |
 | [`docs/SOTA-CONFIG-MEMO.md`](docs/SOTA-CONFIG-MEMO.md) | **The recommended config**, with paired evidence for quantization / reasoning budget / cache-reuse / slots, the measured wall-clock scaling law, and the round-1 freeze result. |
 | [`docs/STORAGE-POLICY.md`](docs/STORAGE-POLICY.md) | Disk quotas and the placement rule. **Traces are irreplaceable → home. Weights/images → scratch.** Never invert. |
 | [`docs/CLUSTER_POLICY_JOBS.md`](docs/CLUSTER_POLICY_JOBS.md) | Verbatim SeaWulf job limits. **`v100` is 1 node / 1 job per user** — 2 GPUs is the hard ceiling. |
