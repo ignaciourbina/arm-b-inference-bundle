@@ -28,6 +28,13 @@ seed against `armb_sota_r256_t10`. Running ~31 min, both cells clean at 0
 failures. Preflight already answered the biggest unknown: **llama.cpp b10644
 does support Gemma 4 MoE** (26.9 / 32.8 GB VRAM at 4 slots).
 
+**This is a sensitivity/robustness check, not a replication** (IU). A larger
+model is expected to produce different numbers, and divergence is a result, not
+a failure. The question is whether the Arm-B conclusions hold as capacity grows;
+if they do not, the scope condition of the finding is narrower than claimed,
+which is itself reportable. Do not frame E2B as "correct" and deviations from it
+as error.
+
 Report in this order when it lands — the first item is the go/no-go, and a
 model that scores better on benchmarks but emits worse constrained JSON is
 worse for this task:
@@ -94,9 +101,12 @@ agent "fix" a working script.
 Note `--help` needs a GPU allocation; the shim cannot run on a login node
 (`libcuda.so.1` missing). Use `srun --jobid=<running> -n1 llama-server --help`.
 
-### 5. Estimator regression test
-Pin `slurm/scaling_law_report.py` against the 300-run cell, whose true runtime
-is independently known and which the current estimator matches to 0.4%.
+### 5. Pin the makespan estimator against frozen telemetry
+A **software** test on `slurm/scaling_law_report.py` — nothing to do with any
+model or collection. Frozen input: the committed
+`llm/traces/logs/armb_sota_r256_t10_progress.jsonl`. Expected output: 569
+s/run/GPU, which matches the independently known job runtime to 0.4%. If an
+edit to the estimator moves that number, the test fails.
 
 **Why.** Makespan was computed wrongly twice — once by comparing an unnormalised
 2-GPU cell against 1-GPU cells ("1.95× slower"), once by measuring first-to-last
