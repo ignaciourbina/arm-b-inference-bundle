@@ -50,7 +50,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 COMPOSITIONS = ["polarized_n6", "symmetric_n6", "three_clusters_n6"]
 MIN_TOKS_PER_S = 20.0          # warmed-bench gate (CPU fallback signature ~3-11)
 MIN_FREE_DISK_GB = 10.0        # trace volume safety
-MAX_VRAM_MB = 6500             # sprint-16 plan gate
+# Sprint-16 plan gate, sized for E2B at p6 (~5.6 GB). It is a guard against a
+# misconfigured server (too many slots / too large a ctx), not a hardware limit,
+# so a cell running a deliberately larger model raises it via the environment.
+MAX_VRAM_MB = int(os.environ.get("COLLECT_MAX_VRAM_MB", "6500"))
 DEFAULT_LANE_STAGGER_S = 90    # avoid synchronized prefill bursts
 
 _pause = threading.Event()
@@ -113,9 +116,23 @@ def bench_gate(base_url: str) -> float:
     return gen / dt if dt > 0 else 0.0
 
 
+def _gpu_flag() -> list[str]:
+    """`nvidia-smi -i N` for the GPU this shard's server lives on, if pinned.
+
+    nvidia-smi is an NVML tool and does NOT honour CUDA_VISIBLE_DEVICES, so a
+    shard whose server sits on GPU 1 otherwise reads GPU 0. That is not
+    hypothetical: in the model-scale pilot the E4B shard read the 26B server's
+    26.9 GB from GPU 0 and aborted on the VRAM gate.
+    """
+    idx = (os.environ.get("COLLECT_GPU_INDEX")
+           or os.environ.get("CUDA_VISIBLE_DEVICES", "")).split(",")[0].strip()
+    return ["-i", idx] if idx.isdigit() else []
+
+
 def vram_mb() -> int:
     try:
-        out = subprocess.run(["nvidia-smi", "--query-gpu=memory.used",
+        out = subprocess.run(["nvidia-smi", *_gpu_flag(),
+                              "--query-gpu=memory.used",
                               "--format=csv,noheader,nounits"],
                              capture_output=True, text=True, timeout=10)
         return int(out.stdout.strip().splitlines()[0])
@@ -125,7 +142,8 @@ def vram_mb() -> int:
 
 def gpu_util() -> str:
     try:
-        out = subprocess.run(["nvidia-smi", "--query-gpu=utilization.gpu",
+        out = subprocess.run(["nvidia-smi", *_gpu_flag(),
+                              "--query-gpu=utilization.gpu",
                               "--format=csv,noheader"],
                              capture_output=True, text=True, timeout=10)
         return out.stdout.strip().splitlines()[0]
