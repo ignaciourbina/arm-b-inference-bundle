@@ -20,7 +20,15 @@ import json, os, sys, time, glob
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 COLL = os.path.join(ROOT, "llm/traces/collection")
 LOGS = os.path.join(ROOT, "llm/traces/logs")
-STALL_S = 1800          # no telemetry for 30 min while not ended -> stalled
+# Telemetry is emitted only at run boundaries, so silence between run_start and
+# run_done is normal and its length scales with the model. A fixed threshold
+# false-alarms on big models: at 26B a single run outlasts 30 minutes, which had
+# the pilot reading "stalled" while both servers were demonstrably busy. So the
+# threshold follows the cell's own observed pace, and a cell that has not
+# finished a run yet is reported as `warming` rather than judged at all -- from
+# telemetry alone there is no way to tell a slow first run from a hung one.
+STALL_FLOOR_S = 3600    # never call a cell stalled inside an hour of silence
+STALL_MULT = 3          # ... or 3x its own median run, whichever is longer
 TRAIL = 20              # completions in the trailing window used for the rate
 
 
@@ -102,17 +110,18 @@ def main():
         state, med, rate, last = "-", "", "", ""
         if t:
             age = now - t["last_ts"]
-            if t["ended"] and not (age < STALL_S and len(t["done_ts"])):
+            w = t["walls"]
+            if w:
+                med = f"{w[len(w) // 2]:.0f}s"
+            limit = max(STALL_FLOOR_S, STALL_MULT * w[len(w) // 2]) if w else STALL_FLOOR_S
+            if t["ended"]:
                 state = "complete"
-            elif age < STALL_S:
-                state = "RUNNING"
-            elif t["ended"]:
-                state = "complete"
+            elif age < limit:
+                state = "RUNNING" if w else "warming"
+            elif not w:
+                state = "warming?"      # nothing has finished; cannot judge pace
             else:
                 state = "stalled"
-            if t["walls"]:
-                w = t["walls"]
-                med = f"{w[len(w) // 2]:.0f}s"
             if state == "RUNNING" and len(t["done_ts"]) >= 2:
                 win = t["done_ts"][-TRAIL:]
                 span = win[-1] - win[0]
@@ -126,6 +135,8 @@ def main():
     print("-" * 104)
     print(f"{'TOTAL':<24}{tf:>7}{'':>6}{'':>7}{human(td):>8}")
     print("\nmed run = single-run latency, not makespan. For s/run/GPU use `make scaling-report`.")
+    print("warming = started, no run finished yet; a trailing `?` means the pace is")
+    print("unknown, so check the job and server logs rather than trusting this column.")
     return 0
 
 
