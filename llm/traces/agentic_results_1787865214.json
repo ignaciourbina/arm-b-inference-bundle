@@ -1,0 +1,71 @@
+{
+  "engine": "AgenticLLMEngine",
+  "agents_initial": {
+    "A_00": {
+      "weights": {
+        "C_01": 0.7,
+        "C_02": -0.3,
+        "C_03": 0.4
+      },
+      "opinion": 0.4667
+    },
+    "A_01": {
+      "weights": {
+        "C_01": -0.2,
+        "C_02": 0.6,
+        "C_03": -0.1
+      },
+      "opinion": -0.3
+    }
+  },
+  "voice": [
+    {
+      "agent": "A_00",
+      "cid": "C_01",
+      "label": "Carbon pricing reduces emissions effectively"
+    },
+    {
+      "agent": "A_01",
+      "cid": "C_02",
+      "label": "Carbon taxes burden low-income households"
+    }
+  ],
+  "evaluate": [
+    {
+      "listener": "A_01",
+      "speaker": "A_00",
+      "cid": "C_01",
+      "influence_likert": 40
+    },
+    {
+      "listener": "A_00",
+      "speaker": "A_01",
+      "cid": "C_02",
+      "influence_likert": 65
+    }
+  ],
+  "reflect": {
+    "A_00": {
+      "opinion_before": 0.4667,
+      "opinion_after": 0.3,
+      "weight_deltas": {
+        "C_02": {
+          "old": -0.3,
+          "new": 0.2
+        }
+      }
+    },
+    "A_01": {
+      "opinion_before": -0.3,
+      "opinion_after": -0.2667,
+      "weight_deltas": {
+        "C_01": {
+          "old": -0.2,
+          "new": -0.1
+        }
+      }
+    }
+  },
+  "elapsed_s": 7.4,
+  "llm_calls": 12
+}
