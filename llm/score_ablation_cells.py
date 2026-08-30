@@ -72,6 +72,42 @@ def load_runs(directory: Path, seeds: set[int]) -> dict[tuple[str, int], dict]:
     return out
 
 
+def trajectory_at(snap: list[dict], dirs: dict[str, float],
+                  cids: list[str]) -> tuple[float, float, float]:
+    """(dri_orthogonal, mc_agreement, opinion_variance) for ONE snapshot.
+
+    Module-level so the per-round growth analysis
+    (`slurm/growth_pattern_compare.py`) reports the same DRI the paired scorer
+    does. Two independent implementations of the headline indicator would be a
+    methodological hazard, not a convenience.
+
+    DRI is the correlation, across agent pairs, between direction-orthogonal
+    weight similarity and opinion agreement: do agents who agree on the bottom
+    line also share the *reasons*, after the shared directional component is
+    projected out?
+    """
+    M = len(cids) or 1
+    W = [dict(a["weights"]) for a in snap]
+    ops = [float(np.clip(sum(v * dirs[c] for c, v in w.items() if c in dirs) / M, -1, 1))
+           for w in W]
+    mc = 1.0 - sum(float(np.std([abs(w.get(c, 0.0)) for w in W])) for c in cids) / M
+    union = sorted({c for w in W for c in w})
+    d = np.array([dirs[c] for c in union], dtype=float)
+    dn = float(d @ d) or 1.0
+    cs, os_ = [], []
+    for (wa, oa), (wb, ob) in combinations(zip(W, ops), 2):
+        va = np.array([wa.get(c, 0.0) for c in union], dtype=float)
+        vb = np.array([wb.get(c, 0.0) for c in union], dtype=float)
+        va = va - (float(va @ d) / dn) * d
+        vb = vb - (float(vb @ d) / dn) * d
+        na, nb = float(np.linalg.norm(va)), float(np.linalg.norm(vb))
+        cs.append(0.0 if na < 1e-12 or nb < 1e-12 else float(va @ vb / (na * nb)))
+        os_.append(1.0 - abs(oa - ob))
+    dri = (float(pearsonr(cs, os_)[0])
+           if len(cs) >= 2 and np.std(cs) > 1e-12 and np.std(os_) > 1e-12 else float("nan"))
+    return dri, mc, float(np.var(ops))
+
+
 def metrics_for(record: dict) -> dict:
     """Per-run outcomes: voicing, saturation, trajectory endpoints."""
     cons = record.get("scenario", {}).get("considerations", [])
@@ -96,26 +132,7 @@ def metrics_for(record: dict) -> dict:
     def traj(idx: int) -> tuple[float, float, float]:
         if idx >= len(snaps):
             return (float("nan"),) * 3
-        snap = snaps[idx]
-        W = [dict(a["weights"]) for a in snap]
-        ops = [float(np.clip(sum(v * dirs[c] for c, v in w.items() if c in dirs) / M, -1, 1))
-               for w in W]
-        mc = 1.0 - sum(float(np.std([abs(w.get(c, 0.0)) for w in W])) for c in cids) / M
-        union = sorted({c for w in W for c in w})
-        d = np.array([dirs[c] for c in union], dtype=float)
-        dn = float(d @ d) or 1.0
-        cs, os_ = [], []
-        for (wa, oa), (wb, ob) in combinations(zip(W, ops), 2):
-            va = np.array([wa.get(c, 0.0) for c in union], dtype=float)
-            vb = np.array([wb.get(c, 0.0) for c in union], dtype=float)
-            va = va - (float(va @ d) / dn) * d
-            vb = vb - (float(vb @ d) / dn) * d
-            na, nb = float(np.linalg.norm(va)), float(np.linalg.norm(vb))
-            cs.append(0.0 if na < 1e-12 or nb < 1e-12 else float(va @ vb / (na * nb)))
-            os_.append(1.0 - abs(oa - ob))
-        dri = (float(pearsonr(cs, os_)[0])
-               if len(cs) >= 2 and np.std(cs) > 1e-12 and np.std(os_) > 1e-12 else float("nan"))
-        return dri, mc, float(np.var(ops))
+        return trajectory_at(snaps[idx], dirs, cids)
 
     dri8, mc8, var8 = traj(len(snaps) - 1)
     return {
