@@ -1047,3 +1047,49 @@ def test_explicit_profile_argument_beats_the_model_table() -> None:
     assert ToolCallHarness(client=client, harness_profile="strict").harness_profile == "strict"
     with pytest.raises(ValueError):
         ToolCallHarness(client=client, harness_profile="permissive")
+
+
+class _ReflectNeverTerminatesClient:
+    """Emits valid update_weight calls forever, never a terminal tool.
+
+    The 26B pilot's failure mode: not malformed output, just more revisions
+    than the E2B-tuned round budget allows.
+    """
+
+    model = "gemma-4-26B-A4B-it-Q8_0.gguf"
+
+    def __init__(self) -> None:
+        self.calls = 0
+
+    async def chat(self, *args, **kwargs):
+        self.calls += 1
+        return {"role": "assistant", "tool_calls": [{
+            "type": "function",
+            "function": {"name": "update_weight",
+                         "arguments": {"cid": "C_01", "weight": 0.5, "stance": "accept"}},
+        }]}
+
+
+def test_reflect_round_budget_is_profile_conditional(monkeypatch) -> None:
+    """Strict keeps E2B's budget exactly; lenient buys slack for more revisions."""
+    monkeypatch.delenv("LLM_HARNESS_PROFILE", raising=False)
+    from llm.harness import MAX_TOOL_ROUNDS, _REFLECT_SLACK
+
+    assert _REFLECT_SLACK["strict"] == 1, "the frozen E2B budget must not move"
+    agent, pool = _reflect_agent_and_pool()
+    updates = [("C_01", 0.2, 0.5), ("C_02", 0.1, 0.4), ("C_01", 0.3, 0.6),
+               ("C_02", 0.2, 0.5), ("C_01", 0.4, 0.7), ("C_02", 0.3, 0.6)]
+
+    strict_client = _ReflectNeverTerminatesClient()
+    strict_client.model = "gemma-4-E2B-it-Q8_0.gguf"
+    strict = ToolCallHarness(client=strict_client)
+    with pytest.raises(HookLoopError):
+        asyncio.run(strict.reflect(agent, updates, pool))
+    assert strict_client.calls == max(MAX_TOOL_ROUNDS, len(updates) + 1)
+
+    lenient_client = _ReflectNeverTerminatesClient()   # 26B -> lenient
+    lenient = ToolCallHarness(client=lenient_client)
+    with pytest.raises(HookLoopError):
+        asyncio.run(lenient.reflect(agent, updates, pool))
+    assert lenient_client.calls == max(MAX_TOOL_ROUNDS, len(updates) + 4)
+    assert lenient_client.calls > strict_client.calls

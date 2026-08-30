@@ -78,6 +78,15 @@ _ARGSHAPE_TOOLS: dict[str, frozenset[str]] = {
     "done_reflecting": frozenset({"done"}),
 }
 
+# Reflect round budget = max(MAX_TOOL_ROUNDS, n_updates + slack). The strict
+# slack of 1 leaves room for exactly one terminal call after the last update,
+# which fits E2B. The 26B pilot exhausted it while still emitting VALID
+# update_weight calls -- "no terminal tool within budget after 6 attempts" --
+# because a model that revises more considerations needs more turns to get
+# through them AND still call done_reflecting. That is the b128 failure mode
+# and a budget tuned for E2B, not a model defect, so lenient buys slack.
+_REFLECT_SLACK = {"strict": 1, "lenient": 4}
+
 
 def resolve_harness_profile(model: str | None) -> str:
     """Which harness profile a model runs under. Explicit env wins."""
@@ -818,7 +827,10 @@ class ToolCallHarness:
                 "Update your weights using update_weight(cid, weight, stance), "
                 "then call done_reflecting."
             ),
-            max_tool_rounds=max(MAX_TOOL_ROUNDS, len(round_updates) + 1),
+            max_tool_rounds=max(
+                MAX_TOOL_ROUNDS,
+                len(round_updates) + _REFLECT_SLACK[self.harness_profile],
+            ),
         )
 
 
