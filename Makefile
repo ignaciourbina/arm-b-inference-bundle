@@ -102,10 +102,16 @@ doctor:  ## Preflight: verify every invariant a job depends on
 # Refuses to queue a second v100 job. The cluster policy is a hard limit, not
 # advice: a second submission sits PENDING forever and blocks the chain.
 define guard_v100
-	@$(SLURM) n=$$(squeue -u $(USER) -h -p v100 2>/dev/null | wc -l); \
-	if [ "$$n" -gt 0 ]; then \
-	  echo "REFUSED: $$n v100 job(s) already queued/running (limit is 1)."; \
-	  squeue -u $(USER) -p v100 -o "  %.9i %.16j %.9T %.11M %.11l %R"; \
+	@$(SLURM) if ! OUT=$$(timeout 45 squeue -u $(USER) -h -p v100 -o "%i %j %T" 2>/dev/null); then \
+	  echo "REFUSED: cannot reach the Slurm controller, so cannot tell whether a"; \
+	  echo "job is already queued. This guard fails CLOSED on purpose -- an earlier"; \
+	  echo "version counted lines from a failing squeue as zero and let a duplicate"; \
+	  echo "through. Wait for the controller and retry."; \
+	  exit 1; \
+	fi; \
+	if echo "$$OUT" | grep -q .; then \
+	  echo "REFUSED: a v100 job is already queued/running (limit is 1):"; \
+	  echo "$$OUT" | sed 's/^/  /'; \
 	  echo "Cancel it first (make cancel) or wait. See docs/CLUSTER_POLICY_JOBS.md"; \
 	  exit 1; \
 	fi
@@ -155,7 +161,16 @@ submit:  ## Submit an arbitrary script: make submit JOB=slurm/foo.sbatch
 	@test -n "$(JOB)" || { echo "usage: make submit JOB=slurm/<file>.sbatch"; exit 1; }
 	@test -f "$(JOB)" || { echo "no such script: $(JOB)"; exit 1; }
 	$(guard_v100)
-	@$(SLURM) echo "submitted job=$$(sbatch --parsable $(JOB))"
+	@$(SLURM) ID=$$(timeout 60 sbatch --parsable $(JOB) 2>&1); RC=$$?; \
+	case "$$ID" in \
+	  ''|*[!0-9]*) \
+	    echo "SUBMISSION STATE UNKNOWN (rc=$$RC): $$ID"; \
+	    echo "A socket timeout is reported on the REPLY, so the job may well have"; \
+	    echo "been accepted. Run 'make queue' before retrying -- retrying blind is"; \
+	    echo "how two jobs ended up queued against the same cell."; \
+	    exit 1;; \
+	  *) echo "submitted job=$$ID";; \
+	esac
 
 cancel:  ## Cancel ALL of your jobs (asks first)
 	@$(SLURM) squeue -u $(USER) -o "%.9i %.16j %.9T %.11M %R" || true; \
