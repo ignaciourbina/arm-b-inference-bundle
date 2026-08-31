@@ -964,8 +964,12 @@ def test_profile_resolves_e2b_to_strict_and_others_to_lenient(monkeypatch) -> No
     from llm.harness import resolve_harness_profile
 
     assert resolve_harness_profile("gemma-4-E2B-it-Q8_0.gguf") == "strict"
-    assert resolve_harness_profile("gemma-4-E4B-it-Q8_0.gguf") == "lenient"
+    # E4B needs only the format fix, so it gets only that -- the minimal
+    # adaptation keeps it comparable to the E2B collection.
+    assert resolve_harness_profile("gemma-4-E4B-it-Q8_0.gguf") == "format"
     assert resolve_harness_profile("gemma-4-26B-A4B-it-Q8_0.gguf") == "lenient"
+    # An unrecognised model gets nothing loosened.
+    assert resolve_harness_profile("llama-3-8b-instruct.gguf") == "strict"
     # No model information is not a licence to loosen anything.
     assert resolve_harness_profile("") == "strict"
     assert resolve_harness_profile(None) == "strict"
@@ -976,6 +980,8 @@ def test_profile_env_override_wins_both_directions(monkeypatch) -> None:
 
     monkeypatch.setenv("LLM_HARNESS_PROFILE", "strict")
     assert resolve_harness_profile("gemma-4-E4B-it-Q8_0.gguf") == "strict"
+    monkeypatch.setenv("LLM_HARNESS_PROFILE", "format")
+    assert resolve_harness_profile("gemma-4-E2B-it-Q8_0.gguf") == "format"
     monkeypatch.setenv("LLM_HARNESS_PROFILE", "lenient")
     assert resolve_harness_profile("gemma-4-E2B-it-Q8_0.gguf") == "lenient"
     # Garbage is ignored rather than silently loosening the harness.
@@ -1026,8 +1032,10 @@ def test_strict_profile_never_reaches_the_lenient_branch(monkeypatch) -> None:
 
 
 def test_lenient_profile_recovers_the_bare_argument_object(monkeypatch) -> None:
+    """Both adapted profiles carry the argshape rule; only slack differs."""
     monkeypatch.delenv("LLM_HARNESS_PROFILE", raising=False)
-    client = _ReflectBareArgsClient()          # E4B -> lenient
+    monkeypatch.setenv("LLM_HARNESS_PROFILE", "lenient")
+    client = _ReflectBareArgsClient()
     harness = ToolCallHarness(client=client)
     assert harness.harness_profile == "lenient"
 
@@ -1089,7 +1097,54 @@ def test_reflect_round_budget_is_profile_conditional(monkeypatch) -> None:
 
     lenient_client = _ReflectNeverTerminatesClient()   # 26B -> lenient
     lenient = ToolCallHarness(client=lenient_client)
+    assert lenient.harness_profile == "lenient"
     with pytest.raises(HookLoopError):
         asyncio.run(lenient.reflect(agent, updates, pool))
     assert lenient_client.calls == max(MAX_TOOL_ROUNDS, len(updates) + 4)
     assert lenient_client.calls > strict_client.calls
+
+
+def test_format_profile_is_comparability_safe(monkeypatch) -> None:
+    """`format` fixes E4B without touching anything E2B's collection relied on.
+
+    The split exists because the two adaptations differ in exactly this: the
+    argshape rule provably never fired across all 179,605 calls of the 300-run
+    E2B collection, while the reflect-slack change would have altered two of
+    that collection's own failures. So `format` carries the first and not the
+    second, and its reflect budget must stay identical to strict's.
+    """
+    monkeypatch.delenv("LLM_HARNESS_PROFILE", raising=False)
+    from llm.harness import _PROFILE_FEATURES, _REFLECT_SLACK
+
+    assert _REFLECT_SLACK["format"] == _REFLECT_SLACK["strict"] == 1
+    assert _PROFILE_FEATURES["format"] == frozenset({"argshape"})
+    assert "reflect_slack" not in _PROFILE_FEATURES["format"]
+
+    # E4B under `format` still recovers its entire observed failure mode.
+    client = _ReflectBareArgsClient()
+    harness = ToolCallHarness(client=client)
+    assert harness.harness_profile == "format"
+    agent, pool = _reflect_agent_and_pool()
+    result = asyncio.run(harness.reflect(agent, _ROUND_UPDATES, pool))
+    assert client.calls == 1
+    assert [tc["name"] for tc in result.get("_tool_calls", [])] == ["no_update"]
+
+
+def test_format_profile_does_not_extend_the_reflect_budget(monkeypatch) -> None:
+    """The half of leniency that is NOT comparability-safe stays out of format."""
+    monkeypatch.delenv("LLM_HARNESS_PROFILE", raising=False)
+    from llm.harness import MAX_TOOL_ROUNDS
+
+    agent, pool = _reflect_agent_and_pool()
+    updates = [("C_01", 0.2, 0.5), ("C_02", 0.1, 0.4), ("C_01", 0.3, 0.6),
+               ("C_02", 0.2, 0.5), ("C_01", 0.4, 0.7), ("C_02", 0.3, 0.6)]
+
+    client = _ReflectNeverTerminatesClient()
+    client.model = "gemma-4-E4B-it-Q8_0.gguf"       # -> format
+    harness = ToolCallHarness(client=client)
+    assert harness.harness_profile == "format"
+    with pytest.raises(HookLoopError):
+        asyncio.run(harness.reflect(agent, updates, pool))
+    assert client.calls == max(MAX_TOOL_ROUNDS, len(updates) + 1), (
+        "format must use strict's reflect budget"
+    )

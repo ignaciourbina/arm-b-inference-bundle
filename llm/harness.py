@@ -67,8 +67,38 @@ MAX_TEXT_RETRIES = 4
 # runs E2B lenient or E4B strict. The resolved profile is recorded in the trace
 # config, so a cell always says which harness it ran under.
 # ---------------------------------------------------------------------------
+# Two INDEPENDENT adaptations, deliberately not bundled. They differ in the one
+# property that matters for comparability -- whether they can change what the
+# Arm-B E2B collection would have done:
+#
+#   argshape       Accept a bare argument object as its tool call. Measured
+#                  against all 179,605 calls of the 300-run E2B collection:
+#                  640 had no parsed tool call and NONE of them would have been
+#                  coerced. Provably inert for E2B, and it fixes 100% of E4B's
+#                  observed failures.
+#   reflect_slack  More reflect rounds before giving up. NOT inert: two of
+#                  E2B's own failures were "no terminal tool within budget",
+#                  so this one would have changed the collection. Only the 26B
+#                  has been observed to need it.
+#
+# Hence three profiles rather than two. `format` is the minimal adaptation that
+# makes E4B comparable to the existing E2B collection; `lenient` adds the knob
+# that is not comparability-safe and is reserved for models that need it.
 STRICT_ONLY_MODELS = ("gemma-4-e2b",)
-HARNESS_PROFILES = ("strict", "lenient")
+HARNESS_PROFILES = ("strict", "format", "lenient")
+
+# Which model gets the minimal adaptation it demonstrably needs. E4B's observed
+# failures were 100% argshape; the 26B additionally exhausted the round budget.
+_MODEL_PROFILE = (
+    ("gemma-4-e2b", "strict"),
+    ("gemma-4-e4b", "format"),
+    ("gemma-4-26b", "lenient"),
+)
+_PROFILE_FEATURES = {
+    "strict": frozenset(),
+    "format": frozenset({"argshape"}),
+    "lenient": frozenset({"argshape", "reflect_slack"}),
+}
 
 # Bare argument objects that identify a tool unambiguously. `no_update` takes
 # {"unchanged": true} and `done_reflecting` takes {"done": true}; a content-only
@@ -85,7 +115,8 @@ _ARGSHAPE_TOOLS: dict[str, frozenset[str]] = {
 # because a model that revises more considerations needs more turns to get
 # through them AND still call done_reflecting. That is the b128 failure mode
 # and a budget tuned for E2B, not a model defect, so lenient buys slack.
-_REFLECT_SLACK = {"strict": 1, "lenient": 4}
+# `format` keeps E2B's budget of 1 exactly -- that is what makes it neutral.
+_REFLECT_SLACK = {"strict": 1, "format": 1, "lenient": 4}
 
 
 def resolve_harness_profile(model: str | None) -> str:
@@ -96,9 +127,11 @@ def resolve_harness_profile(model: str | None) -> str:
     if env:
         logger.warning("Ignoring unknown LLM_HARNESS_PROFILE=%r", env)
     name = (model or "").lower()
-    if any(s in name for s in STRICT_ONLY_MODELS):
-        return "strict"
-    return "lenient" if name else "strict"
+    for needle, profile in _MODEL_PROFILE:
+        if needle in name:
+            return profile
+    # An unrecognised model, or none at all, is not a licence to loosen.
+    return "strict"
 
 
 def _coerce_argshape_tool_call(content: str, tools: list[ToolSchema]) -> list[ToolCall]:
@@ -666,7 +699,7 @@ class ToolCallHarness:
                 # Lenient profile only: a bare argument object is that tool call
                 # without its envelope. Under `strict` this branch is dead code,
                 # so the E2B path is exactly what it was.
-                if not tool_calls and self.harness_profile == "lenient":
+                if not tool_calls and "argshape" in _PROFILE_FEATURES[self.harness_profile]:
                     tool_calls = _coerce_argshape_tool_call(content, tools)
                     if tool_calls:
                         logger.info(
