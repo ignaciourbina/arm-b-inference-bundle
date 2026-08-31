@@ -1,0 +1,37 @@
+{"event": "collect_start", "grid": 15, "done": 0, "todo": 15, "lanes": 4, "bench_tok_s": 71.2, "harness_profile": "lenient", "ts": 1788108996.1}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 1, "ts": 1788109001.1}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 1, "ts": 1788109016.1}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 1, "ts": 1788109031.1}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 2, "ts": 1788109046.1}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 2, "wall_s": 5526.0, "ts": 1788114572.2}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 3, "ts": 1788114572.2}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 1, "wall_s": 5666.7, "ts": 1788114667.8}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 2, "ts": 1788114667.8}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 1, "wall_s": 5644.2, "ts": 1788114675.3}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 3, "ts": 1788114675.3}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 1, "wall_s": 5917.4, "ts": 1788114933.5}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 2, "ts": 1788114933.5}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 3, "wall_s": 5768.0, "ts": 1788120443.3}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 4, "ts": 1788120443.3}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 2, "wall_s": 5569.6, "ts": 1788120503.1}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 4, "ts": 1788120503.1}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 3, "wall_s": 5969.1, "ts": 1788120541.3}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 4, "ts": 1788120541.3}
+{"event": "run_fail", "lane": 0, "comp": "symmetric_n6", "seed": 2, "wall_s": 5949.5, "rc": 1, "fail_log": "llm/traces/logs/FAIL_ms2_26B_a4b_baseline_symmetric_n6_s2.log", "err_tail": "  File \"~/projects/arm-b-inference-bundle/agora/.venv/lib/python3.11/site-packages/aiohttp/client_reqrep.py\", line 655, in raise_for_status |     raise ClientResponseError( | aiohttp.client_exceptions.ClientResponseError: 500, message='Internal Server Error', url='http://localhost:20434/v1/chat/completions'", "ts": 1788120617.3}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 3, "ts": 1788120617.3}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 4, "wall_s": 5379.1, "ts": 1788125882.2}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 5, "ts": 1788125882.2}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 3, "wall_s": 6091.1, "ts": 1788126708.4}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 5, "ts": 1788126708.4}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 4, "wall_s": 6322.2, "ts": 1788126765.5}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 5, "ts": 1788126765.5}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 4, "wall_s": 6350.0, "ts": 1788126891.3}
+{"event": "lane_done", "lane": 3, "ts": 1788126891.3}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 5, "wall_s": 3569.3, "ts": 1788130277.7}
+{"event": "lane_done", "lane": 0, "ts": 1788130277.7}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 5, "wall_s": 4564.7, "ts": 1788130446.9}
+{"event": "lane_done", "lane": 1, "ts": 1788130446.9}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 5, "wall_s": 3775.2, "ts": 1788130540.7}
+{"event": "lane_done", "lane": 2, "ts": 1788130540.7}
+{"event": "retry_done", "comp": "symmetric_n6", "seed": 2, "rc": 0, "err_tail": "", "ts": 1788130938.2}
+{"event": "collect_end", "done_total": 15, "failures": 0, "hours": 6.09, "paused": false, "ts": 1788130938.2}
