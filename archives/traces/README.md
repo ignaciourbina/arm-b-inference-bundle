@@ -11,7 +11,7 @@ every reader script uses; these archives are a compact, portable snapshot of the
 ## Auxiliary archives (2026-11-23)
 
 These cover trace files and logs that no cell archive covers. Paths inside are
-relative to the repo root, except `slurm_out` and `scratch_strays`, which are
+relative to the repo root, except `slurm_out`, `scratch_strays` and `scratch_misc`, which are
 relative to `$SCRATCH` (purged after 30 days, hence archived here).
 
 | archive | contents |
@@ -21,6 +21,7 @@ relative to `$SCRATCH` (purged after 30 days, hence archived here).
 | `aux_p6cache` | `llm/traces/beta_local/seawulf_test_p6cache` |
 | `aux_misc` | `llm/traces/realprofile_smoke`, `llm/traces/SYNTHETIC_VALIDATION`, `llm/traces/agentic_*.json` |
 | `aux_slurm_out` | `$SCRATCH/*.log` (every SLURM `--output` file: collections and llama.cpp builds) and `$SCRATCH/*.sbatch` (the build scripts) |
+| `aux_scratch_misc` | relative to `$SCRATCH`; 21 small files no other archive covers: `polis-derived/` (first Ising-profile reconstruction, 2026-08-27), `synthetic-validation/` (synthetic-profile generator + outputs), the four `*_scores.json` from the Aug 28–29 ablation scoring, `cpu_resp_1..6.json` (CPU-bench server responses), and five tiny job notes (`26b_target.txt`, `build_jobid.txt`, `ck_meta.txt`, `PAUSED.txt`, `rflag.err`). Excluded as already tracked: `polis-data/*.csv` (= parent `datasets/polis-openData/15-per-hour-seattle/`), `official_ising_profiles.json` (= `polis-analysis/output/ising_profiles.json`), `my-reconstruction/` (= `polis-derived/` + `polis-analysis/output/PROVENANCE.md`) |
 | `aux_scratch_strays` | not in any cell: `resume_test/`, `resume_test2/` (resume-guard tests), `superseded-traces/`, and a stray `seawulf_test_l4` seed-8 final at the `$SCRATCH` root |
 
 Per-cell provenance (jobs, GPU, build, model sha256, server args) is in
