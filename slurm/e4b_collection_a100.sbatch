@@ -40,13 +40,16 @@ export LLM_TEMPERATURE=1.0
 export LLM_HARNESS_PROFILE=format
 export LLM_ABLATION_INFRA="reasoning=on;budget=256;quant=Q8_0;temp=1.0;harness=format;server=p6/24576;lanes=4;model=gemma-4-E4B-it-Q8_0.gguf;gpu=$GPU_NAME"
 CELL=e4b_r256_t10
-TARGET=300
+# Seed ranges per GPU shard; defaults reproduce the first 300-run collection.
+# Extension to 200 seeds/room (2026-11-24): SEEDS_A=101-150 SEEDS_B=151-200 TARGET=600
+SEEDS_A="${SEEDS_A:-1-50}"; SEEDS_B="${SEEDS_B:-51-100}"
+TARGET="${TARGET:-300}"
 CHAIN="${CHAIN:-1}"; MAX_CHAIN=3
 MD="$HOME/.cache/llama-models"
 mkdir -p llm/traces/logs
 count_finals() { find llm/traces/collection/$CELL -name 'townhall_*.json' ! -name '*_checkpoint.json' ! -name '*_trace_*' 2>/dev/null | wc -l; }
 N0=$(count_finals)
-echo "[chain $CHAIN/$MAX_CHAIN] node=$(hostname) job=$SLURM_JOB_ID gpus=$CUDA_VISIBLE_DEVICES finals_at_start=$N0"
+echo "[chain $CHAIN/$MAX_CHAIN] node=$(hostname) job=$SLURM_JOB_ID gpus=$CUDA_VISIBLE_DEVICES finals_at_start=$N0 seeds=$SEEDS_A/$SEEDS_B target=$TARGET"
 echo "[harness] LLM_HARNESS_PROFILE=$LLM_HARNESS_PROFILE (explicit; pinned into every run)"
 nvidia-smi --query-gpu=index,name,memory.total --format=csv,noheader
 
@@ -73,13 +76,13 @@ for i in 0 1; do
 done
 
 # Stop ~40 min before the 48 h walltime so the chain hands over cleanly.
-P0=${PORTS[0]} P1=${PORTS[1]} CELL=$CELL timeout -s TERM 170400 bash -c '
+P0=${PORTS[0]} P1=${PORTS[1]} CELL=$CELL SEEDS_A=$SEEDS_A SEEDS_B=$SEEDS_B timeout -s TERM 170400 bash -c '
   shard() { LLM_BASE_URL="http://localhost:$2" COLLECT_GPU_INDEX="$3" \
     agora/.venv/bin/python -u llm/run_collection_parallel.py \
       --cell "$CELL" --seeds "$1" --lanes 4 --rounds 8 --agents 6 --run-parallel 6 \
       --lane-stagger 15 --status-interval 900 --base-url "http://localhost:$2" 2>&1 | sed "s/^/[gpu$3] /"; }
-  shard 1-50   "$P0" 0 & A=$!
-  shard 51-100 "$P1" 1 & B=$!
+  shard "$SEEDS_A" "$P0" 0 & A=$!
+  shard "$SEEDS_B" "$P1" 1 & B=$!
   wait $A; wait $B'
 
 N=$(count_finals)
@@ -91,7 +94,7 @@ elif [ "$N" -le "$N0" ]; then
   echo "[chain] NO PROGRESS this chain -> NOT resubmitting; read the log above"
 elif [ "$CHAIN" -lt "$MAX_CHAIN" ]; then
   echo "[chain] incomplete -> resubmitting as chain $((CHAIN+1))"
-  sbatch --export=ALL,CHAIN=$((CHAIN+1)) "$ROOT/slurm/e4b_collection_a100.sbatch"
+  sbatch --export=ALL,CHAIN=$((CHAIN+1)),SEEDS_A=$SEEDS_A,SEEDS_B=$SEEDS_B,TARGET=$TARGET "$ROOT/slurm/e4b_collection_a100.sbatch"
 else
   echo "[chain] max chain reached"
 fi
