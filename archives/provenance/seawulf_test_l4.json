@@ -1,0 +1,144 @@
+{
+ "cell": "seawulf_test_l4",
+ "trace_dir": "llm/traces/collection/seawulf_test_l4",
+ "counts": {
+  "value": {
+   "finals": 30,
+   "checkpoints": 30,
+   "call_traces": 32
+  },
+  "how": "recorded"
+ },
+ "grid": {
+  "value": {
+   "polarized": "10 seeds 1-10",
+   "symmetric": "10 seeds 1-10",
+   "three_clusters": "10 seeds 1-10"
+  },
+  "how": "recorded"
+ },
+ "sbatch": {
+  "value": "armb_collection_l4.sbatch, armb_collection_2gpu.sbatch, armb_finish_one.sbatch, armb_fix_s8.sbatch, armb_fix_s8_p24.sbatch",
+  "how": "reconstructed"
+ },
+ "launch_repo_commit": {
+  "value": "36d59ff 2026-08-27T18:49:18-04:00",
+  "how": "reconstructed",
+  "note": "last commit before the first telemetry event; the working tree may have been dirty"
+ },
+ "slurm_jobs": {
+  "value": [
+   "79464",
+   "79476",
+   "79484",
+   "79485",
+   "79486"
+  ],
+  "how": "reconstructed"
+ },
+ "times_utc": {
+  "value": {
+   "first_event": "2026-08-27T22:56:41Z",
+   "last_event": "2026-08-28T01:00:13Z"
+  },
+  "how": "recorded",
+  "note": "orchestrator telemetry; SLURM submit/start/end are in sacct only for e4b_r256_t10"
+ },
+ "sacct": {
+  "value": "unknown",
+  "how": "unknown"
+ },
+ "node": {
+  "value": "unknown",
+  "how": "unknown"
+ },
+ "gpu": {
+  "value": "Tesla V100-PCIE-32GB",
+  "how": "recorded"
+ },
+ "llama_cpp": {
+  "value": {
+   "commit": "18443257a30c884d5332abb8e7dc43c7ffe42fda",
+   "build_dir": "build",
+   "cuda_arch": "70-real",
+   "build_job": "79441",
+   "built": "2026-08-27",
+   "flags": "-DCMAKE_BUILD_TYPE=Release -DGGML_CUDA=ON, built inside cuda124-devel.sif via Singularity; see $SCRATCH/build_llama*.sbatch (archived in slurm_out)"
+  },
+  "how": "reconstructed"
+ },
+ "model": {
+  "value": {
+   "file": "gemma-4-E2B-it-Q8_0.gguf",
+   "sha256": "996d08777aadc6bfd3c7375ef70ba25a0f55240075860754fdb18d6d860aa63a"
+  },
+  "how": "recorded",
+  "note": "file name recorded at run time (server model_path); sha256 measured 2026-11-23 on the file at the same path"
+ },
+ "server": {
+  "value": {
+   "total_slots": "24",
+   "n_ctx_slot": "4096"
+  },
+  "how": "recorded",
+  "note": "absent keys predate ablation_infra; see the sbatch for the launch line"
+ },
+ "sampling": {
+  "value": {
+   "temperature": "(unrecorded)",
+   "harness_profile": "(unrecorded)",
+   "prompt_variant": "control",
+   "reflect_decision_policy": "explicit_update_or_no_update_v2"
+  },
+  "how": "recorded"
+ },
+ "telemetry_events": {
+  "value": {
+   "collect_start": 4,
+   "run_start": 35,
+   "run_done": 23,
+   "run_fail": 8,
+   "lane_done": 9,
+   "retry_done": 6,
+   "collect_end": 3,
+   "retry_fail": 2
+  },
+  "how": "recorded"
+ },
+ "logs": {
+  "value": {
+   "server_logs": [
+    "2gpu_srv0_79476.log",
+    "2gpu_srv1_79476.log",
+    "finish_srv_79484.log",
+    "l4_server_79464.log",
+    "s8_srv_79485.log",
+    "s8_srv_79486.log"
+   ],
+   "slurm_out": [
+    "armb_l4_79464.log",
+    "armb_2gpu_79476.log",
+    "armb_finish_79484.log",
+    "armb_s8_79485.log",
+    "armb_s8b_79486.log"
+   ],
+   "archived_in": "archives/traces/aux_llm_traces_logs.tar.zst, aux_slurm_out.tar.zst"
+  },
+  "how": "recorded"
+ },
+ "note": "seed 8 was re-collected by the fix_s8 jobs; one stray seed-8 final also sits at $SCRATCH root",
+ "config_all_fields": {
+  "condition": "baseline",
+  "confirmation_bias": "0.3",
+  "harness_profile": "(unrecorded)",
+  "model": "gemma-4-E2B-it-Q8_0.gguf",
+  "model_path": "gemma-4-E2B-it-Q8_0.gguf",
+  "n_agents": "6",
+  "n_ctx_slot": "4096",
+  "n_rounds": "8",
+  "prompt_variant": "control",
+  "reflect_decision_policy": "explicit_update_or_no_update_v2",
+  "temperature": "(unrecorded)",
+  "total_slots": "24"
+ }
+}

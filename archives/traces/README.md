@@ -1,15 +1,38 @@
 # Compressed collection traces
 
 One `tar.zst -19` archive per cell of `llm/traces/collection/` (STORAGE-POLICY
-§7, Tier 2): 29 cells, ~3.7 GB of JSON → ~80 MB. Each archive extracts to exactly
-the git-tracked files of its cell (round-trip verified with sha256 at creation).
-The empty cell `e4b_r256_t10` has no archive.
+§7, Tier 2): 30 cells. Each archive extracts to exactly the git-tracked files
+of its cell (round-trip verified with sha256 at creation). `e4b_r256_t10` was
+added 2026-11-23 (300 runs, A100). The other 29 date from 2026-11-13.
 
 The plain-JSON cells under `llm/traces/collection/` remain the working copy that
 every reader script uses; these archives are a compact, portable snapshot of them.
 
-Home-directory paths in `model_path` and error tails were scrubbed to `~` before
-archiving (this repo is public).
+## Auxiliary archives (2026-11-23)
+
+These cover trace files and logs that no cell archive covers. Paths inside are
+relative to the repo root, except `slurm_out` and `scratch_strays`, which are
+relative to `$SCRATCH` (purged after 30 days, hence archived here).
+
+| archive | contents |
+|---|---|
+| `aux_llm_traces_logs_1` | `llm/traces/logs/` files for the `e4b*`, `ms*`, `cd*`, `abl*` families: server logs, `.out`, `FAIL_*`, progress telemetry |
+| `aux_llm_traces_logs_2` | all other `llm/traces/logs/` files. The `.log` files are gitignored, so they exist only here and on disk. |
+| `aux_p6cache` | `llm/traces/beta_local/seawulf_test_p6cache` |
+| `aux_misc` | `llm/traces/realprofile_smoke`, `llm/traces/SYNTHETIC_VALIDATION`, `llm/traces/agentic_*.json` |
+| `aux_slurm_out` | `$SCRATCH/*.log` (every SLURM `--output` file: collections and llama.cpp builds) and `$SCRATCH/*.sbatch` (the build scripts) |
+| `aux_scratch_strays` | not in any cell: `resume_test/`, `resume_test2/` (resume-guard tests), `superseded-traces/`, and a stray `seawulf_test_l4` seed-8 final at the `$SCRATCH` root |
+
+Per-cell provenance (jobs, GPU, build, model sha256, server args) is in
+`archives/provenance/`.
+
+## Scrubbing
+
+This repo is public. Before archiving, every text file went through three
+replacements, applied in order: `/gpfs/home/<user>` → `~`, `/gpfs/scratch/<user>` →
+`$SCRATCH`, `<user>` → `$USER`. For the 2026-11-23 additions it was checked
+file by file: scrubbed text equals the original with only those replacements.
+The unscrubbed originals are not in this repo.
 
 ```bash
 sha256sum -c SHA256SUMS                                  # verify

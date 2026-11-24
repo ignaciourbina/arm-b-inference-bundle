@@ -1,0 +1,145 @@
+{
+ "cell": "e4b_r256_t10",
+ "trace_dir": "llm/traces/collection/e4b_r256_t10",
+ "counts": {
+  "value": {
+   "finals": 300,
+   "checkpoints": 300,
+   "call_traces": 301
+  },
+  "how": "recorded"
+ },
+ "grid": {
+  "value": {
+   "polarized": "100 seeds 1-100",
+   "symmetric": "100 seeds 1-100",
+   "three_clusters": "100 seeds 1-100"
+  },
+  "how": "recorded"
+ },
+ "sbatch": {
+  "value": "e4b_collection_a100.sbatch",
+  "how": "reconstructed"
+ },
+ "launch_repo_commit": {
+  "value": "718deb8 2026-11-13T15:22:35-05:00",
+  "how": "reconstructed",
+  "note": "last commit before the first telemetry event; the working tree may have been dirty"
+ },
+ "slurm_jobs": {
+  "value": [
+   "2433689"
+  ],
+  "how": "reconstructed"
+ },
+ "times_utc": {
+  "value": {
+   "first_event": "2026-11-18T00:32:34Z",
+   "last_event": "2026-11-19T01:54:02Z"
+  },
+  "how": "recorded",
+  "note": "orchestrator telemetry; SLURM submit/start/end are in sacct only for e4b_r256_t10"
+ },
+ "sacct": {
+  "value": "2433689|e4b-a100|a100-long|2026-11-17T15:51:22|2026-11-17T19:32:08|2026-11-18T20:54:03|1-01:21:55|COMPLETED|0:0|a100-02|billing=28,cpu=28,gres/gpu=2,mem=96G,node=1",
+  "how": "recorded"
+ },
+ "node": {
+  "value": "a100-02",
+  "how": "recorded"
+ },
+ "gpu": {
+  "value": "NVIDIA-A100-80GB-PCIe",
+  "how": "recorded"
+ },
+ "llama_cpp": {
+  "value": {
+   "commit": "18443257a30c884d5332abb8e7dc43c7ffe42fda",
+   "build_dir": "build-a100",
+   "cuda_arch": "80-real",
+   "build_job": "2434147",
+   "built": "2026-11-17",
+   "flags": "-DCMAKE_BUILD_TYPE=Release -DGGML_CUDA=ON, built inside cuda124-devel.sif via Singularity; see $SCRATCH/build_llama*.sbatch (archived in slurm_out)"
+  },
+  "how": "reconstructed"
+ },
+ "model": {
+  "value": {
+   "file": "gemma-4-E4B-it-Q8_0.gguf",
+   "sha256": "34be82b17b4942d389b9b527170c4b058027abdd32531fda063d3d97dd8ce80a"
+  },
+  "how": "recorded",
+  "note": "file name recorded at run time (server model_path); sha256 measured 2026-11-23 on the file at the same path"
+ },
+ "server": {
+  "value": {
+   "total_slots": "6",
+   "n_ctx_slot": "4096",
+   "infra.server": "p6/24576",
+   "infra.budget": "256",
+   "infra.reasoning": "on",
+   "infra.lanes": "4",
+   "infra.quant": "Q8_0"
+  },
+  "how": "recorded",
+  "note": "absent keys predate ablation_infra; see the sbatch for the launch line"
+ },
+ "sampling": {
+  "value": {
+   "temperature": "1.0",
+   "harness_profile": "format",
+   "prompt_variant": "control",
+   "reflect_decision_policy": "explicit_update_or_no_update_v2"
+  },
+  "how": "recorded"
+ },
+ "telemetry_events": {
+  "value": {
+   "collect_start": 2,
+   "run_start": 300,
+   "run_done": 295,
+   "run_fail": 5,
+   "lane_done": 8,
+   "retry_done": 5,
+   "collect_end": 2
+  },
+  "how": "recorded"
+ },
+ "logs": {
+  "value": {
+   "server_logs": [
+    "e4b_a100_c1_srv0_2433689.log",
+    "e4b_a100_c1_srv1_2433689.log"
+   ],
+   "slurm_out": [
+    "e4b_a100_2433689.log"
+   ],
+   "archived_in": "archives/traces/aux_llm_traces_logs.tar.zst, aux_slurm_out.tar.zst"
+  },
+  "how": "recorded"
+ },
+ "note": "V100 attempt (e4b_collection.sbatch, jobs 80816/81118/81119/81122, 2026-08-31) produced 0 runs: every link aborted on the disk-space guard. All 300 runs come from A100 job 2433689",
+ "config_all_fields": {
+  "condition": "baseline",
+  "confirmation_bias": "0.3",
+  "harness_profile": "format",
+  "infra.budget": "256",
+  "infra.gpu": "NVIDIA-A100-80GB-PCIe",
+  "infra.harness": "format",
+  "infra.lanes": "4",
+  "infra.model": "gemma-4-E4B-it-Q8_0.gguf",
+  "infra.quant": "Q8_0",
+  "infra.reasoning": "on",
+  "infra.server": "p6/24576",
+  "infra.temp": "1.0",
+  "model": "gemma-4-E4B-it-Q8_0.gguf",
+  "model_path": "gemma-4-E4B-it-Q8_0.gguf",
+  "n_agents": "6",
+  "n_ctx_slot": "4096",
+  "n_rounds": "8",
+  "prompt_variant": "control",
+  "reflect_decision_policy": "explicit_update_or_no_update_v2",
+  "temperature": "1.0",
+  "total_slots": "6"
+ }
+}

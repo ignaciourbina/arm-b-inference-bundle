@@ -1,0 +1,134 @@
+{
+ "cell": "cd_cache_256",
+ "trace_dir": "llm/traces/collection/cd_cache_256",
+ "counts": {
+  "value": {
+   "finals": 9,
+   "checkpoints": 9,
+   "call_traces": 10
+  },
+  "how": "recorded"
+ },
+ "grid": {
+  "value": {
+   "polarized": "3 seeds 701-703",
+   "symmetric": "3 seeds 701-703",
+   "three_clusters": "3 seeds 701-703"
+  },
+  "how": "recorded"
+ },
+ "sbatch": {
+  "value": "axes_cd.sbatch",
+  "how": "reconstructed"
+ },
+ "launch_repo_commit": {
+  "value": "0c3c3be 2026-08-27T23:43:06-04:00",
+  "how": "reconstructed",
+  "note": "last commit before the first telemetry event; the working tree may have been dirty"
+ },
+ "slurm_jobs": {
+  "value": [
+   "79903"
+  ],
+  "how": "reconstructed"
+ },
+ "times_utc": {
+  "value": {
+   "first_event": "2026-08-29T19:21:19Z",
+   "last_event": "2026-08-29T20:47:19Z"
+  },
+  "how": "recorded",
+  "note": "orchestrator telemetry; SLURM submit/start/end are in sacct only for e4b_r256_t10"
+ },
+ "sacct": {
+  "value": "unknown",
+  "how": "unknown"
+ },
+ "node": {
+  "value": "unknown",
+  "how": "unknown"
+ },
+ "gpu": {
+  "value": "Tesla V100-PCIE-32GB",
+  "how": "recorded"
+ },
+ "llama_cpp": {
+  "value": {
+   "commit": "18443257a30c884d5332abb8e7dc43c7ffe42fda",
+   "build_dir": "build-multi",
+   "cuda_arch": "60-real;70-real",
+   "build_job": "79721",
+   "built": "2026-08-28",
+   "flags": "-DCMAKE_BUILD_TYPE=Release -DGGML_CUDA=ON, built inside cuda124-devel.sif via Singularity; see $SCRATCH/build_llama*.sbatch (archived in slurm_out)"
+  },
+  "how": "reconstructed"
+ },
+ "model": {
+  "value": {
+   "file": "gemma-4-E2B-it-Q8_0.gguf",
+   "sha256": "996d08777aadc6bfd3c7375ef70ba25a0f55240075860754fdb18d6d860aa63a"
+  },
+  "how": "recorded",
+  "note": "file name recorded at run time (server model_path); sha256 measured 2026-11-23 on the file at the same path"
+ },
+ "server": {
+  "value": {
+   "total_slots": "6",
+   "n_ctx_slot": "4096"
+  },
+  "how": "recorded",
+  "note": "absent keys predate ablation_infra; see the sbatch for the launch line"
+ },
+ "sampling": {
+  "value": {
+   "temperature": "1.0",
+   "harness_profile": "(unrecorded)",
+   "prompt_variant": "control",
+   "reflect_decision_policy": "explicit_update_or_no_update_v2"
+  },
+  "how": "recorded"
+ },
+ "telemetry_events": {
+  "value": {
+   "collect_start": 1,
+   "run_start": 9,
+   "run_done": 9,
+   "lane_done": 4,
+   "collect_end": 1
+  },
+  "how": "recorded"
+ },
+ "logs": {
+  "value": {
+   "server_logs": [
+    "cd_srv0_p6_c0_79903.log",
+    "cd_srv0_p6_c1024_79903.log",
+    "cd_srv0_p6_c256_79903.log",
+    "cd_srv0_p6_c4096_79903.log",
+    "cd_srv1_p12_c256_79903.log",
+    "cd_srv1_p24_c256_79903.log",
+    "cd_srv1_p6_c256_79903.log"
+   ],
+   "slurm_out": [
+    "axes_cd_79903.log"
+   ],
+   "archived_in": "archives/traces/aux_llm_traces_logs.tar.zst, aux_slurm_out.tar.zst"
+  },
+  "how": "recorded"
+ },
+ "note": "",
+ "config_all_fields": {
+  "condition": "baseline",
+  "confirmation_bias": "0.3",
+  "harness_profile": "(unrecorded)",
+  "model": "gemma-4-E2B-it-Q8_0.gguf",
+  "model_path": "gemma-4-E2B-it-Q8_0.gguf",
+  "n_agents": "6",
+  "n_ctx_slot": "4096",
+  "n_rounds": "8",
+  "prompt_variant": "control",
+  "reflect_decision_policy": "explicit_update_or_no_update_v2",
+  "temperature": "1.0",
+  "total_slots": "6"
+ }
+}

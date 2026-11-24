@@ -1,0 +1,3504 @@
+{
+  "config": {
+    "topic": "minimum_wage_seattle",
+    "topic_description": "Should Seattle implement a $15/hour minimum wage?",
+    "n_agents": 6,
+    "n_rounds": 8,
+    "seed": 41,
+    "condition": "baseline",
+    "composition": "polarized_n6",
+    "model": "gemma-4-E4B-it-Q8_0.gguf",
+    "confirmation_bias": 0.3,
+    "reflect_decision_policy": "explicit_update_or_no_update_v2",
+    "prompt_variant": "control",
+    "prompt_variant_note": "production BASELINE prompt profile (unchanged)",
+    "server_props": {
+      "model_path": "~/.cache/llama-models/gemma-4-E4B-it-GGUF/gemma-4-E4B-it-Q8_0.gguf",
+      "total_slots": 6,
+      "n_ctx_slot": 4096
+    },
+    "ablation_infra": "reasoning=on;budget=256;quant=Q8_0;temp=1.0;harness=format;server=p6/24576;lanes=4;model=gemma-4-E4B-it-Q8_0.gguf;gpu=NVIDIA-A100-80GB-PCIe",
+    "temperature": 1.0,
+    "harness_profile": "format"
+  },
+  "profiles": [
+    {
+      "arm_a_agent_id": "agent_000",
+      "ising_latent_theta": 2.351751,
+      "prior_precision": 4.887660140856232,
+      "open_mindedness": 0.15544950000000002,
+      "salience_prior": {
+        "C_01": 1.0,
+        "C_02": 1.0,
+        "C_03": -1.0,
+        "C_04": 1.0,
+        "C_05": 1.0,
+        "C_06": -1.0,
+        "C_07": -1.0,
+        "C_08": 0.9933110216141112,
+        "C_09": -1.0,
+        "C_10": -0.9995525967054282
+      }
+    },
+    {
+      "arm_a_agent_id": "agent_001",
+      "ising_latent_theta": 1.984616,
+      "prior_precision": 3.9585031967769284,
+      "open_mindedness": 0.20123449999999998,
+      "salience_prior": {
+        "C_01": 0.9563004684845878,
+        "C_02": 0.9832888998087093,
+        "C_03": -0.9766389572373649,
+        "C_04": 1.0,
+        "C_05": 1.0,
+        "C_06": -1.0,
+        "C_07": -1.0,
+        "C_08": 0.9215380697993432,
+        "C_09": -0.5511967784430652,
+        "C_10": -0.9760929057473405
+      }
+    },
+    {
+      "arm_a_agent_id": "agent_002",
+      "ising_latent_theta": 1.499985,
+      "prior_precision": 2.800931578794765,
+      "open_mindedness": 0.27634875000000003,
+      "salience_prior": {
+        "C_01": 0.9647663813733575,
+        "C_02": 0.9691317582172959,
+        "C_03": -1.0,
+        "C_04": 0.9559013968873241,
+        "C_05": 0.9895736989709013,
+        "C_06": -0.8344058782090296,
+        "C_07": -0.34972319930138923,
+        "C_08": 1.0,
+        "C_09": -0.10011618446159641,
+        "C_10": -1.0
+      }
+    },
+    {
+      "arm_a_agent_id": "agent_003",
+      "ising_latent_theta": -1.821189,
+      "prior_precision": 3.238843771976288,
+      "open_mindedness": 0.244805,
+      "salience_prior": {
+        "C_01": -0.9934069565280349,
+        "C_02": -1.0,
+        "C_03": 1.0,
+        "C_04": -1.0,
+        "C_05": -0.979235116828543,
+        "C_06": 0.9862420477619326,
+        "C_07": 1.0,
+        "C_08": -1.0,
+        "C_09": -1.0,
+        "C_10": 1.0
+      }
+    },
+    {
+      "arm_a_agent_id": "agent_004",
+      "ising_latent_theta": -2.781724,
+      "prior_precision": 4.820587829837399,
+      "open_mindedness": 0.15844999999999998,
+      "salience_prior": {
+        "C_01": -1.0,
+        "C_02": -0.9949560811774643,
+        "C_03": 1.0,
+        "C_04": -1.0,
+        "C_05": -1.0,
+        "C_06": 1.0,
+        "C_07": 1.0,
+        "C_08": -0.9751857229877824,
+        "C_09": 1.0,
+        "C_10": 1.0
+      }
+    },
+    {
+      "arm_a_agent_id": "agent_005",
+      "ising_latent_theta": -1.560321,
+      "prior_precision": 0.6685470857165287,
+      "open_mindedness": 0.587434,
+      "salience_prior": {
+        "C_01": 1.0,
+        "C_02": -0.7457758008472287,
+        "C_03": 1.0,
+        "C_04": -1.0,
+        "C_05": -0.6968452312838105,
+        "C_06": 1.0,
+        "C_07": 1.0,
+        "C_08": -0.3718302346293411,
+        "C_09": 1.0,
+        "C_10": 1.0
+      }
+    }
+  ],
+  "scenario": {
+    "considerations": [
+      {
+        "id": "C_01",
+        "label": "living wage / subsidy",
+        "direction": 1.0,
+        "persuasiveness": 0.817
+      },
+      {
+        "id": "C_02",
+        "label": "inflation protection for workers",
+        "direction": 1.0,
+        "persuasiveness": 0.9
+      },
+      {
+        "id": "C_03",
+        "label": "inflation and fairness",
+        "direction": -1.0,
+        "persuasiveness": 0.3
+      },
+      {
+        "id": "C_04",
+        "label": "older-worker income",
+        "direction": 1.0,
+        "persuasiveness": 0.633
+      },
+      {
+        "id": "C_05",
+        "label": "income inequality",
+        "direction": 1.0,
+        "persuasiveness": 0.734
+      },
+      {
+        "id": "C_06",
+        "label": "small-business survival",
+        "direction": -1.0,
+        "persuasiveness": 0.416
+      },
+      {
+        "id": "C_07",
+        "label": "automation",
+        "direction": -1.0,
+        "persuasiveness": 0.768
+      },
+      {
+        "id": "C_08",
+        "label": "basic-income transition",
+        "direction": 1.0,
+        "persuasiveness": 0.852
+      },
+      {
+        "id": "C_09",
+        "label": "service redesign",
+        "direction": -1.0,
+        "persuasiveness": 0.75
+      },
+      {
+        "id": "C_10",
+        "label": "systemic critique",
+        "direction": -1.0,
+        "persuasiveness": 0.333
+      }
+    ]
+  },
+  "rounds": [
+    {
+      "round_num": 1,
+      "voices": [
+        {
+          "agent_id": "TH_00",
+          "cid": "C_05",
+          "label": "income inequality",
+          "agent_opinion": 1.0
+        },
+        {
+          "agent_id": "TH_01",
+          "cid": "C_05",
+          "label": "income inequality",
+          "agent_opinion": 1.0
+        },
+        {
+          "agent_id": "TH_02",
+          "cid": "C_08",
+          "label": "basic-income transition",
+          "agent_opinion": 1.0
+        },
+        {
+          "agent_id": "TH_03",
+          "cid": "C_03",
+          "label": "inflation and fairness",
+          "agent_opinion": -0.7143
+        },
+        {
+          "agent_id": "TH_04",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -1.0
+        },
+        {
+          "agent_id": "TH_05",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.7143
+        }
+      ],
+      "evaluations": [
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_00",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_00",
+          "cid": "C_05",
+          "influence_likert": 90,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_00",
+          "cid": "C_05",
+          "influence_likert": 25,
+          "listener_opinion": -0.7143
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_00",
+          "cid": "C_05",
+          "influence_likert": 20,
+          "listener_opinion": -1.0
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_00",
+          "cid": "C_05",
+          "influence_likert": 30,
+          "listener_opinion": -0.7143
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 98,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 30,
+          "listener_opinion": -0.7143
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 20,
+          "listener_opinion": -1.0
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 35,
+          "listener_opinion": -0.7143
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_02",
+          "cid": "C_08",
+          "influence_likert": 85,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_02",
+          "cid": "C_08",
+          "influence_likert": 85,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_02",
+          "cid": "C_08",
+          "influence_likert": 25,
+          "listener_opinion": -0.7143
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_02",
+          "cid": "C_08",
+          "influence_likert": 20,
+          "listener_opinion": -1.0
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_02",
+          "cid": "C_08",
+          "influence_likert": 25,
+          "listener_opinion": -0.7143
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 15,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 20,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 15,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 90,
+          "listener_opinion": -1.0
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 90,
+          "listener_opinion": -0.7143
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 35,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.7143
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.7143
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 45,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 80,
+          "listener_opinion": -0.7143
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 95,
+          "listener_opinion": -1.0
+        }
+      ],
+      "reflections": [
+        {
+          "agent_id": "TH_00",
+          "opinion_before": 1.0,
+          "opinion_after": 0.9833,
+          "weights_changed": 1,
+          "weight_deltas": {
+            "C_08": 0.85
+          }
+        },
+        {
+          "agent_id": "TH_01",
+          "opinion_before": 1.0,
+          "opinion_after": 1.0,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        },
+        {
+          "agent_id": "TH_02",
+          "opinion_before": 1.0,
+          "opinion_after": 0.75,
+          "weights_changed": 2,
+          "weight_deltas": {
+            "C_05": 0.95,
+            "C_06": 0.2
+          }
+        },
+        {
+          "agent_id": "TH_03",
+          "opinion_before": -0.7143,
+          "opinion_after": -0.725,
+          "weights_changed": 1,
+          "weight_deltas": {
+            "C_06": 0.8
+          }
+        },
+        {
+          "agent_id": "TH_04",
+          "opinion_before": -1.0,
+          "opinion_after": -1.0,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        },
+        {
+          "agent_id": "TH_05",
+          "opinion_before": -0.7143,
+          "opinion_after": -0.7071,
+          "weights_changed": 1,
+          "weight_deltas": {
+            "C_06": -0.05
+          }
+        }
+      ],
+      "elapsed_s": 303.0,
+      "llm_calls": 64
+    },
+    {
+      "round_num": 2,
+      "voices": [
+        {
+          "agent_id": "TH_00",
+          "cid": "C_05",
+          "label": "income inequality",
+          "agent_opinion": 0.9833
+        },
+        {
+          "agent_id": "TH_01",
+          "cid": "C_05",
+          "label": "income inequality",
+          "agent_opinion": 1.0
+        },
+        {
+          "agent_id": "TH_02",
+          "cid": "C_08",
+          "label": "basic-income transition",
+          "agent_opinion": 0.75
+        },
+        {
+          "agent_id": "TH_03",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.725
+        },
+        {
+          "agent_id": "TH_04",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -1.0
+        },
+        {
+          "agent_id": "TH_05",
+          "cid": "C_03",
+          "label": "inflation and fairness",
+          "agent_opinion": -0.7071
+        }
+      ],
+      "evaluations": [
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_00",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_00",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.75
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_00",
+          "cid": "C_05",
+          "influence_likert": 25,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_00",
+          "cid": "C_05",
+          "influence_likert": 10,
+          "listener_opinion": -1.0
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_00",
+          "cid": "C_05",
+          "influence_likert": 30,
+          "listener_opinion": -0.7071
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.9833
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.75
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 20,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 20,
+          "listener_opinion": -1.0
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 30,
+          "listener_opinion": -0.7071
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_02",
+          "cid": "C_08",
+          "influence_likert": 90,
+          "listener_opinion": 0.9833
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_02",
+          "cid": "C_08",
+          "influence_likert": 85,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_02",
+          "cid": "C_08",
+          "influence_likert": 15,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_02",
+          "cid": "C_08",
+          "influence_likert": 30,
+          "listener_opinion": -1.0
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_02",
+          "cid": "C_08",
+          "influence_likert": 45,
+          "listener_opinion": -0.7071
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 15,
+          "listener_opinion": 0.9833
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 10,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 35,
+          "listener_opinion": 0.75
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 95,
+          "listener_opinion": -1.0
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 95,
+          "listener_opinion": -0.7071
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.9833
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 30,
+          "listener_opinion": 0.75
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.7071
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_05",
+          "cid": "C_03",
+          "influence_likert": 20,
+          "listener_opinion": 0.9833
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_05",
+          "cid": "C_03",
+          "influence_likert": 35,
+          "listener_opinion": 1.0
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_05",
+          "cid": "C_03",
+          "influence_likert": 5,
+          "listener_opinion": 0.75
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_05",
+          "cid": "C_03",
+          "influence_likert": 90,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_05",
+          "cid": "C_03",
+          "influence_likert": 90,
+          "listener_opinion": -1.0
+        }
+      ],
+      "reflections": [
+        {
+          "agent_id": "TH_00",
+          "opinion_before": 0.9833,
+          "opinion_after": 0.9811,
+          "weights_changed": 2,
+          "weight_deltas": {
+            "C_01": -0.01,
+            "C_05": -0.01
+          }
+        },
+        {
+          "agent_id": "TH_01",
+          "opinion_before": 1.0,
+          "opinion_after": 0.8667,
+          "weights_changed": 2,
+          "weight_deltas": {
+            "C_03": -0.35,
+            "C_08": 0.85
+          }
+        },
+        {
+          "agent_id": "TH_02",
+          "opinion_before": 0.75,
+          "opinion_after": 0.726,
+          "weights_changed": 2,
+          "weight_deltas": {
+            "C_05": 0.03,
+            "C_06": 0.15
+          }
+        },
+        {
+          "agent_id": "TH_03",
+          "opinion_before": -0.725,
+          "opinion_after": -0.725,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        },
+        {
+          "agent_id": "TH_04",
+          "opinion_before": -1.0,
+          "opinion_after": -0.9222,
+          "weights_changed": 1,
+          "weight_deltas": {
+            "C_08": -0.3
+          }
+        },
+        {
+          "agent_id": "TH_05",
+          "opinion_before": -0.7071,
+          "opinion_after": -0.7071,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        }
+      ],
+      "elapsed_s": 314.9,
+      "llm_calls": 62
+    },
+    {
+      "round_num": 3,
+      "voices": [
+        {
+          "agent_id": "TH_00",
+          "cid": "C_01",
+          "label": "living wage / subsidy",
+          "agent_opinion": 0.9811
+        },
+        {
+          "agent_id": "TH_01",
+          "cid": "C_05",
+          "label": "income inequality",
+          "agent_opinion": 0.8667
+        },
+        {
+          "agent_id": "TH_02",
+          "cid": "C_05",
+          "label": "income inequality",
+          "agent_opinion": 0.726
+        },
+        {
+          "agent_id": "TH_03",
+          "cid": "C_03",
+          "label": "inflation and fairness",
+          "agent_opinion": -0.725
+        },
+        {
+          "agent_id": "TH_04",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.9222
+        },
+        {
+          "agent_id": "TH_05",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.7071
+        }
+      ],
+      "evaluations": [
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.8667
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.726
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 20,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 20,
+          "listener_opinion": -0.9222
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 80,
+          "listener_opinion": -0.7071
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.9811
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 90,
+          "listener_opinion": 0.726
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 20,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 25,
+          "listener_opinion": -0.9222
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 30,
+          "listener_opinion": -0.7071
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.9811
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.8667
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 15,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 20,
+          "listener_opinion": -0.9222
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 25,
+          "listener_opinion": -0.7071
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 15,
+          "listener_opinion": 0.9811
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 40,
+          "listener_opinion": 0.8667
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 10,
+          "listener_opinion": 0.726
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 95,
+          "listener_opinion": -0.9222
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 95,
+          "listener_opinion": -0.7071
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.9811
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.8667
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 45,
+          "listener_opinion": 0.726
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 85,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.7071
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 10,
+          "listener_opinion": 0.9811
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 15,
+          "listener_opinion": 0.8667
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 45,
+          "listener_opinion": 0.726
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 85,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.9222
+        }
+      ],
+      "reflections": [
+        {
+          "agent_id": "TH_00",
+          "opinion_before": 0.9811,
+          "opinion_after": 0.9594,
+          "weights_changed": 3,
+          "weight_deltas": {
+            "C_03": 0.1,
+            "C_05": 0.005,
+            "C_06": 0.1
+          }
+        },
+        {
+          "agent_id": "TH_01",
+          "opinion_before": 0.8667,
+          "opinion_after": 0.8714,
+          "weights_changed": 1,
+          "weight_deltas": {
+            "C_01": 0.9
+          }
+        },
+        {
+          "agent_id": "TH_02",
+          "opinion_before": 0.726,
+          "opinion_after": 0.7633,
+          "weights_changed": 1,
+          "weight_deltas": {
+            "C_01": 0.95
+          }
+        },
+        {
+          "agent_id": "TH_03",
+          "opinion_before": -0.725,
+          "opinion_after": -0.725,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        },
+        {
+          "agent_id": "TH_04",
+          "opinion_before": -0.9222,
+          "opinion_after": -0.9111,
+          "weights_changed": 2,
+          "weight_deltas": {
+            "C_03": -0.05,
+            "C_06": -0.05
+          }
+        },
+        {
+          "agent_id": "TH_05",
+          "opinion_before": -0.7071,
+          "opinion_after": -0.5813,
+          "weights_changed": 1,
+          "weight_deltas": {
+            "C_05": 0.3
+          }
+        }
+      ],
+      "elapsed_s": 271.8,
+      "llm_calls": 58
+    },
+    {
+      "round_num": 4,
+      "voices": [
+        {
+          "agent_id": "TH_00",
+          "cid": "C_01",
+          "label": "living wage / subsidy",
+          "agent_opinion": 0.9594
+        },
+        {
+          "agent_id": "TH_01",
+          "cid": "C_05",
+          "label": "income inequality",
+          "agent_opinion": 0.8714
+        },
+        {
+          "agent_id": "TH_02",
+          "cid": "C_05",
+          "label": "income inequality",
+          "agent_opinion": 0.7633
+        },
+        {
+          "agent_id": "TH_03",
+          "cid": "C_03",
+          "label": "inflation and fairness",
+          "agent_opinion": -0.725
+        },
+        {
+          "agent_id": "TH_04",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.9111
+        },
+        {
+          "agent_id": "TH_05",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.5813
+        }
+      ],
+      "evaluations": [
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.8714
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.7633
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 20,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 15,
+          "listener_opinion": -0.9111
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": -0.5813
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.9594
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.7633
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 45,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 20,
+          "listener_opinion": -0.9111
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 30,
+          "listener_opinion": -0.5813
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.9594
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.8714
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 20,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 20,
+          "listener_opinion": -0.9111
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 40,
+          "listener_opinion": -0.5813
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 20,
+          "listener_opinion": 0.9594
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 25,
+          "listener_opinion": 0.8714
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 20,
+          "listener_opinion": 0.7633
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 95,
+          "listener_opinion": -0.9111
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 90,
+          "listener_opinion": -0.5813
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.9594
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.8714
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 25,
+          "listener_opinion": 0.7633
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.5813
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 15,
+          "listener_opinion": 0.9594
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.8714
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 35,
+          "listener_opinion": 0.7633
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 85,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 95,
+          "listener_opinion": -0.9111
+        }
+      ],
+      "reflections": [
+        {
+          "agent_id": "TH_00",
+          "opinion_before": 0.9594,
+          "opinion_after": 0.971,
+          "weights_changed": 3,
+          "weight_deltas": {
+            "C_03": -0.05,
+            "C_05": 0.004,
+            "C_06": -0.05
+          }
+        },
+        {
+          "agent_id": "TH_01",
+          "opinion_before": 0.8714,
+          "opinion_after": 0.8614,
+          "weights_changed": 2,
+          "weight_deltas": {
+            "C_01": 0.08,
+            "C_03": 0.15
+          }
+        },
+        {
+          "agent_id": "TH_02",
+          "opinion_before": 0.7633,
+          "opinion_after": 0.8317,
+          "weights_changed": 2,
+          "weight_deltas": {
+            "C_05": 0.01,
+            "C_06": -0.4
+          }
+        },
+        {
+          "agent_id": "TH_03",
+          "opinion_before": -0.725,
+          "opinion_after": -0.725,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        },
+        {
+          "agent_id": "TH_04",
+          "opinion_before": -0.9111,
+          "opinion_after": -0.9178,
+          "weights_changed": 2,
+          "weight_deltas": {
+            "C_03": 0.03,
+            "C_06": 0.03
+          }
+        },
+        {
+          "agent_id": "TH_05",
+          "opinion_before": -0.5813,
+          "opinion_after": -0.5813,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        }
+      ],
+      "elapsed_s": 274.7,
+      "llm_calls": 58
+    },
+    {
+      "round_num": 5,
+      "voices": [
+        {
+          "agent_id": "TH_00",
+          "cid": "C_05",
+          "label": "income inequality",
+          "agent_opinion": 0.971
+        },
+        {
+          "agent_id": "TH_01",
+          "cid": "C_01",
+          "label": "living wage / subsidy",
+          "agent_opinion": 0.8614
+        },
+        {
+          "agent_id": "TH_02",
+          "cid": "C_05",
+          "label": "income inequality",
+          "agent_opinion": 0.8317
+        },
+        {
+          "agent_id": "TH_03",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.725
+        },
+        {
+          "agent_id": "TH_04",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.9178
+        },
+        {
+          "agent_id": "TH_05",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.5813
+        }
+      ],
+      "evaluations": [
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_00",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.8614
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_00",
+          "cid": "C_05",
+          "influence_likert": 90,
+          "listener_opinion": 0.8317
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_00",
+          "cid": "C_05",
+          "influence_likert": 25,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_00",
+          "cid": "C_05",
+          "influence_likert": 10,
+          "listener_opinion": -0.9178
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_00",
+          "cid": "C_05",
+          "influence_likert": 25,
+          "listener_opinion": -0.5813
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_01",
+          "cid": "C_01",
+          "influence_likert": 98,
+          "listener_opinion": 0.971
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_01",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.8317
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_01",
+          "cid": "C_01",
+          "influence_likert": 15,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_01",
+          "cid": "C_01",
+          "influence_likert": 10,
+          "listener_opinion": -0.9178
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_01",
+          "cid": "C_01",
+          "influence_likert": 90,
+          "listener_opinion": -0.5813
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.971
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.8614
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 30,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 15,
+          "listener_opinion": -0.9178
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 30,
+          "listener_opinion": -0.5813
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.971
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.8614
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 30,
+          "listener_opinion": 0.8317
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 95,
+          "listener_opinion": -0.9178
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.5813
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 25,
+          "listener_opinion": 0.971
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.8614
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 35,
+          "listener_opinion": 0.8317
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.5813
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 25,
+          "listener_opinion": 0.971
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.8614
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 35,
+          "listener_opinion": 0.8317
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 95,
+          "listener_opinion": -0.9178
+        }
+      ],
+      "reflections": [
+        {
+          "agent_id": "TH_00",
+          "opinion_before": 0.971,
+          "opinion_after": 0.971,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        },
+        {
+          "agent_id": "TH_01",
+          "opinion_before": 0.8614,
+          "opinion_after": 0.8614,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        },
+        {
+          "agent_id": "TH_02",
+          "opinion_before": 0.8317,
+          "opinion_after": 0.8342,
+          "weights_changed": 2,
+          "weight_deltas": {
+            "C_01": 0.01,
+            "C_05": 0.005
+          }
+        },
+        {
+          "agent_id": "TH_03",
+          "opinion_before": -0.725,
+          "opinion_after": -0.725,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        },
+        {
+          "agent_id": "TH_04",
+          "opinion_before": -0.9178,
+          "opinion_after": -0.9144,
+          "weights_changed": 3,
+          "weight_deltas": {
+            "C_03": 0.01,
+            "C_05": 0.05,
+            "C_06": 0.01
+          }
+        },
+        {
+          "agent_id": "TH_05",
+          "opinion_before": -0.5813,
+          "opinion_after": -0.5875,
+          "weights_changed": 1,
+          "weight_deltas": {
+            "C_06": 0.05
+          }
+        }
+      ],
+      "elapsed_s": 335.9,
+      "llm_calls": 65
+    },
+    {
+      "round_num": 6,
+      "voices": [
+        {
+          "agent_id": "TH_00",
+          "cid": "C_01",
+          "label": "living wage / subsidy",
+          "agent_opinion": 0.971
+        },
+        {
+          "agent_id": "TH_01",
+          "cid": "C_01",
+          "label": "living wage / subsidy",
+          "agent_opinion": 0.8614
+        },
+        {
+          "agent_id": "TH_02",
+          "cid": "C_01",
+          "label": "living wage / subsidy",
+          "agent_opinion": 0.8342
+        },
+        {
+          "agent_id": "TH_03",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.725
+        },
+        {
+          "agent_id": "TH_04",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.9144
+        },
+        {
+          "agent_id": "TH_05",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.5875
+        }
+      ],
+      "evaluations": [
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.8614
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.8342
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 20,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 5,
+          "listener_opinion": -0.9144
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 90,
+          "listener_opinion": -0.5875
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_01",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.971
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_01",
+          "cid": "C_01",
+          "influence_likert": 98,
+          "listener_opinion": 0.8342
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_01",
+          "cid": "C_01",
+          "influence_likert": 20,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_01",
+          "cid": "C_01",
+          "influence_likert": 25,
+          "listener_opinion": -0.9144
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_01",
+          "cid": "C_01",
+          "influence_likert": 40,
+          "listener_opinion": -0.5875
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_02",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.971
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_02",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.8614
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_02",
+          "cid": "C_01",
+          "influence_likert": 20,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_02",
+          "cid": "C_01",
+          "influence_likert": 15,
+          "listener_opinion": -0.9144
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_02",
+          "cid": "C_01",
+          "influence_likert": 85,
+          "listener_opinion": -0.5875
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 15,
+          "listener_opinion": 0.971
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 10,
+          "listener_opinion": 0.8614
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 30,
+          "listener_opinion": 0.8342
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 95,
+          "listener_opinion": -0.9144
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 95,
+          "listener_opinion": -0.5875
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 15,
+          "listener_opinion": 0.971
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 15,
+          "listener_opinion": 0.8614
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 55,
+          "listener_opinion": 0.8342
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 75,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.5875
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.971
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.8614
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 25,
+          "listener_opinion": 0.8342
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 85,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 95,
+          "listener_opinion": -0.9144
+        }
+      ],
+      "reflections": [
+        {
+          "agent_id": "TH_00",
+          "opinion_before": 0.971,
+          "opinion_after": 0.9716,
+          "weights_changed": 1,
+          "weight_deltas": {
+            "C_01": 0.005
+          }
+        },
+        {
+          "agent_id": "TH_01",
+          "opinion_before": 0.8614,
+          "opinion_after": 0.8629,
+          "weights_changed": 1,
+          "weight_deltas": {
+            "C_01": 0.01
+          }
+        },
+        {
+          "agent_id": "TH_02",
+          "opinion_before": 0.8342,
+          "opinion_after": 0.8375,
+          "weights_changed": 1,
+          "weight_deltas": {
+            "C_01": 0.02
+          }
+        },
+        {
+          "agent_id": "TH_03",
+          "opinion_before": -0.725,
+          "opinion_after": -0.725,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        },
+        {
+          "agent_id": "TH_04",
+          "opinion_before": -0.9144,
+          "opinion_after": -0.9144,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        },
+        {
+          "agent_id": "TH_05",
+          "opinion_before": -0.5875,
+          "opinion_after": -0.5875,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        }
+      ],
+      "elapsed_s": 271.0,
+      "llm_calls": 61
+    },
+    {
+      "round_num": 7,
+      "voices": [
+        {
+          "agent_id": "TH_00",
+          "cid": "C_01",
+          "label": "living wage / subsidy",
+          "agent_opinion": 0.9716
+        },
+        {
+          "agent_id": "TH_01",
+          "cid": "C_01",
+          "label": "living wage / subsidy",
+          "agent_opinion": 0.8629
+        },
+        {
+          "agent_id": "TH_02",
+          "cid": "C_05",
+          "label": "income inequality",
+          "agent_opinion": 0.8375
+        },
+        {
+          "agent_id": "TH_03",
+          "cid": "C_03",
+          "label": "inflation and fairness",
+          "agent_opinion": -0.725
+        },
+        {
+          "agent_id": "TH_04",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.9144
+        },
+        {
+          "agent_id": "TH_05",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.5875
+        }
+      ],
+      "evaluations": [
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.8629
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.8375
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 25,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 10,
+          "listener_opinion": -0.9144
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 50,
+          "listener_opinion": -0.5875
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_01",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.9716
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_01",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.8375
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_01",
+          "cid": "C_01",
+          "influence_likert": 20,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_01",
+          "cid": "C_01",
+          "influence_likert": 20,
+          "listener_opinion": -0.9144
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_01",
+          "cid": "C_01",
+          "influence_likert": 85,
+          "listener_opinion": -0.5875
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.9716
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.8629
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 55,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 20,
+          "listener_opinion": -0.9144
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_02",
+          "cid": "C_05",
+          "influence_likert": 55,
+          "listener_opinion": -0.5875
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 15,
+          "listener_opinion": 0.9716
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 20,
+          "listener_opinion": 0.8629
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 15,
+          "listener_opinion": 0.8375
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 90,
+          "listener_opinion": -0.9144
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_03",
+          "cid": "C_03",
+          "influence_likert": 90,
+          "listener_opinion": -0.5875
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.9716
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 15,
+          "listener_opinion": 0.8629
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 25,
+          "listener_opinion": 0.8375
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 85,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.5875
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 15,
+          "listener_opinion": 0.9716
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.8629
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 35,
+          "listener_opinion": 0.8375
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 75,
+          "listener_opinion": -0.725
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.9144
+        }
+      ],
+      "reflections": [
+        {
+          "agent_id": "TH_00",
+          "opinion_before": 0.9716,
+          "opinion_after": 0.9721,
+          "weights_changed": 2,
+          "weight_deltas": {
+            "C_01": 0.004,
+            "C_05": 0.001
+          }
+        },
+        {
+          "agent_id": "TH_01",
+          "opinion_before": 0.8629,
+          "opinion_after": 0.8629,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        },
+        {
+          "agent_id": "TH_02",
+          "opinion_before": 0.8375,
+          "opinion_after": 0.8392,
+          "weights_changed": 1,
+          "weight_deltas": {
+            "C_01": 0.01
+          }
+        },
+        {
+          "agent_id": "TH_03",
+          "opinion_before": -0.725,
+          "opinion_after": -0.6111,
+          "weights_changed": 1,
+          "weight_deltas": {
+            "C_05": 0.3
+          }
+        },
+        {
+          "agent_id": "TH_04",
+          "opinion_before": -0.9144,
+          "opinion_after": -0.9144,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        },
+        {
+          "agent_id": "TH_05",
+          "opinion_before": -0.5875,
+          "opinion_after": -0.5875,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        }
+      ],
+      "elapsed_s": 268.7,
+      "llm_calls": 53
+    },
+    {
+      "round_num": 8,
+      "voices": [
+        {
+          "agent_id": "TH_00",
+          "cid": "C_01",
+          "label": "living wage / subsidy",
+          "agent_opinion": 0.9721
+        },
+        {
+          "agent_id": "TH_01",
+          "cid": "C_05",
+          "label": "income inequality",
+          "agent_opinion": 0.8629
+        },
+        {
+          "agent_id": "TH_02",
+          "cid": "C_01",
+          "label": "living wage / subsidy",
+          "agent_opinion": 0.8392
+        },
+        {
+          "agent_id": "TH_03",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.6111
+        },
+        {
+          "agent_id": "TH_04",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.9144
+        },
+        {
+          "agent_id": "TH_05",
+          "cid": "C_06",
+          "label": "small-business survival",
+          "agent_opinion": -0.5875
+        }
+      ],
+      "evaluations": [
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.8629
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.8392
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 20,
+          "listener_opinion": -0.6111
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 20,
+          "listener_opinion": -0.9144
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_00",
+          "cid": "C_01",
+          "influence_likert": 80,
+          "listener_opinion": -0.5875
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 95,
+          "listener_opinion": 0.9721
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 90,
+          "listener_opinion": 0.8392
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 30,
+          "listener_opinion": -0.6111
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 20,
+          "listener_opinion": -0.9144
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_01",
+          "cid": "C_05",
+          "influence_likert": 35,
+          "listener_opinion": -0.5875
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_02",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.9721
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_02",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": 0.8629
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_02",
+          "cid": "C_01",
+          "influence_likert": 20,
+          "listener_opinion": -0.6111
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_02",
+          "cid": "C_01",
+          "influence_likert": 15,
+          "listener_opinion": -0.9144
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_02",
+          "cid": "C_01",
+          "influence_likert": 95,
+          "listener_opinion": -0.5875
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.9721
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 25,
+          "listener_opinion": 0.8629
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 35,
+          "listener_opinion": 0.8392
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.9144
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_03",
+          "cid": "C_06",
+          "influence_likert": 65,
+          "listener_opinion": -0.5875
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.9721
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 15,
+          "listener_opinion": 0.8629
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 25,
+          "listener_opinion": 0.8392
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 85,
+          "listener_opinion": -0.6111
+        },
+        {
+          "listener_id": "TH_05",
+          "speaker_id": "TH_04",
+          "cid": "C_06",
+          "influence_likert": 95,
+          "listener_opinion": -0.5875
+        },
+        {
+          "listener_id": "TH_00",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 20,
+          "listener_opinion": 0.9721
+        },
+        {
+          "listener_id": "TH_01",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 10,
+          "listener_opinion": 0.8629
+        },
+        {
+          "listener_id": "TH_02",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 30,
+          "listener_opinion": 0.8392
+        },
+        {
+          "listener_id": "TH_03",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 90,
+          "listener_opinion": -0.6111
+        },
+        {
+          "listener_id": "TH_04",
+          "speaker_id": "TH_05",
+          "cid": "C_06",
+          "influence_likert": 95,
+          "listener_opinion": -0.9144
+        }
+      ],
+      "reflections": [
+        {
+          "agent_id": "TH_00",
+          "opinion_before": 0.9721,
+          "opinion_after": 0.9778,
+          "weights_changed": 2,
+          "weight_deltas": {
+            "C_01": 0.001,
+            "C_06": -0.05
+          }
+        },
+        {
+          "agent_id": "TH_01",
+          "opinion_before": 0.8629,
+          "opinion_after": 0.8641,
+          "weights_changed": 1,
+          "weight_deltas": {
+            "C_01": 0.009
+          }
+        },
+        {
+          "agent_id": "TH_02",
+          "opinion_before": 0.8392,
+          "opinion_after": 0.8392,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        },
+        {
+          "agent_id": "TH_03",
+          "opinion_before": -0.6111,
+          "opinion_after": -0.6111,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        },
+        {
+          "agent_id": "TH_04",
+          "opinion_before": -0.9144,
+          "opinion_after": -0.9144,
+          "weights_changed": 0,
+          "weight_deltas": {}
+        },
+        {
+          "agent_id": "TH_05",
+          "opinion_before": -0.5875,
+          "opinion_after": -0.5813,
+          "weights_changed": 1,
+          "weight_deltas": {
+            "C_06": -0.05
+          }
+        }
+      ],
+      "elapsed_s": 348.5,
+      "llm_calls": 61
+    }
+  ],
+  "snapshots": [
+    [
+      {
+        "id": "TH_00",
+        "opinion": 1.0,
+        "weights": {
+          "C_01": 1.0,
+          "C_02": 1.0,
+          "C_03": -1.0,
+          "C_04": 1.0,
+          "C_05": 1.0,
+          "C_06": -1.0,
+          "C_07": -1.0,
+          "C_09": -1.0
+        }
+      },
+      {
+        "id": "TH_01",
+        "opinion": 1.0,
+        "weights": {
+          "C_04": 1.0,
+          "C_05": 1.0,
+          "C_06": -1.0,
+          "C_07": -1.0
+        }
+      },
+      {
+        "id": "TH_02",
+        "opinion": 1.0,
+        "weights": {
+          "C_03": -1.0,
+          "C_08": 1.0,
+          "C_10": -1.0
+        }
+      },
+      {
+        "id": "TH_03",
+        "opinion": -0.7143,
+        "weights": {
+          "C_02": -1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_07": 1.0,
+          "C_08": -1.0,
+          "C_09": -1.0,
+          "C_10": 1.0
+        }
+      },
+      {
+        "id": "TH_04",
+        "opinion": -1.0,
+        "weights": {
+          "C_01": -1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_05": -1.0,
+          "C_06": 1.0,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0
+        }
+      },
+      {
+        "id": "TH_05",
+        "opinion": -0.7143,
+        "weights": {
+          "C_01": 1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_06": 1.0,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0
+        }
+      }
+    ],
+    [
+      {
+        "id": "TH_00",
+        "opinion": 0.9833,
+        "weights": {
+          "C_01": 1.0,
+          "C_02": 1.0,
+          "C_03": -1.0,
+          "C_04": 1.0,
+          "C_05": 1.0,
+          "C_06": -1.0,
+          "C_07": -1.0,
+          "C_09": -1.0,
+          "C_08": 0.85
+        }
+      },
+      {
+        "id": "TH_01",
+        "opinion": 1.0,
+        "weights": {
+          "C_04": 1.0,
+          "C_05": 1.0,
+          "C_06": -1.0,
+          "C_07": -1.0
+        }
+      },
+      {
+        "id": "TH_02",
+        "opinion": 0.75,
+        "weights": {
+          "C_03": -1.0,
+          "C_08": 1.0,
+          "C_10": -1.0,
+          "C_05": 0.95,
+          "C_06": 0.2
+        }
+      },
+      {
+        "id": "TH_03",
+        "opinion": -0.725,
+        "weights": {
+          "C_02": -1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_07": 1.0,
+          "C_08": -1.0,
+          "C_09": -1.0,
+          "C_10": 1.0,
+          "C_06": 0.8
+        }
+      },
+      {
+        "id": "TH_04",
+        "opinion": -1.0,
+        "weights": {
+          "C_01": -1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_05": -1.0,
+          "C_06": 1.0,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0
+        }
+      },
+      {
+        "id": "TH_05",
+        "opinion": -0.7071,
+        "weights": {
+          "C_01": 1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_06": 0.95,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0
+        }
+      }
+    ],
+    [
+      {
+        "id": "TH_00",
+        "opinion": 0.9811,
+        "weights": {
+          "C_01": 0.99,
+          "C_02": 1.0,
+          "C_03": -1.0,
+          "C_04": 1.0,
+          "C_05": 0.99,
+          "C_06": -1.0,
+          "C_07": -1.0,
+          "C_09": -1.0,
+          "C_08": 0.85
+        }
+      },
+      {
+        "id": "TH_01",
+        "opinion": 0.8667,
+        "weights": {
+          "C_04": 1.0,
+          "C_05": 1.0,
+          "C_06": -1.0,
+          "C_07": -1.0,
+          "C_08": 0.85,
+          "C_03": -0.35
+        }
+      },
+      {
+        "id": "TH_02",
+        "opinion": 0.726,
+        "weights": {
+          "C_03": -1.0,
+          "C_08": 1.0,
+          "C_10": -1.0,
+          "C_05": 0.98,
+          "C_06": 0.35
+        }
+      },
+      {
+        "id": "TH_03",
+        "opinion": -0.725,
+        "weights": {
+          "C_02": -1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_07": 1.0,
+          "C_08": -1.0,
+          "C_09": -1.0,
+          "C_10": 1.0,
+          "C_06": 0.8
+        }
+      },
+      {
+        "id": "TH_04",
+        "opinion": -0.9222,
+        "weights": {
+          "C_01": -1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_05": -1.0,
+          "C_06": 1.0,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0,
+          "C_08": -0.3
+        }
+      },
+      {
+        "id": "TH_05",
+        "opinion": -0.7071,
+        "weights": {
+          "C_01": 1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_06": 0.95,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0
+        }
+      }
+    ],
+    [
+      {
+        "id": "TH_00",
+        "opinion": 0.9594,
+        "weights": {
+          "C_01": 0.99,
+          "C_02": 1.0,
+          "C_03": -0.9,
+          "C_04": 1.0,
+          "C_05": 0.995,
+          "C_06": -0.9,
+          "C_07": -1.0,
+          "C_09": -1.0,
+          "C_08": 0.85
+        }
+      },
+      {
+        "id": "TH_01",
+        "opinion": 0.8714,
+        "weights": {
+          "C_04": 1.0,
+          "C_05": 1.0,
+          "C_06": -1.0,
+          "C_07": -1.0,
+          "C_08": 0.85,
+          "C_03": -0.35,
+          "C_01": 0.9
+        }
+      },
+      {
+        "id": "TH_02",
+        "opinion": 0.7633,
+        "weights": {
+          "C_03": -1.0,
+          "C_08": 1.0,
+          "C_10": -1.0,
+          "C_05": 0.98,
+          "C_06": 0.35,
+          "C_01": 0.95
+        }
+      },
+      {
+        "id": "TH_03",
+        "opinion": -0.725,
+        "weights": {
+          "C_02": -1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_07": 1.0,
+          "C_08": -1.0,
+          "C_09": -1.0,
+          "C_10": 1.0,
+          "C_06": 0.8
+        }
+      },
+      {
+        "id": "TH_04",
+        "opinion": -0.9111,
+        "weights": {
+          "C_01": -1.0,
+          "C_03": 0.95,
+          "C_04": -1.0,
+          "C_05": -1.0,
+          "C_06": 0.95,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0,
+          "C_08": -0.3
+        }
+      },
+      {
+        "id": "TH_05",
+        "opinion": -0.5813,
+        "weights": {
+          "C_01": 1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_06": 0.95,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0,
+          "C_05": 0.3
+        }
+      }
+    ],
+    [
+      {
+        "id": "TH_00",
+        "opinion": 0.971,
+        "weights": {
+          "C_01": 0.99,
+          "C_02": 1.0,
+          "C_03": -0.95,
+          "C_04": 1.0,
+          "C_05": 0.999,
+          "C_06": -0.95,
+          "C_07": -1.0,
+          "C_09": -1.0,
+          "C_08": 0.85
+        }
+      },
+      {
+        "id": "TH_01",
+        "opinion": 0.8614,
+        "weights": {
+          "C_04": 1.0,
+          "C_05": 1.0,
+          "C_06": -1.0,
+          "C_07": -1.0,
+          "C_08": 0.85,
+          "C_03": -0.2,
+          "C_01": 0.98
+        }
+      },
+      {
+        "id": "TH_02",
+        "opinion": 0.8317,
+        "weights": {
+          "C_03": -1.0,
+          "C_08": 1.0,
+          "C_10": -1.0,
+          "C_05": 0.99,
+          "C_06": -0.05,
+          "C_01": 0.95
+        }
+      },
+      {
+        "id": "TH_03",
+        "opinion": -0.725,
+        "weights": {
+          "C_02": -1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_07": 1.0,
+          "C_08": -1.0,
+          "C_09": -1.0,
+          "C_10": 1.0,
+          "C_06": 0.8
+        }
+      },
+      {
+        "id": "TH_04",
+        "opinion": -0.9178,
+        "weights": {
+          "C_01": -1.0,
+          "C_03": 0.98,
+          "C_04": -1.0,
+          "C_05": -1.0,
+          "C_06": 0.98,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0,
+          "C_08": -0.3
+        }
+      },
+      {
+        "id": "TH_05",
+        "opinion": -0.5813,
+        "weights": {
+          "C_01": 1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_06": 0.95,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0,
+          "C_05": 0.3
+        }
+      }
+    ],
+    [
+      {
+        "id": "TH_00",
+        "opinion": 0.971,
+        "weights": {
+          "C_01": 0.99,
+          "C_02": 1.0,
+          "C_03": -0.95,
+          "C_04": 1.0,
+          "C_05": 0.999,
+          "C_06": -0.95,
+          "C_07": -1.0,
+          "C_09": -1.0,
+          "C_08": 0.85
+        }
+      },
+      {
+        "id": "TH_01",
+        "opinion": 0.8614,
+        "weights": {
+          "C_04": 1.0,
+          "C_05": 1.0,
+          "C_06": -1.0,
+          "C_07": -1.0,
+          "C_08": 0.85,
+          "C_03": -0.2,
+          "C_01": 0.98
+        }
+      },
+      {
+        "id": "TH_02",
+        "opinion": 0.8342,
+        "weights": {
+          "C_03": -1.0,
+          "C_08": 1.0,
+          "C_10": -1.0,
+          "C_05": 0.995,
+          "C_06": -0.05,
+          "C_01": 0.96
+        }
+      },
+      {
+        "id": "TH_03",
+        "opinion": -0.725,
+        "weights": {
+          "C_02": -1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_07": 1.0,
+          "C_08": -1.0,
+          "C_09": -1.0,
+          "C_10": 1.0,
+          "C_06": 0.8
+        }
+      },
+      {
+        "id": "TH_04",
+        "opinion": -0.9144,
+        "weights": {
+          "C_01": -1.0,
+          "C_03": 0.99,
+          "C_04": -1.0,
+          "C_05": -0.95,
+          "C_06": 0.99,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0,
+          "C_08": -0.3
+        }
+      },
+      {
+        "id": "TH_05",
+        "opinion": -0.5875,
+        "weights": {
+          "C_01": 1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_06": 1.0,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0,
+          "C_05": 0.3
+        }
+      }
+    ],
+    [
+      {
+        "id": "TH_00",
+        "opinion": 0.9716,
+        "weights": {
+          "C_01": 0.995,
+          "C_02": 1.0,
+          "C_03": -0.95,
+          "C_04": 1.0,
+          "C_05": 0.999,
+          "C_06": -0.95,
+          "C_07": -1.0,
+          "C_09": -1.0,
+          "C_08": 0.85
+        }
+      },
+      {
+        "id": "TH_01",
+        "opinion": 0.8629,
+        "weights": {
+          "C_04": 1.0,
+          "C_05": 1.0,
+          "C_06": -1.0,
+          "C_07": -1.0,
+          "C_08": 0.85,
+          "C_03": -0.2,
+          "C_01": 0.99
+        }
+      },
+      {
+        "id": "TH_02",
+        "opinion": 0.8375,
+        "weights": {
+          "C_03": -1.0,
+          "C_08": 1.0,
+          "C_10": -1.0,
+          "C_05": 0.995,
+          "C_06": -0.05,
+          "C_01": 0.98
+        }
+      },
+      {
+        "id": "TH_03",
+        "opinion": -0.725,
+        "weights": {
+          "C_02": -1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_07": 1.0,
+          "C_08": -1.0,
+          "C_09": -1.0,
+          "C_10": 1.0,
+          "C_06": 0.8
+        }
+      },
+      {
+        "id": "TH_04",
+        "opinion": -0.9144,
+        "weights": {
+          "C_01": -1.0,
+          "C_03": 0.99,
+          "C_04": -1.0,
+          "C_05": -0.95,
+          "C_06": 0.99,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0,
+          "C_08": -0.3
+        }
+      },
+      {
+        "id": "TH_05",
+        "opinion": -0.5875,
+        "weights": {
+          "C_01": 1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_06": 1.0,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0,
+          "C_05": 0.3
+        }
+      }
+    ],
+    [
+      {
+        "id": "TH_00",
+        "opinion": 0.9721,
+        "weights": {
+          "C_01": 0.999,
+          "C_02": 1.0,
+          "C_03": -0.95,
+          "C_04": 1.0,
+          "C_05": 1.0,
+          "C_06": -0.95,
+          "C_07": -1.0,
+          "C_09": -1.0,
+          "C_08": 0.85
+        }
+      },
+      {
+        "id": "TH_01",
+        "opinion": 0.8629,
+        "weights": {
+          "C_04": 1.0,
+          "C_05": 1.0,
+          "C_06": -1.0,
+          "C_07": -1.0,
+          "C_08": 0.85,
+          "C_03": -0.2,
+          "C_01": 0.99
+        }
+      },
+      {
+        "id": "TH_02",
+        "opinion": 0.8392,
+        "weights": {
+          "C_03": -1.0,
+          "C_08": 1.0,
+          "C_10": -1.0,
+          "C_05": 0.995,
+          "C_06": -0.05,
+          "C_01": 0.99
+        }
+      },
+      {
+        "id": "TH_03",
+        "opinion": -0.6111,
+        "weights": {
+          "C_02": -1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_07": 1.0,
+          "C_08": -1.0,
+          "C_09": -1.0,
+          "C_10": 1.0,
+          "C_06": 0.8,
+          "C_05": 0.3
+        }
+      },
+      {
+        "id": "TH_04",
+        "opinion": -0.9144,
+        "weights": {
+          "C_01": -1.0,
+          "C_03": 0.99,
+          "C_04": -1.0,
+          "C_05": -0.95,
+          "C_06": 0.99,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0,
+          "C_08": -0.3
+        }
+      },
+      {
+        "id": "TH_05",
+        "opinion": -0.5875,
+        "weights": {
+          "C_01": 1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_06": 1.0,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0,
+          "C_05": 0.3
+        }
+      }
+    ],
+    [
+      {
+        "id": "TH_00",
+        "opinion": 0.9778,
+        "weights": {
+          "C_01": 1.0,
+          "C_02": 1.0,
+          "C_03": -0.95,
+          "C_04": 1.0,
+          "C_05": 1.0,
+          "C_06": -1.0,
+          "C_07": -1.0,
+          "C_09": -1.0,
+          "C_08": 0.85
+        }
+      },
+      {
+        "id": "TH_01",
+        "opinion": 0.8641,
+        "weights": {
+          "C_04": 1.0,
+          "C_05": 1.0,
+          "C_06": -1.0,
+          "C_07": -1.0,
+          "C_08": 0.85,
+          "C_03": -0.2,
+          "C_01": 0.999
+        }
+      },
+      {
+        "id": "TH_02",
+        "opinion": 0.8392,
+        "weights": {
+          "C_03": -1.0,
+          "C_08": 1.0,
+          "C_10": -1.0,
+          "C_05": 0.995,
+          "C_06": -0.05,
+          "C_01": 0.99
+        }
+      },
+      {
+        "id": "TH_03",
+        "opinion": -0.6111,
+        "weights": {
+          "C_02": -1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_07": 1.0,
+          "C_08": -1.0,
+          "C_09": -1.0,
+          "C_10": 1.0,
+          "C_06": 0.8,
+          "C_05": 0.3
+        }
+      },
+      {
+        "id": "TH_04",
+        "opinion": -0.9144,
+        "weights": {
+          "C_01": -1.0,
+          "C_03": 0.99,
+          "C_04": -1.0,
+          "C_05": -0.95,
+          "C_06": 0.99,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0,
+          "C_08": -0.3
+        }
+      },
+      {
+        "id": "TH_05",
+        "opinion": -0.5813,
+        "weights": {
+          "C_01": 1.0,
+          "C_03": 1.0,
+          "C_04": -1.0,
+          "C_06": 0.95,
+          "C_07": 1.0,
+          "C_09": 1.0,
+          "C_10": 1.0,
+          "C_05": 0.3
+        }
+      }
+    ]
+  ],
+  "opinion_trajectories": {
+    "TH_00": [
+      1.0,
+      0.9833,
+      0.9811,
+      0.9594,
+      0.971,
+      0.971,
+      0.9716,
+      0.9721,
+      0.9778
+    ],
+    "TH_01": [
+      1.0,
+      1.0,
+      0.8667,
+      0.8714,
+      0.8614,
+      0.8614,
+      0.8629,
+      0.8629,
+      0.8641
+    ],
+    "TH_02": [
+      1.0,
+      0.75,
+      0.726,
+      0.7633,
+      0.8317,
+      0.8342,
+      0.8375,
+      0.8392,
+      0.8392
+    ],
+    "TH_03": [
+      -0.7143,
+      -0.725,
+      -0.725,
+      -0.725,
+      -0.725,
+      -0.725,
+      -0.725,
+      -0.6111,
+      -0.6111
+    ],
+    "TH_04": [
+      -1.0,
+      -1.0,
+      -0.9222,
+      -0.9111,
+      -0.9178,
+      -0.9144,
+      -0.9144,
+      -0.9144,
+      -0.9144
+    ],
+    "TH_05": [
+      -0.7143,
+      -0.7071,
+      -0.7071,
+      -0.5813,
+      -0.5813,
+      -0.5875,
+      -0.5875,
+      -0.5875,
+      -0.5813
+    ]
+  },
+  "summary": {
+    "n_agents": 6,
+    "n_rounds": 8,
+    "total_elapsed_s": 2388.5,
+    "total_llm_calls": 482,
+    "mean_abs_shift": 0.1068,
+    "max_abs_shift": 0.1608,
+    "sign_flips": 0,
+    "total_weight_changes": 46,
+    "total_evaluations": 240,
+    "shifts": {
+      "TH_00": -0.0222,
+      "TH_01": -0.1359,
+      "TH_02": -0.1608,
+      "TH_03": 0.1032,
+      "TH_04": 0.0856,
+      "TH_05": 0.133
+    }
+  }
+}

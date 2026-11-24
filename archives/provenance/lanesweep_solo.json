@@ -1,0 +1,103 @@
+{
+ "cell": "lanesweep_solo",
+ "trace_dir": "llm/traces/collection/lanesweep_solo",
+ "counts": {
+  "value": {
+   "finals": 0,
+   "checkpoints": 1,
+   "call_traces": 1
+  },
+  "how": "recorded"
+ },
+ "grid": {
+  "value": {},
+  "how": "recorded"
+ },
+ "sbatch": {
+  "value": "lane_sweep.sbatch",
+  "how": "reconstructed"
+ },
+ "launch_repo_commit": {
+  "value": "36d59ff 2026-08-27T18:49:18-04:00",
+  "how": "reconstructed",
+  "note": "last commit before the first telemetry event; the working tree may have been dirty"
+ },
+ "slurm_jobs": {
+  "value": [
+   "79460"
+  ],
+  "how": "reconstructed"
+ },
+ "times_utc": {
+  "value": {
+   "first_event": "2026-08-27T22:54:40Z",
+   "last_event": "2026-08-27T22:54:41Z"
+  },
+  "how": "recorded",
+  "note": "orchestrator telemetry; SLURM submit/start/end are in sacct only for e4b_r256_t10"
+ },
+ "sacct": {
+  "value": "unknown",
+  "how": "unknown"
+ },
+ "node": {
+  "value": "sn-nvda2",
+  "how": "recorded"
+ },
+ "gpu": {
+  "value": "Tesla V100-PCIE-32GB",
+  "how": "recorded"
+ },
+ "llama_cpp": {
+  "value": {
+   "commit": "18443257a30c884d5332abb8e7dc43c7ffe42fda",
+   "build_dir": "build",
+   "cuda_arch": "70-real",
+   "build_job": "79441",
+   "built": "2026-08-27",
+   "flags": "-DCMAKE_BUILD_TYPE=Release -DGGML_CUDA=ON, built inside cuda124-devel.sif via Singularity; see $SCRATCH/build_llama*.sbatch (archived in slurm_out)"
+  },
+  "how": "reconstructed"
+ },
+ "model": {
+  "value": {
+   "file": null,
+   "sha256": "unknown"
+  },
+  "how": "recorded",
+  "note": "file name recorded at run time (server model_path); sha256 measured 2026-11-23 on the file at the same path"
+ },
+ "server": {
+  "value": {},
+  "how": "recorded",
+  "note": "absent keys predate ablation_infra; see the sbatch for the launch line"
+ },
+ "sampling": {
+  "value": {
+   "temperature": null,
+   "harness_profile": null,
+   "prompt_variant": null,
+   "reflect_decision_policy": null
+  },
+  "how": "recorded"
+ },
+ "telemetry_events": {
+  "value": {
+   "collect_start": 1,
+   "run_start": 1
+  },
+  "how": "recorded"
+ },
+ "logs": {
+  "value": {
+   "server_logs": [],
+   "slurm_out": [
+    "lane_sweep_79460.log"
+   ],
+   "archived_in": "archives/traces/aux_llm_traces_logs.tar.zst, aux_slurm_out.tar.zst"
+  },
+  "how": "recorded"
+ },
+ "note": "solo 1-lane baseline (seed 900, 4 rounds, reasoning off) of the lane sweep; job cancelled before its first run finished",
+ "config_all_fields": {}
+}

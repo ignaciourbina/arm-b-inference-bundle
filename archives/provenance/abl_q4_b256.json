@@ -1,0 +1,140 @@
+{
+ "cell": "abl_q4_b256",
+ "trace_dir": "llm/traces/collection/abl_q4_b256",
+ "counts": {
+  "value": {
+   "finals": 13,
+   "checkpoints": 15,
+   "call_traces": 14
+  },
+  "how": "recorded"
+ },
+ "grid": {
+  "value": {
+   "polarized": "5 seeds 1-5",
+   "symmetric": "3 seeds 3-5",
+   "three_clusters": "5 seeds 1-5"
+  },
+  "how": "recorded"
+ },
+ "sbatch": {
+  "value": "abl_quant_budget.sbatch",
+  "how": "reconstructed"
+ },
+ "launch_repo_commit": {
+  "value": "0c3c3be 2026-08-27T23:43:06-04:00",
+  "how": "reconstructed",
+  "note": "last commit before the first telemetry event; the working tree may have been dirty"
+ },
+ "slurm_jobs": {
+  "value": [
+   "79783"
+  ],
+  "how": "reconstructed"
+ },
+ "times_utc": {
+  "value": {
+   "first_event": "2026-08-29T12:18:49Z",
+   "last_event": "2026-08-29T17:37:54Z"
+  },
+  "how": "recorded",
+  "note": "orchestrator telemetry; SLURM submit/start/end are in sacct only for e4b_r256_t10"
+ },
+ "sacct": {
+  "value": "unknown",
+  "how": "unknown"
+ },
+ "node": {
+  "value": "cn-nvidia",
+  "how": "recorded"
+ },
+ "gpu": {
+  "value": "P100",
+  "how": "recorded"
+ },
+ "llama_cpp": {
+  "value": {
+   "commit": "18443257a30c884d5332abb8e7dc43c7ffe42fda",
+   "build_dir": "build-multi",
+   "cuda_arch": "60-real;70-real",
+   "build_job": "79721",
+   "built": "2026-08-28",
+   "flags": "-DCMAKE_BUILD_TYPE=Release -DGGML_CUDA=ON, built inside cuda124-devel.sif via Singularity; see $SCRATCH/build_llama*.sbatch (archived in slurm_out)"
+  },
+  "how": "reconstructed"
+ },
+ "model": {
+  "value": {
+   "file": "gemma-4-E2B-it-Q4_0.gguf",
+   "sha256": "8e30dff3ac4c8434c49a7036fa15564bdbb6044e42bf04550bf1a096ad7e6a52"
+  },
+  "how": "recorded",
+  "note": "file name recorded at run time (server model_path); sha256 measured 2026-11-23 on the file at the same path; config.model label says gemma-4-E2B-it-Q8_0.gguf, the server loaded gemma-4-E2B-it-Q4_0.gguf"
+ },
+ "server": {
+  "value": {
+   "total_slots": "6",
+   "n_ctx_slot": "4096",
+   "infra.budget": "256",
+   "infra.reasoning": "on",
+   "infra.quant": "Q4_0"
+  },
+  "how": "recorded",
+  "note": "absent keys predate ablation_infra; see the sbatch for the launch line"
+ },
+ "sampling": {
+  "value": {
+   "temperature": "1.0",
+   "harness_profile": "(unrecorded)",
+   "prompt_variant": "control",
+   "reflect_decision_policy": "explicit_update_or_no_update_v2"
+  },
+  "how": "recorded"
+ },
+ "telemetry_events": {
+  "value": {
+   "collect_start": 1,
+   "run_start": 15,
+   "run_fail": 5,
+   "run_done": 10,
+   "lane_done": 4,
+   "retry_done": 3,
+   "retry_fail": 2,
+   "collect_end": 1
+  },
+  "how": "recorded"
+ },
+ "logs": {
+  "value": {
+   "server_logs": [
+    "abl_srv0_79783.log",
+    "abl_srv1_79783.log"
+   ],
+   "slurm_out": [
+    "abl_qb_79783.log"
+   ],
+   "archived_in": "archives/traces/aux_llm_traces_logs.tar.zst, aux_slurm_out.tar.zst"
+  },
+  "how": "recorded"
+ },
+ "note": "p100 partition, not v100",
+ "config_all_fields": {
+  "condition": "baseline",
+  "confirmation_bias": "0.3",
+  "harness_profile": "(unrecorded)",
+  "infra.budget": "256",
+  "infra.gpu": "P100",
+  "infra.quant": "Q4_0",
+  "infra.reasoning": "on",
+  "infra.temp": "1.0",
+  "model": "gemma-4-E2B-it-Q8_0.gguf",
+  "model_path": "gemma-4-E2B-it-Q4_0.gguf",
+  "n_agents": "6",
+  "n_ctx_slot": "4096",
+  "n_rounds": "8",
+  "prompt_variant": "control",
+  "reflect_decision_policy": "explicit_update_or_no_update_v2",
+  "temperature": "1.0",
+  "total_slots": "6"
+ }
+}
