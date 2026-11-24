@@ -56,12 +56,11 @@ Traces dir: `llm/traces/collection/e4b_r256_t10`  ·  design: 100 seeds × 3 com
 
 ```json
 {
-  "backend": "llama-server (Vulkan, RTX 2060 SUPER 8GB, local :20434)",
+  "backend": "llama-server on SeaWulf 2x A100-80GB (arm-b-inference-bundle)",
   "n_parallel": 6,
   "ctx_size": 24576,
   "ctx_per_slot": 4096,
-  "cache_reuse": 256,
-  "ubatch": 512,
-  "flags": "--jinja --reasoning off --flash-attn on --cache-type-k/v q8_0"
+  "lanes": 4,
+  "flags": "reasoning=on;budget=256;quant=Q8_0;temp=1.0;harness=format"
 }
 ```

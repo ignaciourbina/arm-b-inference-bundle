@@ -34,6 +34,9 @@ SLURM := source /etc/profile.d/modules.sh >/dev/null 2>&1; module load slurm >/d
 # Analysis defaults -- override on the command line, e.g. make validate CELL=ms_E4B
 CELL   ?= armb_sota_r256_t10
 REPS   ?= 100
+# validator expectations; the defaults validate B2 (armb_sota_r256_t10)
+MODEL  ?= gemma-4-E2B-it-Q8_0.gguf
+BACKEND ?= seawulf-v100-r256-t10
 SEEDS  ?= 1 2 3 4 5
 CELLS  ?= armb_sota_r256_t10
 # score_ablation_cells.py's own defaults point at the old bundle layout
@@ -231,9 +234,13 @@ compare:  ## Is a comparison legitimate? make compare A=cell1 B=cell2 [TREATMENT
 	@test -n "$(A)" -a -n "$(B)" || { echo 'usage: make compare A=<cell> B=<cell> [TREATMENT="model,infra.quant"]'; exit 1; }
 	@TREATMENT="$(TREATMENT)" $(PY) slurm/provenance.py --compare $(A) $(B)
 
-validate:  ## Validator over a cell: make validate CELL=<name> [REPS=100]
+validate:  ## Validator over a cell: make validate CELL=<name> [REPS=100] [MODEL=x.gguf] [BACKEND=sig]
+	@mkdir -p pipeline/output/llm_collection/$(CELL)
 	$(PY) pipeline/validate_llm_collection.py \
-	  --traces-dir $(COLLECTION)/$(CELL) --prefix $(CELL) --reps $(REPS)
+	  --traces-dir $(COLLECTION)/$(CELL) --prefix $(CELL) --reps $(REPS) \
+	  --expect-model $(MODEL) --backend $(BACKEND) \
+	  --report pipeline/output/llm_collection/$(CELL)/validation-report.md \
+	  --manifest pipeline/output/llm_collection/$(CELL)/manifest.json
 
 score:  ## Paired scoring vs control: make score CELLS="a b" [CONTROL=x] [SEEDS="1 2 3"]
 	$(PY) llm/score_ablation_cells.py --cells $(CELLS) --seeds $(SEEDS) \

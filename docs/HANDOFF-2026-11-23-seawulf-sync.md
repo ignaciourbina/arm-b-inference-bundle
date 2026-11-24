@@ -161,3 +161,22 @@ its own hash. Branch: `cluster/2026-11-23-sync`; `main` was fast-forwarded to it
   record the `abl_q4_b256` model-label discrepancy.
 - `validate_llm_collection.py` needs a `--model` option.
 - `make score CELLS="armb_sota_r256_t10 e4b_r256_t10"` has not been run yet.
+
+## Addendum, same day: fixes after the NUC review
+
+The NUC merged the parent's sync branch (parent `main` @ 5f41481) and reported three
+issues. All three are fixed in the commit that follows 9f65821:
+
+- **Validator.** The bundle's `pipeline/validate_llm_collection.py` is now the parent
+  repo's copy (which has `--expect-model` and `--backend`), plus one new server
+  signature, `seawulf-a100-e4b-r256-t10`. `make validate` takes `MODEL=` and `BACKEND=`
+  and writes to `pipeline/output/llm_collection/<cell>/`, so it no longer overwrites the
+  committed top-level E2B report. Both 300-run cells re-validated: **PASS**.
+  - The earlier E4B report recorded the desktop RTX 2060 server signature. That was the
+    old validator's only signature; it is now correct.
+  - The top-level `pipeline/output/llm_collection/validation-report.md` (B2) still
+    carries that desktop signature. The corrected B2 report is in `armb_sota_r256_t10/`.
+- **Provenance.** `logs.archived_in` now names `aux_llm_traces_logs_1` / `_2`.
+- **Archive layout.** `e4b_r256_t10.tar.zst` was rebuilt to extract under
+  `e4b_r256_t10/`, like the other 29. Its sha256 changed, and the parent's copy is
+  updated to match.

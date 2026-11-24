@@ -49,30 +49,118 @@ COMPOSITIONS = ("polarized", "symmetric", "three_clusters")
 
 CONFIG_VARIABLE_FIELDS = {"seed", "composition"}
 
-# The Arm-B design (llm/townhall/runner.py config block).
-REQUIRED_CONFIG = {
+# The shared deliberation design — identical across arms by construction.
+# `model` is NOT here: it is the one required field that legitimately differs
+# between arms, so it is supplied per-run from --expect-model (Sprint 17).
+REQUIRED_CONFIG_BASE = {
     "topic": "minimum_wage_seattle",
     "topic_description": "Should Seattle implement a $15/hour minimum wage?",
     "n_agents": 6,
     "n_rounds": 8,
     "condition": "baseline",
-    "model": "gemma-4-E2B-it-Q8_0.gguf",
     "confirmation_bias": 0.3,
     "reflect_decision_policy": "explicit_update_or_no_update_v2",
 }
 
+# Arm-B's model, and the --expect-model default, so existing invocations keep
+# validating exactly as before.
+DEFAULT_EXPECT_MODEL = "gemma-4-E2B-it-Q8_0.gguf"
+
+
+def required_config(expect_model: str) -> dict:
+    return {**REQUIRED_CONFIG_BASE, "model": expect_model}
+
+
 # Server-side collection signature — NOT in the trace configs; recorded for
 # provenance (see llm/run_arm_b_local_collection.sh and the readiness addendum).
-SERVER_SIGNATURE = {
-    "backend": "llama-server (Vulkan, RTX 2060 SUPER 8GB, local :20434)",
-    "n_parallel": 6,
-    "ctx_size": 24576,
-    "ctx_per_slot": 4096,
-    "cache_reuse": 256,
-    "ubatch": 512,
-    "flags": "--jinja --reasoning off --flash-attn on --cache-type-k/v q8_0",
+SERVER_SIGNATURES = {
+    "local-llama": {
+        "backend": "llama-server (Vulkan, RTX 2060 SUPER 8GB, local :20434)",
+        "n_parallel": 6,
+        "ctx_size": 24576,
+        "ctx_per_slot": 4096,
+        "cache_reuse": 256,
+        "ubatch": 512,
+        "flags": "--jinja --reasoning off --flash-attn on --cache-type-k/v q8_0",
+    },
+    # Arm C (Sprint 17). A managed endpoint exposes no serving internals, so
+    # this records what is actually pinnable: the API surface and the region.
+    "bedrock": {
+        "backend": "AWS Bedrock Converse (managed, on-demand)",
+        "api": "bedrock-runtime.converse",
+        "region": "us-east-1",
+        "tool_transport": "native toolConfig / toolUse blocks",
+        "flags": "temperature=0.3, maxTokens>=2048 when tools present",
+    },
+    # B2 (ledger RUNS.md): SeaWulf V100 collection armb_sota_r256_t10, read
+    # from the traces' ablation_infra / server_props (Sprint 20 validation).
+    "seawulf-v100-r256-t10": {
+        "backend": "llama-server on SeaWulf V100 (arm-b-inference-bundle)",
+        "n_parallel": 6,
+        "ctx_size": 24576,
+        "ctx_per_slot": 4096,
+        "lanes": 4,
+        "flags": "reasoning=on;budget=256;quant=Q8_0;temp=1.0",
+    },
+    # e4b_r256_t10 (ledger RUNS.md): SeaWulf A100 collection, same server
+    # signature as B2 on different hardware (slurm/e4b_collection_a100.sbatch).
+    "seawulf-a100-e4b-r256-t10": {
+        "backend": "llama-server on SeaWulf 2x A100-80GB (arm-b-inference-bundle)",
+        "n_parallel": 6,
+        "ctx_size": 24576,
+        "ctx_per_slot": 4096,
+        "lanes": 4,
+        "flags": "reasoning=on;budget=256;quant=Q8_0;temp=1.0;harness=format",
+    },
+    # B3 (ledger RUNS.md): desktop Sprint-16 collection_main, refreshed
+    # (Jul-15) E2B weights, 12 slots; reasoning on (budget not stamped).
+    "local-llama-r0715-p12": {
+        "backend": "llama-server (Vulkan, RTX 2060 SUPER 8GB, local), refreshed r0715 weights",
+        "n_parallel": 12,
+        "ctx_per_slot": 4096,
+        "flags": "reasoning on (budget not stamped in traces; Sprint 16 plan: 128|256)",
+    },
+    # Sprint 21 demo: OpenAI gpt-6-luna through llm/openai_adapter.py
+    # (llm/run_openai_cloud_collection.sh). A managed endpoint: what is
+    # pinnable is the API surface and the request settings.
+    "openai-cloud-luna": {
+        "backend": "OpenAI Chat Completions (api.openai.com), default tier",
+        "model": "gpt-6-luna",
+        "flags": "reasoning_effort=none, temperature=0.3, strict tools "
+                 "(optional fields required-but-nullable), max_completion_tokens=512",
+    },
+    # Arm D (Sprint 19) on the NUC's Intel Arc iGPU. These are the launcher
+    # defaults (llm/run_arm_d_local_collection.sh, per MODEL_PROFILE); confirm
+    # or update n_parallel / ctx_per_slot / max_tokens / tool_call_format after
+    # QA, and pass --token-warn/--token-fail to match the per-slot context.
+    "k2-horizon-local-nuc": {
+        "backend": "llama-server (Vulkan, Intel Arc iGPU MTL, NUC, local :20434)",
+        "model": "IFM/K2-Horizon-7B-GGUF Q4_K_M @ 7a75dbd",
+        "n_parallel": 2,
+        "ctx_per_slot": 8192,
+        "cache_reuse": 256,
+        "ubatch": 512,
+        "max_tokens": 2048,
+        "flags": "--jinja --chat-template-kwargs reasoning_effort=low,tool_call_format=xml "
+                 "--flash-attn on --cache-type-k/v q8_0",
+    },
+    "inkling-local-nuc": {
+        "backend": "llama-server (Vulkan, Intel Arc iGPU MTL, NUC, local :20434)",
+        "model": "ggml-org/Inkling-2-Mini-GGUF IQ4_NL @ e8a2cec",
+        "n_parallel": 2,
+        "ctx_per_slot": 8192,
+        "cache_reuse": 256,
+        "ubatch": 512,
+        "max_tokens": 2048,
+        "flags": "--jinja --chat-template-kwargs reasoning_effort=low "
+                 "--flash-attn on --cache-type-k/v q8_0",
+    },
 }
 
+# Arm-B ceilings: the LOCAL llama-server per-slot context is 4096, so a run
+# approaching it is losing history. A managed endpoint has its own, far
+# larger window, so these are overridable per arm (--token-warn/--token-fail)
+# rather than global truths. Defaults keep Arm-B validation identical.
 TOKEN_WARN = 3600   # prompt+gen tokens; per-slot ctx is 4096
 TOKEN_FAIL = 4096
 FALLBACK_LIKERT = 50          # INFLUENCE_LIKERT_FALLBACK (llm/influence_scale.py)
@@ -91,16 +179,31 @@ def finite_in_unit(x: object) -> bool:
     return isinstance(x, (int, float)) and math.isfinite(x) and -1.0 <= x <= 1.0
 
 
+def recorded_prompt_variant(cfg: dict) -> str:
+    """The prompt variant a run was produced under.
+
+    The field was added in Sprint 15; the July Arm-B collection predates it and
+    ran the production prompt, so a missing key means `control`.
+    """
+    return cfg.get("prompt_variant", "control")
+
+
 def validate_record(rec: dict, comp: str, seed: int,
-                    errors: list[str], warns: list[str]) -> None:
+                    errors: list[str], warns: list[str],
+                    required_cfg: dict | None = None,
+                    expect_prompt_variant: str = "control") -> None:
     cfg = rec.get("config", {})
     if cfg.get("seed") != seed:
         errors.append(f"config.seed={cfg.get('seed')} != filename seed {seed}")
     if cfg.get("composition") != f"{comp}_n6":
         errors.append(f"config.composition={cfg.get('composition')} != {comp}_n6")
-    for k, v in REQUIRED_CONFIG.items():
+    for k, v in (required_cfg or required_config(DEFAULT_EXPECT_MODEL)).items():
         if cfg.get(k) != v:
             errors.append(f"config.{k}={cfg.get(k)!r} != required {v!r}")
+    variant = recorded_prompt_variant(cfg)
+    if variant != expect_prompt_variant:
+        errors.append(f"config.prompt_variant={variant!r} != expected "
+                      f"{expect_prompt_variant!r}")
 
     n_agents = cfg.get("n_agents", 6)
     n_rounds = cfg.get("n_rounds", 8)
@@ -141,8 +244,25 @@ def validate_record(rec: dict, comp: str, seed: int,
                     break
             if not finite_in_unit(a.get("opinion")):
                 errors.append(f"snapshot[{r_i}] agent {a.get('id')} opinion={a.get('opinion')} invalid")
-        if any(not a.get("weights") for a in snap):
-            errors.append(f"snapshot[{r_i}] has agent with empty repertoire")
+        empty_ids = [a.get("id") for a in snap if not a.get("weights")]
+        if empty_ids:
+            # A repertoire that empties and then refills is a transient state,
+            # not a corrupted record: the agent rejected every consideration it
+            # held that round and re-adopted later, and its opinion stays
+            # finite throughout. A repertoire still empty in the FINAL snapshot
+            # is fatal, because the run's end-state opinion is then undefined.
+            # Observed in Arm C (GLM-4.7-Flash) in 8/450 runs, always transient
+            # and never at the final snapshot; never observed in Arm B.
+            final_snap = snaps[-1]
+            still_empty = [a.get("id") for a in final_snap
+                           if a.get("id") in empty_ids and not a.get("weights")]
+            if still_empty:
+                errors.append(f"snapshot[{r_i}] agent(s) {still_empty} have an "
+                              f"empty repertoire that is STILL empty at the "
+                              f"final snapshot")
+            else:
+                warns.append(f"snapshot[{r_i}] agent(s) {empty_ids} transiently "
+                             f"emptied their repertoire (refilled by the end)")
 
     profiles = rec.get("profiles") or []
     if len(profiles) != n_agents:
@@ -158,7 +278,8 @@ def validate_record(rec: dict, comp: str, seed: int,
 
 
 def validate_llm_trace(trace_path: Path, errors: list[str],
-                       warns: list[str]) -> dict:
+                       warns: list[str], token_warn: int = TOKEN_WARN,
+                       token_fail: int = TOKEN_FAIL) -> dict:
     """Quality checks on the sibling LLM-call trace. Returns stats."""
     stats = {"n_calls": 0, "n_errors": 0, "max_tokens": 0, "n_loop_retries": 0,
              "fallback_share": 0.0}
@@ -181,10 +302,10 @@ def validate_llm_trace(trace_path: Path, errors: list[str],
             stats["n_loop_retries"] += 1
     if stats["n_errors"]:
         errors.append(f"{stats['n_errors']} LLM call(s) with recorded error")
-    if stats["max_tokens"] >= TOKEN_FAIL:
-        errors.append(f"max prompt+gen tokens {stats['max_tokens']} >= {TOKEN_FAIL} (per-slot ctx)")
-    elif stats["max_tokens"] > TOKEN_WARN:
-        warns.append(f"max prompt+gen tokens {stats['max_tokens']} > {TOKEN_WARN}")
+    if stats["max_tokens"] >= token_fail:
+        errors.append(f"max prompt+gen tokens {stats['max_tokens']} >= {token_fail} (ctx ceiling)")
+    elif stats["max_tokens"] > token_warn:
+        warns.append(f"max prompt+gen tokens {stats['max_tokens']} > {token_warn}")
     if not calls:
         warns.append("trace has 0 calls (resumed run? cross-check supervisor log)")
     return stats
@@ -217,6 +338,29 @@ def main() -> None:
     ap.add_argument("--traces-dir", type=Path,
                     default=BASE_DIR / "llm/traces/beta_local/arm_b_local_p6cache")
     ap.add_argument("--prefix", default="arm_b_local_p6cache")
+    ap.add_argument("--expect-model", default=DEFAULT_EXPECT_MODEL,
+                    help="config.model every run must report. Defaults to the "
+                         "Arm-B local model so existing invocations are "
+                         "unchanged; set it for a cloud arm (Sprint 17).")
+    ap.add_argument("--expect-prompt-variant", default="control",
+                    help="config.prompt_variant every run must report (a missing "
+                         "field counts as control, as in the July collection). "
+                         "Set it for a prompt-variant collection (Sprint 18).")
+    ap.add_argument("--backend", default="local-llama",
+                    choices=sorted(SERVER_SIGNATURES),
+                    help="which server signature to record as provenance")
+    ap.add_argument("--arm-label", default="Arm-B (AgenticLLMEngine)",
+                    help="report title prefix")
+    ap.add_argument("--token-warn", type=int, default=TOKEN_WARN,
+                    help="warn above this prompt+gen total (default: the local "
+                         "per-slot ctx budget)")
+    ap.add_argument("--token-fail", type=int, default=TOKEN_FAIL,
+                    help="fail at or above this prompt+gen total; raise it for "
+                         "a backend with a larger context window. NOTE: a "
+                         "managed endpoint rejects an over-context request "
+                         "outright rather than truncating silently, so on "
+                         "those backends this is drift detection and the "
+                         "zero-call-errors check is what proves no truncation")
     ap.add_argument("--reps", type=int, default=130)
     ap.add_argument("--allow-partial", action="store_true",
                     help="Missing cells are informational (pilot / mid-collection).")
@@ -227,6 +371,11 @@ def main() -> None:
     ap.add_argument("--manifest", type=Path,
                     default=BASE_DIR / "pipeline/output/llm_collection/manifest.json")
     args = ap.parse_args()
+
+    # Per-arm expectations. Defaults reproduce the Arm-B behaviour exactly, so
+    # existing invocations are unaffected by the Sprint-17 parameterisation.
+    req_cfg = required_config(args.expect_model)
+    server_sig = SERVER_SIGNATURES[args.backend]
 
     name_re = re.compile(
         rf"townhall_minimum_wage_seattle_{re.escape(args.prefix)}_baseline_"
@@ -279,10 +428,12 @@ def main() -> None:
                 errs.append(f"JSON parse error: {e}")
                 rec = None
             if rec is not None:
-                validate_record(rec, comp, seed, errs, warns)
+                validate_record(rec, comp, seed, errs, warns, req_cfg,
+                                expect_prompt_variant=args.expect_prompt_variant)
                 ts = name_re.match(p.name).group("ts")  # type: ignore[union-attr]
                 trace_name = p.name.replace(f"_{ts}.json", f"_trace_{ts}.json")
-                stats = validate_llm_trace(p.parent / trace_name, errs, warns)
+                stats = validate_llm_trace(p.parent / trace_name, errs, warns,
+                                           args.token_warn, args.token_fail)
                 stats["fallback_share"] = round(fallback_share(rec), 4)
                 if stats["fallback_share"] > FALLBACK_WARN_SHARE:
                     warns.append(f"evaluate fallback-likert share {stats['fallback_share']:.0%} "
@@ -322,11 +473,11 @@ def main() -> None:
     if ok and args.allow_partial and missing:
         verdict = "PASS (partial)"
     lines = [
-        "# Arm-B (AgenticLLMEngine) collection — validation report",
+        f"# {args.arm_label} collection — validation report",
         "",
         f"Traces dir: `{args.traces_dir}`  ·  design: {args.reps} seeds × "
         f"{len(COMPOSITIONS)} compositions (n=6, t=8, baseline, AgenticLLMEngine, "
-        f"{REQUIRED_CONFIG['model']})",
+        f"{req_cfg['model']})",
         "",
         f"## Verdict: **{verdict}**",
         "",
@@ -340,7 +491,7 @@ def main() -> None:
         f"| D. Config uniformity | {len(config_signatures)} distinct config signature(s) (must be 1) |",
         f"| E. LLM-call quality | {quality_totals['n_calls']} calls, "
         f"{quality_totals['n_errors']} errors, max prompt+gen={quality_totals['max_tokens']} tok "
-        f"(fail ≥{TOKEN_FAIL}), {quality_totals['n_loop_retries']} tool-loop retries, "
+        f"(fail ≥{args.token_fail}), {quality_totals['n_loop_retries']} tool-loop retries, "
         f"{len(high_fallback)} file(s) over fallback-share warn |",
     ]
     if mean_abs_shifts:
@@ -385,7 +536,7 @@ def main() -> None:
         lines += ["### Uniform engine config (collection-wide)", "", "```json",
                   json.dumps(json.loads(sig), indent=2), "```", ""]
     lines += ["### Recorded server signature (external provenance)", "", "```json",
-              json.dumps(SERVER_SIGNATURE, indent=2), "```", ""]
+              json.dumps(server_sig, indent=2), "```", ""]
 
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text("\n".join(lines))
@@ -394,8 +545,8 @@ def main() -> None:
         "traces_dir": str(args.traces_dir),
         "n_finals": n_files, "n_checkpoints": n_checkpoints, "n_llm_traces": n_traces,
         "design": {"reps": args.reps, "compositions": list(COMPOSITIONS),
-                   **REQUIRED_CONFIG},
-        "server_signature": SERVER_SIGNATURE,
+                   **req_cfg},
+        "server_signature": server_sig,
         "verdict": verdict,
         "log_scan": {k: v for k, v in log_counts.items()} if args.logs else None,
         "files": manifest_entries,

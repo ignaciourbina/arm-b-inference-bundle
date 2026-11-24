@@ -171,7 +171,7 @@ def record(cell):
         "logs": {"value": {"server_logs": srv_logs,
                            "slurm_out": [f"{p}_{j}.log" for j in jobs for p in prefix.split("/")
                                          if os.path.exists(f"/gpfs/scratch/{os.environ['USER']}/{p}_{j}.log")],
-                           "archived_in": "archives/traces/aux_llm_traces_logs.tar.zst, aux_slurm_out.tar.zst"}, "how": R},
+                           "archived_in": "archives/traces/aux_llm_traces_logs_1.tar.zst or _2 (by family), aux_slurm_out.tar.zst"}, "how": R},
         "note": note,
         "config_all_fields": cfg,
     }

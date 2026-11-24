@@ -112,7 +112,7 @@
    "slurm_out": [
     "scaling_law_79537.log"
    ],
-   "archived_in": "archives/traces/aux_llm_traces_logs.tar.zst, aux_slurm_out.tar.zst"
+   "archived_in": "archives/traces/aux_llm_traces_logs_1.tar.zst or _2 (by family), aux_slurm_out.tar.zst"
   },
   "how": "recorded"
  },
