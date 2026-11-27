@@ -1,9 +1,13 @@
 # Compressed collection traces
 
 One `tar.zst -19` archive per cell of `llm/traces/collection/` (STORAGE-POLICY
-§7, Tier 2): 30 cells. Each archive extracts to exactly the git-tracked files
+§7, Tier 2): 31 cells. Each archive extracts to exactly the git-tracked files
 of its cell (round-trip verified with sha256 at creation). `e4b_r256_t10` was
-added 2026-11-23 (300 runs, A100). The other 29 date from 2026-11-13.
+added 2026-11-23 (300 runs, A100). `e4b_r256_t10_s101` was added 2026-11-26:
+seeds 101-200 of the same collection (300 runs, A100 job 2456677, identical
+run config apart from the seed), kept as its own directory so no file is
+renamed. Read the two directories together for 200 seeds per room. The other
+29 date from 2026-11-13.
 
 The plain-JSON cells under `llm/traces/collection/` remain the working copy that
 every reader script uses; these archives are a compact, portable snapshot of them.
@@ -31,7 +35,7 @@ Per-cell provenance (jobs, GPU, build, model sha256, server args) is in
 
 This repo is public. Before archiving, every text file went through three
 replacements, applied in order: `/gpfs/home/<user>` → `~`, `/gpfs/scratch/<user>` →
-`$SCRATCH`, `<user>` → `$USER`. For the 2026-11-23 additions it was checked
+`$SCRATCH`, `<user>` → `$USER`. For the 2026-11-23 and 2026-11-26 additions it was checked
 file by file: scrubbed text equals the original with only those replacements.
 The unscrubbed originals are not in this repo.
 

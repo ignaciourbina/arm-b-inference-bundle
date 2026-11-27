@@ -39,7 +39,7 @@ export LLM_API_FLAVOR=openai LLM_MODEL="gemma-4-E4B-it-Q8_0.gguf"
 export LLM_TEMPERATURE=1.0
 export LLM_HARNESS_PROFILE=format
 export LLM_ABLATION_INFRA="reasoning=on;budget=256;quant=Q8_0;temp=1.0;harness=format;server=p6/24576;lanes=4;model=gemma-4-E4B-it-Q8_0.gguf;gpu=$GPU_NAME"
-CELL=e4b_r256_t10
+CELL="${CELL:-e4b_r256_t10}"
 # Seed ranges per GPU shard; defaults reproduce the first 300-run collection.
 # Extension to 200 seeds/room (2026-11-24): SEEDS_A=101-150 SEEDS_B=151-200 TARGET=600
 SEEDS_A="${SEEDS_A:-1-50}"; SEEDS_B="${SEEDS_B:-51-100}"
@@ -47,7 +47,7 @@ TARGET="${TARGET:-300}"
 CHAIN="${CHAIN:-1}"; MAX_CHAIN=3
 MD="$HOME/.cache/llama-models"
 mkdir -p llm/traces/logs
-count_finals() { find llm/traces/collection/$CELL -name 'townhall_*.json' ! -name '*_checkpoint.json' ! -name '*_trace_*' 2>/dev/null | wc -l; }
+count_finals() { find llm/traces/collection/$CELL/ -name 'townhall_*.json' ! -name '*_checkpoint.json' ! -name '*_trace_*' 2>/dev/null | wc -l; }
 N0=$(count_finals)
 echo "[chain $CHAIN/$MAX_CHAIN] node=$(hostname) job=$SLURM_JOB_ID gpus=$CUDA_VISIBLE_DEVICES finals_at_start=$N0 seeds=$SEEDS_A/$SEEDS_B target=$TARGET"
 echo "[harness] LLM_HARNESS_PROFILE=$LLM_HARNESS_PROFILE (explicit; pinned into every run)"

@@ -87,6 +87,12 @@ JOBS = {
     "e4b_r256_t10": ("e4b_collection_a100.sbatch", ["2433689"], "e4b_a100", "NVIDIA A100 80GB PCIe", "a100-02",
                      "V100 attempt (e4b_collection.sbatch, jobs 80816/81118/81119/81122, 2026-08-31) produced 0 runs: "
                      "every link aborted on the disk-space guard. All 300 runs come from A100 job 2433689"),
+    "e4b_r256_t10_s101": ("e4b_collection_a100.sbatch", ["2456677"], "e4b_a100", "NVIDIA A100 80GB PCIe", "a100-01",
+                          "seeds 101-200 of e4b_r256_t10, same run config apart from the seed; read the two directories "
+                          "together for 200 seeds/room. Submitted with CELL=e4b_r256_t10_s101 SEEDS_A=101-150 "
+                          "SEEDS_B=151-200 TARGET=300. First attempt, job 2452881 (2026-11-24), produced 0 runs: "
+                          "aborted on the disk-space guard (home 9.8 GB free < 10). Traces were written to $SCRATCH "
+                          "through a symlink, then scrubbed and moved into the tree"),
 }
 BUILD_OF_SBATCH = {}
 for f in glob.glob(f"{ROOT}/slurm/*.sbatch"):
@@ -152,7 +158,7 @@ def record(cell):
         "slurm_jobs": {"value": jobs, "how": C},
         "times_utc": {"value": {"first_event": iso(min(ts)), "last_event": iso(max(ts))} if ts else U,
                       "how": R if ts else U,
-                      "note": "orchestrator telemetry; SLURM submit/start/end are in sacct only for e4b_r256_t10"},
+                      "note": "orchestrator telemetry; SLURM submit/start/end are in sacct only for the A100 cells (e4b_r256_t10, e4b_r256_t10_s101)"},
         "sacct": {"value": SACCT.get(cell, U), "how": R if cell in SACCT else U},
         "node": {"value": node, "how": R if node != U else U},
         "gpu": {"value": cfg.get("infra.gpu", gpu), "how": R if "infra.gpu" in cfg or gpu != U else U},
@@ -178,14 +184,15 @@ def record(cell):
 
 
 SACCT = {}
-try:
-    out = subprocess.run(["sacct", "-j", "2433689", "-X", "-n", "-P", "-o",
-                          "jobid,jobname,partition,submit,start,end,elapsed,state,exitcode,nodelist,alloctres"],
-                         capture_output=True, text=True).stdout.strip()
-    if out:
-        SACCT["e4b_r256_t10"] = out
-except FileNotFoundError:
-    pass
+for _cell, _job in (("e4b_r256_t10", "2433689"), ("e4b_r256_t10_s101", "2456677")):
+    try:
+        out = subprocess.run(["sacct", "-j", _job, "-X", "-n", "-P", "-o",
+                              "jobid,jobname,partition,submit,start,end,elapsed,state,exitcode,nodelist,alloctres"],
+                             capture_output=True, text=True).stdout.strip()
+        if out:
+            SACCT[_cell] = out
+    except FileNotFoundError:
+        pass
 
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)

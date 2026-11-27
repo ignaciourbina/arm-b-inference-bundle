@@ -41,7 +41,7 @@ TARGET="${TARGET:-300}"
 CHAIN="${CHAIN:-1}"; MAX_CHAIN=3
 MD="$HOME/.cache/llama-models"
 mkdir -p llm/traces/logs
-count_finals() { find llm/traces/collection/$CELL -name 'townhall_*.json' ! -name '*_checkpoint.json' ! -name '*_trace_*' 2>/dev/null | wc -l; }
+count_finals() { find llm/traces/collection/$CELL/ -name 'townhall_*.json' ! -name '*_checkpoint.json' ! -name '*_trace_*' 2>/dev/null | wc -l; }
 N0=$(count_finals)
 echo "[chain $CHAIN/$MAX_CHAIN] node=$(hostname) job=$SLURM_JOB_ID gpus=$CUDA_VISIBLE_DEVICES finals_at_start=$N0 seeds=$SEEDS_A/$SEEDS_B target=$TARGET"
 echo "[harness] LLM_HARNESS_PROFILE=$LLM_HARNESS_PROFILE (explicit; pinned into every run)"

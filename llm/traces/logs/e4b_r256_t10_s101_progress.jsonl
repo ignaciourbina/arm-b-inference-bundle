@@ -1,0 +1,616 @@
+{"event": "collect_start", "grid": 150, "done": 0, "todo": 150, "lanes": 4, "bench_tok_s": 103.4, "harness_profile": "format", "ts": 1795613798.6}
+{"event": "collect_start", "grid": 150, "done": 0, "todo": 150, "lanes": 4, "bench_tok_s": 103.5, "harness_profile": "format", "ts": 1795613798.6}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 101, "ts": 1795613798.6}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 151, "ts": 1795613798.6}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 101, "ts": 1795613813.6}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 151, "ts": 1795613813.6}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 151, "ts": 1795613828.6}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 101, "ts": 1795613828.6}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 152, "ts": 1795613843.6}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 102, "ts": 1795613843.6}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 151, "wall_s": 2246.0, "ts": 1795616044.6}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 152, "ts": 1795616044.6}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 151, "wall_s": 2269.0, "ts": 1795616082.6}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 152, "ts": 1795616082.6}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 151, "wall_s": 2254.3, "ts": 1795616082.9}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 153, "ts": 1795616082.9}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 152, "wall_s": 2324.3, "ts": 1795616167.8}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 153, "ts": 1795616167.8}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 102, "wall_s": 2345.0, "ts": 1795616188.6}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 103, "ts": 1795616188.6}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 101, "wall_s": 2469.5, "ts": 1795616283.1}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 102, "ts": 1795616283.1}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 101, "wall_s": 2535.4, "ts": 1795616364.0}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 103, "ts": 1795616364.0}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 101, "wall_s": 2569.2, "ts": 1795616367.7}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 102, "ts": 1795616367.7}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 152, "wall_s": 2146.3, "ts": 1795618190.8}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 153, "ts": 1795618190.8}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 153, "wall_s": 2430.9, "ts": 1795618513.8}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 154, "ts": 1795618513.8}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 102, "wall_s": 2244.8, "ts": 1795618527.8}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 104, "ts": 1795618527.8}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 152, "wall_s": 2496.7, "ts": 1795618579.3}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 154, "ts": 1795618579.3}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 153, "wall_s": 2461.1, "ts": 1795618629.0}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 154, "ts": 1795618629.0}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 103, "wall_s": 2269.8, "ts": 1795618633.8}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 104, "ts": 1795618633.8}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 103, "wall_s": 2466.4, "ts": 1795618655.0}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 104, "ts": 1795618655.0}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 102, "wall_s": 2347.6, "ts": 1795618715.3}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 103, "ts": 1795618715.3}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 153, "wall_s": 2190.9, "ts": 1795620381.8}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 155, "ts": 1795620381.8}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 154, "wall_s": 2059.8, "ts": 1795620639.1}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 155, "ts": 1795620639.1}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 154, "wall_s": 2360.0, "ts": 1795620873.8}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 155, "ts": 1795620873.8}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 104, "wall_s": 2361.2, "ts": 1795620889.0}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 105, "ts": 1795620889.0}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 154, "wall_s": 2314.2, "ts": 1795620943.2}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 156, "ts": 1795620943.2}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 103, "wall_s": 2338.7, "ts": 1795621054.0}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 105, "ts": 1795621054.0}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 104, "wall_s": 2421.9, "ts": 1795621055.8}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 105, "ts": 1795621055.8}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 104, "wall_s": 2418.5, "ts": 1795621073.5}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 106, "ts": 1795621073.5}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 155, "wall_s": 2253.9, "ts": 1795622635.6}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 156, "ts": 1795622635.6}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 105, "wall_s": 2249.0, "ts": 1795623138.0}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 106, "ts": 1795623138.0}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 155, "wall_s": 2508.1, "ts": 1795623147.2}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 156, "ts": 1795623147.2}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 155, "wall_s": 2454.9, "ts": 1795623328.6}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 157, "ts": 1795623328.6}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 156, "wall_s": 2451.8, "ts": 1795623395.0}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 157, "ts": 1795623395.0}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 105, "wall_s": 2363.1, "ts": 1795623418.9}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 107, "ts": 1795623418.9}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 105, "wall_s": 2386.0, "ts": 1795623440.1}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 106, "ts": 1795623440.1}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 106, "wall_s": 2525.7, "ts": 1795623599.3}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 107, "ts": 1795623599.3}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 156, "wall_s": 2482.6, "ts": 1795625118.3}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 157, "ts": 1795625118.3}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 106, "wall_s": 2413.5, "ts": 1795625551.5}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 108, "ts": 1795625551.5}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 156, "wall_s": 2515.7, "ts": 1795625663.0}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 158, "ts": 1795625663.0}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 107, "wall_s": 2309.3, "ts": 1795625728.2}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 108, "ts": 1795625728.2}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 157, "wall_s": 2339.2, "ts": 1795625734.2}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 158, "ts": 1795625734.2}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 157, "wall_s": 2450.7, "ts": 1795625779.3}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 158, "ts": 1795625779.3}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 106, "wall_s": 2369.2, "ts": 1795625809.3}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 107, "ts": 1795625809.3}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 107, "wall_s": 2667.6, "ts": 1795626266.9}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 108, "ts": 1795626266.9}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 157, "wall_s": 2410.9, "ts": 1795627529.2}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 159, "ts": 1795627529.2}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 107, "wall_s": 2032.2, "ts": 1795627841.5}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 109, "ts": 1795627841.5}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 158, "wall_s": 2233.9, "ts": 1795627968.1}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 160, "ts": 1795627968.1}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 158, "wall_s": 2318.1, "ts": 1795627981.0}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 159, "ts": 1795627981.0}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 108, "wall_s": 2463.1, "ts": 1795628014.6}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 109, "ts": 1795628014.6}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 108, "wall_s": 2427.4, "ts": 1795628155.6}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 109, "ts": 1795628155.6}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 158, "wall_s": 2535.7, "ts": 1795628315.1}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 159, "ts": 1795628315.1}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 108, "wall_s": 2547.0, "ts": 1795628814.0}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 110, "ts": 1795628814.0}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 159, "wall_s": 2365.7, "ts": 1795629894.9}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 160, "ts": 1795629894.9}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 109, "wall_s": 2198.2, "ts": 1795630039.7}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 110, "ts": 1795630039.7}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 160, "wall_s": 2261.1, "ts": 1795630229.2}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 161, "ts": 1795630229.2}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 109, "wall_s": 2386.1, "ts": 1795630400.6}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 110, "ts": 1795630400.6}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 159, "wall_s": 2537.0, "ts": 1795630518.1}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 160, "ts": 1795630518.1}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 159, "wall_s": 2296.0, "ts": 1795630611.0}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 161, "ts": 1795630611.0}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 109, "wall_s": 2583.5, "ts": 1795630739.1}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 111, "ts": 1795630739.1}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 110, "wall_s": 2204.0, "ts": 1795631017.9}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 111, "ts": 1795631017.9}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 160, "wall_s": 2434.6, "ts": 1795632329.5}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 161, "ts": 1795632329.5}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 110, "wall_s": 2447.9, "ts": 1795632487.6}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 111, "ts": 1795632487.6}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 161, "wall_s": 2353.4, "ts": 1795632582.6}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 162, "ts": 1795632582.6}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 110, "wall_s": 2412.8, "ts": 1795632813.5}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 112, "ts": 1795632813.5}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 160, "wall_s": 2402.8, "ts": 1795632920.9}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 162, "ts": 1795632920.9}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 161, "wall_s": 2335.8, "ts": 1795632946.9}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 162, "ts": 1795632946.9}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 111, "wall_s": 2264.2, "ts": 1795633003.3}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 112, "ts": 1795633003.3}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 111, "wall_s": 2329.5, "ts": 1795633347.5}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 112, "ts": 1795633347.5}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 161, "wall_s": 2330.1, "ts": 1795634659.6}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 163, "ts": 1795634659.6}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 111, "wall_s": 2346.8, "ts": 1795634834.3}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 113, "ts": 1795634834.3}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 162, "wall_s": 2276.7, "ts": 1795634859.4}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 164, "ts": 1795634859.4}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 112, "wall_s": 2370.3, "ts": 1795635183.8}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 113, "ts": 1795635183.8}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 162, "wall_s": 2334.5, "ts": 1795635255.4}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 163, "ts": 1795635255.4}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 112, "wall_s": 2419.6, "ts": 1795635422.9}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 113, "ts": 1795635422.9}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 162, "wall_s": 2488.6, "ts": 1795635435.4}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 163, "ts": 1795635435.4}
+{"event": "run_fail", "lane": 3, "comp": "three_clusters_n6", "seed": 112, "wall_s": 2091.4, "rc": 1, "fail_log": "llm/traces/logs/FAIL_e4b_r256_t10_s101_baseline_three_clusters_n6_s112.log", "err_tail": "ri/projects/arm-b-inference-bundle/llm/harness.py\", line 786, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_04/reflect: no terminal tool within budget after 6 attempts; non-terminal tool calls so far: [{'name': 'no_update', 'args': {'\"unchanged\"': True}}, {'name': 'done_reflecting', 'args': {'\"done\"': True}}, {'name': 'no_update', 'args': {'\"unchanged\"': True}}, {'name': 'done_reflecting', 'args': {'\"done\"': True}}, {'name': 'done_reflecting', 'args': {'\"done\"': True}}]", "ts": 1795635438.8}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 114, "ts": 1795635438.8}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 163, "wall_s": 2386.8, "ts": 1795637046.4}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 164, "ts": 1795637046.4}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 113, "wall_s": 2354.2, "ts": 1795637188.6}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 114, "ts": 1795637188.6}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 164, "wall_s": 2470.5, "ts": 1795637329.8}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 165, "ts": 1795637329.8}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 113, "wall_s": 2360.9, "ts": 1795637544.6}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 114, "ts": 1795637544.6}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 163, "wall_s": 2129.2, "ts": 1795637564.7}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 165, "ts": 1795637564.7}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 113, "wall_s": 2346.0, "ts": 1795637769.0}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 115, "ts": 1795637769.0}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 163, "wall_s": 2605.9, "ts": 1795637861.3}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 164, "ts": 1795637861.3}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 114, "wall_s": 2461.1, "ts": 1795637899.9}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 115, "ts": 1795637899.9}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 114, "wall_s": 2311.7, "ts": 1795639500.3}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 115, "ts": 1795639500.3}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 164, "wall_s": 2531.6, "ts": 1795639578.0}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 165, "ts": 1795639578.0}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 114, "wall_s": 2105.3, "ts": 1795639649.9}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 116, "ts": 1795639649.9}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 165, "wall_s": 2141.8, "ts": 1795639706.5}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 166, "ts": 1795639706.5}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 165, "wall_s": 2393.9, "ts": 1795639723.8}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 166, "ts": 1795639723.8}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 115, "wall_s": 2430.5, "ts": 1795640199.5}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 116, "ts": 1795640199.5}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 115, "wall_s": 2526.9, "ts": 1795640426.8}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 116, "ts": 1795640426.8}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 164, "wall_s": 2617.9, "ts": 1795640479.1}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 166, "ts": 1795640479.1}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 115, "wall_s": 2264.4, "ts": 1795641764.7}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 117, "ts": 1795641764.7}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 165, "wall_s": 2319.8, "ts": 1795641897.8}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 167, "ts": 1795641897.8}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 166, "wall_s": 2194.3, "ts": 1795641918.1}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 168, "ts": 1795641918.1}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 116, "wall_s": 2363.7, "ts": 1795642013.6}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 117, "ts": 1795642013.6}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 166, "wall_s": 2538.6, "ts": 1795642245.1}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 167, "ts": 1795642245.1}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 116, "wall_s": 2229.9, "ts": 1795642429.3}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 117, "ts": 1795642429.3}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 166, "wall_s": 2282.0, "ts": 1795642761.1}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 167, "ts": 1795642761.1}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 116, "wall_s": 2576.2, "ts": 1795643003.1}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 118, "ts": 1795643003.1}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 117, "wall_s": 2298.2, "ts": 1795644062.9}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 118, "ts": 1795644062.9}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 167, "wall_s": 2313.0, "ts": 1795644210.9}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 168, "ts": 1795644210.9}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 168, "wall_s": 2368.1, "ts": 1795644286.2}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 169, "ts": 1795644286.2}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 117, "wall_s": 2501.6, "ts": 1795644515.2}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 118, "ts": 1795644515.2}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 167, "wall_s": 2407.9, "ts": 1795644653.0}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 169, "ts": 1795644653.0}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 117, "wall_s": 2379.7, "ts": 1795644809.0}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 119, "ts": 1795644809.0}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 118, "wall_s": 2224.6, "ts": 1795645227.7}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 119, "ts": 1795645227.7}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 167, "wall_s": 2481.3, "ts": 1795645242.4}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 168, "ts": 1795645242.4}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 118, "wall_s": 2432.8, "ts": 1795646495.6}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 119, "ts": 1795646495.6}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 169, "wall_s": 2289.8, "ts": 1795646576.0}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 170, "ts": 1795646576.0}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 168, "wall_s": 2410.6, "ts": 1795646621.5}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 169, "ts": 1795646621.5}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 118, "wall_s": 2215.1, "ts": 1795646730.3}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 120, "ts": 1795646730.3}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 169, "wall_s": 2332.7, "ts": 1795646985.7}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 170, "ts": 1795646985.7}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 119, "wall_s": 2238.9, "ts": 1795647047.9}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 120, "ts": 1795647047.9}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 119, "wall_s": 2216.9, "ts": 1795647444.7}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 120, "ts": 1795647444.7}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 168, "wall_s": 2264.6, "ts": 1795647507.1}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 170, "ts": 1795647507.1}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 169, "wall_s": 2106.6, "ts": 1795648728.1}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 171, "ts": 1795648728.1}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 119, "wall_s": 2377.9, "ts": 1795648873.5}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 121, "ts": 1795648873.5}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 170, "wall_s": 2349.4, "ts": 1795648925.4}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 172, "ts": 1795648925.4}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 120, "wall_s": 2199.6, "ts": 1795648929.8}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 121, "ts": 1795648929.8}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 170, "wall_s": 2403.9, "ts": 1795649389.6}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 171, "ts": 1795649389.6}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 120, "wall_s": 2361.7, "ts": 1795649409.7}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 121, "ts": 1795649409.7}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 170, "wall_s": 2392.8, "ts": 1795649899.9}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 171, "ts": 1795649899.9}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 120, "wall_s": 2496.8, "ts": 1795649941.5}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 122, "ts": 1795649941.5}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 172, "wall_s": 2204.0, "ts": 1795651129.3}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 173, "ts": 1795651129.3}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 171, "wall_s": 2410.4, "ts": 1795651138.5}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 172, "ts": 1795651138.5}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 121, "wall_s": 2332.5, "ts": 1795651262.4}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 122, "ts": 1795651262.4}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 121, "wall_s": 2583.9, "ts": 1795651457.4}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 122, "ts": 1795651457.4}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 171, "wall_s": 2132.9, "ts": 1795651522.5}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 173, "ts": 1795651522.5}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 121, "wall_s": 2451.0, "ts": 1795651860.7}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 123, "ts": 1795651860.7}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 171, "wall_s": 2297.9, "ts": 1795652197.8}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 172, "ts": 1795652197.8}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 122, "wall_s": 2262.3, "ts": 1795652203.8}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 123, "ts": 1795652203.8}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 172, "wall_s": 2239.4, "ts": 1795653378.0}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 173, "ts": 1795653378.0}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 173, "wall_s": 2424.2, "ts": 1795653553.6}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 174, "ts": 1795653553.6}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 122, "wall_s": 2452.6, "ts": 1795653715.0}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 124, "ts": 1795653715.0}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 123, "wall_s": 2181.0, "ts": 1795654041.7}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 124, "ts": 1795654041.7}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 173, "wall_s": 2541.6, "ts": 1795654064.1}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 174, "ts": 1795654064.1}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 122, "wall_s": 2663.7, "ts": 1795654121.1}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 123, "ts": 1795654121.1}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 123, "wall_s": 2229.9, "ts": 1795654433.7}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 124, "ts": 1795654433.7}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 172, "wall_s": 2501.2, "ts": 1795654699.1}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 174, "ts": 1795654699.1}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 173, "wall_s": 2411.4, "ts": 1795655789.4}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 175, "ts": 1795655789.4}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 174, "wall_s": 2351.1, "ts": 1795655904.6}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 176, "ts": 1795655904.7}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 124, "wall_s": 2411.8, "ts": 1795656126.8}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 125, "ts": 1795656126.8}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 123, "wall_s": 2193.5, "ts": 1795656314.6}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 125, "ts": 1795656314.6}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 174, "wall_s": 2525.3, "ts": 1795656589.4}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 175, "ts": 1795656589.4}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 124, "wall_s": 2687.7, "ts": 1795656729.4}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 125, "ts": 1795656729.4}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 174, "wall_s": 2151.9, "ts": 1795656850.9}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 175, "ts": 1795656850.9}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 124, "wall_s": 2446.8, "ts": 1795656880.5}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 126, "ts": 1795656880.5}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 175, "wall_s": 2287.5, "ts": 1795658076.9}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 176, "ts": 1795658076.9}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 176, "wall_s": 2306.9, "ts": 1795658211.6}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 177, "ts": 1795658211.6}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 125, "wall_s": 2200.8, "ts": 1795658515.4}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 126, "ts": 1795658515.4}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 125, "wall_s": 2568.4, "ts": 1795658695.2}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 126, "ts": 1795658695.2}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 175, "wall_s": 2495.0, "ts": 1795659084.4}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 177, "ts": 1795659084.4}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 126, "wall_s": 2229.5, "ts": 1795659110.0}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 127, "ts": 1795659110.0}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 125, "wall_s": 2576.5, "ts": 1795659306.0}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 127, "ts": 1795659306.0}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 175, "wall_s": 2504.1, "ts": 1795659355.1}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 176, "ts": 1795659355.1}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 176, "wall_s": 2346.0, "ts": 1795660422.9}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 177, "ts": 1795660422.9}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 177, "wall_s": 2407.4, "ts": 1795660619.0}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 178, "ts": 1795660619.0}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 126, "wall_s": 2558.3, "ts": 1795661073.7}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 127, "ts": 1795661073.7}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 126, "wall_s": 2387.1, "ts": 1795661082.3}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 128, "ts": 1795661082.3}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 127, "wall_s": 2036.3, "ts": 1795661342.3}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 128, "ts": 1795661342.3}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 177, "wall_s": 2281.3, "ts": 1795661365.7}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 178, "ts": 1795661365.7}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 127, "wall_s": 2519.5, "ts": 1795661629.5}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 128, "ts": 1795661629.5}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 176, "wall_s": 2384.3, "ts": 1795661739.4}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 178, "ts": 1795661739.4}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 178, "wall_s": 2288.2, "ts": 1795662907.2}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 180, "ts": 1795662907.2}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 177, "wall_s": 2608.9, "ts": 1795663031.9}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 179, "ts": 1795663031.9}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 127, "wall_s": 2105.5, "ts": 1795663179.2}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 129, "ts": 1795663179.2}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 128, "wall_s": 2233.1, "ts": 1795663315.3}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 129, "ts": 1795663315.3}
+{"event": "run_fail", "lane": 2, "comp": "symmetric_n6", "seed": 178, "wall_s": 2503.1, "rc": 1, "fail_log": "llm/traces/logs/FAIL_e4b_r256_t10_s101_baseline_symmetric_n6_s178.log", "err_tail": "  File \"~/projects/arm-b-inference-bundle/llm/harness.py\", line 720, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_05/reflect: no parseable tool call after 5 attempts; last content: 'tool_code: no_update(unchanged=true, reasoning=\"No new arguments or context provided to warrant a ch'", "ts": 1795663868.9}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 179, "ts": 1795663868.9}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 128, "wall_s": 2538.7, "ts": 1795663881.0}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 129, "ts": 1795663881.0}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 128, "wall_s": 2319.5, "ts": 1795663949.0}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 130, "ts": 1795663949.0}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 178, "wall_s": 2445.7, "ts": 1795664185.1}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 179, "ts": 1795664185.1}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 180, "wall_s": 2186.4, "ts": 1795665093.7}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 181, "ts": 1795665093.7}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 129, "wall_s": 2186.6, "ts": 1795665365.8}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 130, "ts": 1795665365.8}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 179, "wall_s": 2362.8, "ts": 1795665394.7}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 180, "ts": 1795665394.7}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 129, "wall_s": 2481.6, "ts": 1795665796.9}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 130, "ts": 1795665796.9}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 129, "wall_s": 2328.8, "ts": 1795666209.9}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 131, "ts": 1795666209.9}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 179, "wall_s": 2469.9, "ts": 1795666338.8}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 181, "ts": 1795666338.8}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 130, "wall_s": 2398.8, "ts": 1795666347.8}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 131, "ts": 1795666347.8}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 179, "wall_s": 2447.9, "ts": 1795666633.0}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 180, "ts": 1795666633.0}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 181, "wall_s": 2444.2, "ts": 1795667537.9}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 182, "ts": 1795667537.9}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 180, "wall_s": 2381.4, "ts": 1795667776.0}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 181, "ts": 1795667776.0}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 130, "wall_s": 2479.8, "ts": 1795667845.6}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 131, "ts": 1795667845.6}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 130, "wall_s": 2494.7, "ts": 1795668291.6}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 132, "ts": 1795668291.6}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 131, "wall_s": 2243.3, "ts": 1795668453.2}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 132, "ts": 1795668453.2}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 181, "wall_s": 2374.0, "ts": 1795668712.7}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 182, "ts": 1795668712.7}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 131, "wall_s": 2499.9, "ts": 1795668847.7}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 132, "ts": 1795668847.7}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 180, "wall_s": 2440.9, "ts": 1795669073.9}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 182, "ts": 1795669073.9}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 182, "wall_s": 2290.5, "ts": 1795669828.3}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 184, "ts": 1795669828.3}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 181, "wall_s": 2426.0, "ts": 1795670202.0}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 183, "ts": 1795670202.0}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 131, "wall_s": 2517.2, "ts": 1795670362.8}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 133, "ts": 1795670362.8}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 132, "wall_s": 2421.6, "ts": 1795670713.1}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 133, "ts": 1795670713.2}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 132, "wall_s": 2446.1, "ts": 1795670899.2}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 133, "ts": 1795670899.2}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 132, "wall_s": 2341.2, "ts": 1795671188.8}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 134, "ts": 1795671188.9}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 182, "wall_s": 2352.1, "ts": 1795671426.0}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 183, "ts": 1795671426.0}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 182, "wall_s": 2738.7, "ts": 1795671451.4}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 183, "ts": 1795671451.4}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 184, "wall_s": 2222.7, "ts": 1795672051.1}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 185, "ts": 1795672051.1}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 183, "wall_s": 2266.8, "ts": 1795672468.9}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 184, "ts": 1795672468.9}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 133, "wall_s": 2329.7, "ts": 1795672692.5}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 134, "ts": 1795672692.5}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 133, "wall_s": 2399.7, "ts": 1795673112.9}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 134, "ts": 1795673112.9}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 133, "wall_s": 2538.5, "ts": 1795673437.7}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 135, "ts": 1795673437.7}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 134, "wall_s": 2317.4, "ts": 1795673506.2}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 135, "ts": 1795673506.2}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 183, "wall_s": 2101.2, "ts": 1795673552.6}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 185, "ts": 1795673552.6}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 183, "wall_s": 2365.8, "ts": 1795673791.8}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 184, "ts": 1795673791.8}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 185, "wall_s": 2485.1, "ts": 1795674536.1}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 186, "ts": 1795674536.1}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 184, "wall_s": 2624.5, "ts": 1795675093.3}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 185, "ts": 1795675093.3}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 134, "wall_s": 2628.3, "ts": 1795675320.8}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 135, "ts": 1795675320.8}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 134, "wall_s": 2357.9, "ts": 1795675470.8}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 136, "ts": 1795675470.8}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 135, "wall_s": 2289.8, "ts": 1795675796.0}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 136, "ts": 1795675796.0}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 185, "wall_s": 2402.3, "ts": 1795675955.0}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 186, "ts": 1795675955.0}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 135, "wall_s": 2557.7, "ts": 1795675995.4}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 136, "ts": 1795675995.4}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 184, "wall_s": 2381.0, "ts": 1795676172.8}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 186, "ts": 1795676172.8}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 186, "wall_s": 2302.2, "ts": 1795676838.4}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 188, "ts": 1795676838.4}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 185, "wall_s": 2249.0, "ts": 1795677342.3}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 187, "ts": 1795677342.3}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 135, "wall_s": 2272.4, "ts": 1795677593.3}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 137, "ts": 1795677593.3}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 136, "wall_s": 2081.8, "ts": 1795677877.8}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 138, "ts": 1795677877.8}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 136, "wall_s": 2508.8, "ts": 1795677979.7}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 137, "ts": 1795677979.7}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 136, "wall_s": 2453.0, "ts": 1795678448.4}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 137, "ts": 1795678448.4}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 186, "wall_s": 2284.9, "ts": 1795678457.7}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 187, "ts": 1795678457.7}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 186, "wall_s": 2592.2, "ts": 1795678547.2}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 187, "ts": 1795678547.2}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 188, "wall_s": 2292.6, "ts": 1795679131.0}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 189, "ts": 1795679131.0}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 187, "wall_s": 2357.8, "ts": 1795679700.1}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 188, "ts": 1795679700.1}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 137, "wall_s": 2202.5, "ts": 1795679795.8}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 138, "ts": 1795679795.8}
+{"event": "run_fail", "lane": 3, "comp": "polarized_n6", "seed": 138, "wall_s": 2544.1, "rc": 1, "fail_log": "llm/traces/logs/FAIL_e4b_r256_t10_s101_baseline_polarized_n6_s138.log", "err_tail": "| llm.harness.HookLoopError: TH_05/reflect: no terminal tool within budget after 6 attempts; non-terminal tool calls so far: [{'name': 'no_update', 'args': {'\"unchanged\"': True, '\"reasoning\"': None}}, {'name': 'no_update', 'args': {'\"reasoning\"': None, '\"unchanged\"': True}}, {'name': 'no_update', 'args': {'\"reasoning\"': None, '\"unchanged\"': True}}, {'name': 'no_update', 'args': {'\"reasoning\"': None, '\"unchanged\"': True}}, {'name': 'no_update', 'args': {'\"reasoning\"': None, '\"unchanged\"': True}}]", "ts": 1795680421.9}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 139, "ts": 1795680422.0}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 137, "wall_s": 2579.1, "ts": 1795680558.7}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 138, "ts": 1795680558.7}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 137, "wall_s": 2412.8, "ts": 1795680861.2}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 139, "ts": 1795680861.2}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 187, "wall_s": 2412.4, "ts": 1795680870.1}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 188, "ts": 1795680870.1}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 187, "wall_s": 2484.4, "ts": 1795681031.6}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 189, "ts": 1795681031.6}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 189, "wall_s": 2539.6, "ts": 1795681670.6}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 190, "ts": 1795681670.6}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 188, "wall_s": 2207.9, "ts": 1795681908.0}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 189, "ts": 1795681908.0}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 138, "wall_s": 2343.3, "ts": 1795682139.0}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 139, "ts": 1795682139.0}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 139, "wall_s": 2478.1, "ts": 1795682900.0}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 140, "ts": 1795682900.0}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 138, "wall_s": 2535.6, "ts": 1795683094.4}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 140, "ts": 1795683094.4}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 188, "wall_s": 2403.4, "ts": 1795683273.5}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 190, "ts": 1795683273.5}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 189, "wall_s": 2282.4, "ts": 1795683314.0}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 190, "ts": 1795683314.0}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 139, "wall_s": 2460.0, "ts": 1795683321.2}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 140, "ts": 1795683321.2}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 190, "wall_s": 2222.1, "ts": 1795683892.7}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 192, "ts": 1795683892.7}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 189, "wall_s": 2326.1, "ts": 1795684234.1}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 191, "ts": 1795684234.1}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 139, "wall_s": 2376.1, "ts": 1795684515.1}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 141, "ts": 1795684515.1}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 140, "wall_s": 2261.5, "ts": 1795685161.5}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 142, "ts": 1795685161.5}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 140, "wall_s": 2259.9, "ts": 1795685354.3}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 141, "ts": 1795685354.3}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 190, "wall_s": 2333.8, "ts": 1795685607.3}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 191, "ts": 1795685607.3}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 140, "wall_s": 2296.4, "ts": 1795685617.6}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 141, "ts": 1795685617.6}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 190, "wall_s": 2603.0, "ts": 1795685917.1}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 191, "ts": 1795685917.1}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 192, "wall_s": 2294.0, "ts": 1795686186.7}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 193, "ts": 1795686186.7}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 191, "wall_s": 2538.7, "ts": 1795686772.8}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 192, "ts": 1795686772.8}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 141, "wall_s": 2539.4, "ts": 1795687054.5}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 142, "ts": 1795687054.5}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 142, "wall_s": 2172.9, "ts": 1795687334.4}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 143, "ts": 1795687334.4}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 141, "wall_s": 2511.1, "ts": 1795687865.4}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 142, "ts": 1795687865.4}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 191, "wall_s": 2288.0, "ts": 1795687895.3}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 192, "ts": 1795687895.3}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 141, "wall_s": 2296.9, "ts": 1795687914.5}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 143, "ts": 1795687914.5}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 191, "wall_s": 2448.5, "ts": 1795688365.5}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 193, "ts": 1795688365.5}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 193, "wall_s": 2395.8, "ts": 1795688582.5}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 194, "ts": 1795688582.5}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 192, "wall_s": 2436.3, "ts": 1795689209.1}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 193, "ts": 1795689209.1}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 142, "wall_s": 2529.6, "ts": 1795689584.2}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 143, "ts": 1795689584.2}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 143, "wall_s": 2435.6, "ts": 1795689770.0}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 144, "ts": 1795689770.0}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 143, "wall_s": 2189.1, "ts": 1795690103.5}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 144, "ts": 1795690103.5}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 142, "wall_s": 2357.3, "ts": 1795690222.7}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 144, "ts": 1795690222.7}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 192, "wall_s": 2398.0, "ts": 1795690293.3}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 194, "ts": 1795690293.3}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 193, "wall_s": 2272.2, "ts": 1795690637.7}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 194, "ts": 1795690637.7}
+{"event": "run_fail", "lane": 1, "comp": "polarized_n6", "seed": 144, "wall_s": 577.4, "rc": 1, "fail_log": "llm/traces/logs/FAIL_e4b_r256_t10_s101_baseline_polarized_n6_s144.log", "err_tail": "nri/projects/arm-b-inference-bundle/llm/harness.py\", line 786, in _run_loop |     raise HookLoopError( | llm.harness.HookLoopError: TH_00/reflect: no terminal tool within budget after 6 attempts; non-terminal tool calls so far: [{'name': 'no_update', 'args': {'\"unchanged\"': True}}, {'name': 'done_reflecting', 'args': {'\"done\"': True}}, {'name': 'no_update', 'args': {'\"unchanged\"': True}}, {'name': 'no_update', 'args': {'\"unchanged\"': True}}, {'name': 'done_reflecting', 'args': {'\"done\"': True}}]", "ts": 1795690800.2}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 145, "ts": 1795690800.2}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 194, "wall_s": 2248.7, "ts": 1795690831.3}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 196, "ts": 1795690831.3}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 193, "wall_s": 2528.8, "ts": 1795691737.9}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 195, "ts": 1795691737.9}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 143, "wall_s": 2330.4, "ts": 1795691914.6}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 145, "ts": 1795691914.6}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 144, "wall_s": 2495.3, "ts": 1795692265.3}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 146, "ts": 1795692265.3}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 194, "wall_s": 2265.5, "ts": 1795692558.8}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 195, "ts": 1795692558.8}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 144, "wall_s": 2482.4, "ts": 1795692586.0}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 145, "ts": 1795692586.0}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 194, "wall_s": 2398.4, "ts": 1795693036.1}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 195, "ts": 1795693036.1}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 196, "wall_s": 2327.0, "ts": 1795693158.3}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 197, "ts": 1795693158.3}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 145, "wall_s": 2584.2, "ts": 1795693384.4}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 146, "ts": 1795693384.4}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 195, "wall_s": 2253.2, "ts": 1795693991.2}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 196, "ts": 1795693991.2}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 145, "wall_s": 2275.7, "ts": 1795694190.3}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 146, "ts": 1795694190.3}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 146, "wall_s": 2435.4, "ts": 1795694700.7}
+{"event": "run_start", "lane": 3, "comp": "symmetric_n6", "seed": 147, "ts": 1795694700.7}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 145, "wall_s": 2368.0, "ts": 1795694954.0}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 147, "ts": 1795694954.0}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 195, "wall_s": 2398.2, "ts": 1795694957.0}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 196, "ts": 1795694957.0}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 195, "wall_s": 2443.9, "ts": 1795695480.0}
+{"event": "run_start", "lane": 2, "comp": "polarized_n6", "seed": 197, "ts": 1795695480.0}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 146, "wall_s": 2242.2, "ts": 1795695626.6}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 148, "ts": 1795695626.6}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 197, "wall_s": 2475.4, "ts": 1795695633.7}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 198, "ts": 1795695633.7}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 196, "wall_s": 2423.1, "ts": 1795696414.3}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 197, "ts": 1795696414.3}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 146, "wall_s": 2262.7, "ts": 1795696452.9}
+{"event": "run_start", "lane": 0, "comp": "three_clusters_n6", "seed": 147, "ts": 1795696452.9}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 147, "wall_s": 2165.6, "ts": 1795697119.5}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 148, "ts": 1795697119.5}
+{"event": "run_done", "lane": 3, "comp": "symmetric_n6", "seed": 147, "wall_s": 2427.8, "ts": 1795697128.5}
+{"event": "run_start", "lane": 3, "comp": "three_clusters_n6", "seed": 148, "ts": 1795697128.5}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 196, "wall_s": 2612.3, "ts": 1795697569.3}
+{"event": "run_start", "lane": 1, "comp": "polarized_n6", "seed": 198, "ts": 1795697569.3}
+{"event": "run_done", "lane": 2, "comp": "polarized_n6", "seed": 197, "wall_s": 2386.5, "ts": 1795697866.4}
+{"event": "run_start", "lane": 2, "comp": "symmetric_n6", "seed": 198, "ts": 1795697866.4}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 198, "wall_s": 2400.4, "ts": 1795698034.1}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 200, "ts": 1795698034.1}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 148, "wall_s": 2458.9, "ts": 1795698085.4}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 149, "ts": 1795698085.4}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 147, "wall_s": 2300.0, "ts": 1795698753.0}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 149, "ts": 1795698753.0}
+{"event": "run_done", "lane": 0, "comp": "three_clusters_n6", "seed": 197, "wall_s": 2341.0, "ts": 1795698755.3}
+{"event": "run_start", "lane": 0, "comp": "polarized_n6", "seed": 199, "ts": 1795698755.3}
+{"event": "run_done", "lane": 3, "comp": "three_clusters_n6", "seed": 148, "wall_s": 2252.2, "ts": 1795699380.7}
+{"event": "run_start", "lane": 3, "comp": "polarized_n6", "seed": 150, "ts": 1795699380.7}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 148, "wall_s": 2501.8, "ts": 1795699621.4}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 149, "ts": 1795699621.4}
+{"event": "run_done", "lane": 1, "comp": "polarized_n6", "seed": 198, "wall_s": 2484.9, "ts": 1795700054.2}
+{"event": "run_start", "lane": 1, "comp": "symmetric_n6", "seed": 199, "ts": 1795700054.2}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 200, "wall_s": 2152.5, "ts": 1795700186.5}
+{"event": "lane_done", "lane": 3, "ts": 1795700186.5}
+{"event": "run_done", "lane": 2, "comp": "symmetric_n6", "seed": 198, "wall_s": 2425.9, "ts": 1795700292.3}
+{"event": "run_start", "lane": 2, "comp": "three_clusters_n6", "seed": 199, "ts": 1795700292.3}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 149, "wall_s": 2339.9, "ts": 1795700425.4}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 150, "ts": 1795700425.4}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 199, "wall_s": 2247.7, "ts": 1795701003.0}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 200, "ts": 1795701003.0}
+{"event": "run_done", "lane": 0, "comp": "polarized_n6", "seed": 149, "wall_s": 2450.2, "ts": 1795701203.2}
+{"event": "run_start", "lane": 0, "comp": "symmetric_n6", "seed": 150, "ts": 1795701203.2}
+{"event": "run_done", "lane": 3, "comp": "polarized_n6", "seed": 150, "wall_s": 2458.5, "ts": 1795701839.2}
+{"event": "lane_done", "lane": 3, "ts": 1795701839.2}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 199, "wall_s": 1681.2, "ts": 1795701973.5}
+{"event": "lane_done", "lane": 2, "ts": 1795701973.5}
+{"event": "run_done", "lane": 1, "comp": "symmetric_n6", "seed": 199, "wall_s": 1922.1, "ts": 1795701976.3}
+{"event": "run_start", "lane": 1, "comp": "three_clusters_n6", "seed": 200, "ts": 1795701976.3}
+{"event": "run_done", "lane": 2, "comp": "three_clusters_n6", "seed": 149, "wall_s": 2484.8, "ts": 1795702106.2}
+{"event": "lane_done", "lane": 2, "ts": 1795702106.2}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 150, "wall_s": 2016.0, "ts": 1795702441.4}
+{"event": "lane_done", "lane": 1, "ts": 1795702441.4}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 200, "wall_s": 1484.6, "ts": 1795702487.6}
+{"event": "lane_done", "lane": 0, "ts": 1795702487.6}
+{"event": "run_done", "lane": 0, "comp": "symmetric_n6", "seed": 150, "wall_s": 1466.7, "ts": 1795702669.9}
+{"event": "lane_done", "lane": 0, "ts": 1795702669.9}
+{"event": "retry_done", "comp": "three_clusters_n6", "seed": 112, "rc": 0, "err_tail": "", "ts": 1795702831.0}
+{"event": "retry_done", "comp": "polarized_n6", "seed": 138, "rc": 0, "err_tail": "", "ts": 1795702923.5}
+{"event": "run_done", "lane": 1, "comp": "three_clusters_n6", "seed": 200, "wall_s": 950.7, "ts": 1795702927.0}
+{"event": "lane_done", "lane": 1, "ts": 1795702927.0}
+{"event": "retry_done", "comp": "symmetric_n6", "seed": 178, "rc": 0, "err_tail": "", "ts": 1795703029.3}
+{"event": "collect_end", "done_total": 299, "failures": 0, "hours": 24.79, "paused": false, "ts": 1795703029.3}
+{"event": "retry_done", "comp": "polarized_n6", "seed": 144, "rc": 0, "err_tail": "", "ts": 1795703470.6}
+{"event": "collect_end", "done_total": 300, "failures": 0, "hours": 24.91, "paused": false, "ts": 1795703470.6}
