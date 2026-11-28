@@ -93,6 +93,12 @@ JOBS = {
                           "SEEDS_B=151-200 TARGET=300. First attempt, job 2452881 (2026-11-24), produced 0 runs: "
                           "aborted on the disk-space guard (home 9.8 GB free < 10). Traces were written to $SCRATCH "
                           "through a symlink, then scrubbed and moved into the tree"),
+    "armb_sota_r256_t10_a100": ("b2_collection_a100.sbatch", ["2456679"], "b2_a100", "NVIDIA A100 80GB PCIe", "a100-01",
+                                "seeds 101-200 of B2 (armb_sota_r256_t10, V100, seeds 1-100) on A100: same run config "
+                                "apart from the seed, the A100 gpu tag and an explicit harness_profile=strict. Read the "
+                                "two directories together for 200 seeds/room. First attempt, job 2452882 (2026-11-24), "
+                                "produced 0 runs: aborted on the disk-space guard (home 9.8 GB free < 10). Traces were "
+                                "written to $SCRATCH through a symlink, then scrubbed and moved into the tree"),
 }
 BUILD_OF_SBATCH = {}
 for f in glob.glob(f"{ROOT}/slurm/*.sbatch"):
@@ -158,7 +164,7 @@ def record(cell):
         "slurm_jobs": {"value": jobs, "how": C},
         "times_utc": {"value": {"first_event": iso(min(ts)), "last_event": iso(max(ts))} if ts else U,
                       "how": R if ts else U,
-                      "note": "orchestrator telemetry; SLURM submit/start/end are in sacct only for the A100 cells (e4b_r256_t10, e4b_r256_t10_s101)"},
+                      "note": "orchestrator telemetry; SLURM submit/start/end are in sacct only for the A100 cells (e4b_r256_t10, e4b_r256_t10_s101, armb_sota_r256_t10_a100)"},
         "sacct": {"value": SACCT.get(cell, U), "how": R if cell in SACCT else U},
         "node": {"value": node, "how": R if node != U else U},
         "gpu": {"value": cfg.get("infra.gpu", gpu), "how": R if "infra.gpu" in cfg or gpu != U else U},
@@ -184,7 +190,8 @@ def record(cell):
 
 
 SACCT = {}
-for _cell, _job in (("e4b_r256_t10", "2433689"), ("e4b_r256_t10_s101", "2456677")):
+for _cell, _job in (("e4b_r256_t10", "2433689"), ("e4b_r256_t10_s101", "2456677"),
+                    ("armb_sota_r256_t10_a100", "2456679")):
     try:
         out = subprocess.run(["sacct", "-j", _job, "-X", "-n", "-P", "-o",
                               "jobid,jobname,partition,submit,start,end,elapsed,state,exitcode,nodelist,alloctres"],

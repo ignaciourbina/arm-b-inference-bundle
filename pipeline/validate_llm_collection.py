@@ -112,6 +112,16 @@ SERVER_SIGNATURES = {
         "lanes": 4,
         "flags": "reasoning=on;budget=256;quant=Q8_0;temp=1.0;harness=format",
     },
+    # armb_sota_r256_t10_a100: B2 seeds 101-200, same server signature as
+    # B2 on A100 hardware (slurm/b2_collection_a100.sbatch, job 2456679).
+    "seawulf-a100-b2-r256-t10": {
+        "backend": "llama-server on SeaWulf 2x A100-80GB (arm-b-inference-bundle)",
+        "n_parallel": 6,
+        "ctx_size": 24576,
+        "ctx_per_slot": 4096,
+        "lanes": 4,
+        "flags": "reasoning=on;budget=256;quant=Q8_0;temp=1.0;harness=strict",
+    },
     # B3 (ledger RUNS.md): desktop Sprint-16 collection_main, refreshed
     # (Jul-15) E2B weights, 12 slots; reasoning on (budget not stamped).
     "local-llama-r0715-p12": {
